@@ -13,6 +13,43 @@ console.log('Twilio Account SID:', accountSid);
 console.log('Twilio Auth Token:', authToken);
 console.log('Twilio Phone Number:', process.env.TWILIO_PHONE_NUMBER);
 
+// 로그인 라우트
+router.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        const user = await User.findOne({ username });
+        if (!user) {
+            return res.status(400).json({ message: 'Invalid username or password' });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ message: 'Invalid username or password' });
+        }
+
+        req.session.user = {
+            id: user._id,
+            username: user.username
+        };
+
+        res.status(200).json({ message: 'Login successful' });
+    } catch (err) {
+        console.error('Error during login:', err);
+        res.status(500).json('Error: ' + err);
+    }
+});
+
+// 로그아웃 라우트
+router.post('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error logging out' });
+        }
+        res.status(200).json({ message: 'Logout successful' });
+    });
+});
+
 // 사용자명 중복 체크 라우트
 router.post('/check-username', async (req, res) => {
     console.log('Check username route called');
@@ -109,6 +146,15 @@ router.post('/verify-code', (req, res) => {
     } else {
         console.error('Invalid verification code');
         res.status(400).json('Invalid verification code!');
+    }
+});
+
+// 세션 확인 라우트
+router.get('/check-session', (req, res) => {
+    if (req.session.user) {
+        res.status(200).json({ user: req.session.user });
+    } else {
+        res.status(401).json({ error: 'Unauthorized' });
     }
 });
 

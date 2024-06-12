@@ -3,55 +3,46 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  const [form, setForm] = useState({
+    username: '',
+    password: ''
+  });
 
-  const handleLogin = async (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/login', { username, password }, { withCredentials: true });
-      if (response && response.data) {
-        setMessage(response.data.message);
-        localStorage.setItem('token', response.data.token);
+      const response = await axios.post('http://localhost:3001/api/user/login', form, { withCredentials: true });
+      if (response.status === 200) {
+        alert('Login successful!');
         navigate('/main');
-      } else {
-        setMessage('Unexpected error occurred. Please try again.');
       }
     } catch (error) {
-      if (error.response && error.response.data) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('Unexpected error occurred. Please try again.');
-      }
+      console.error('There was an error during the login!', error);
+      alert('Invalid username or password');
     }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-      {message && <p>{message}</p>}
-    </div>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Username:</label>
+        <input type="text" name="username" value={form.username} onChange={handleChange} required />
+      </div>
+      <div>
+        <label>Password:</label>
+        <input type="password" name="password" value={form.password} onChange={handleChange} required />
+      </div>
+      <button type="submit">Login</button>
+    </form>
   );
 };
 
