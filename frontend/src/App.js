@@ -11,6 +11,8 @@ import EnterVilla from './components/EnterVilla';
 import VillaQRCode from './components/VillaQRCode';
 import VillaDetail from './components/VillaDetail'; // VillaDetail 컴포넌트 추가
 import PrivateRoute from './components/PrivateRoute';
+import FindUsername from './components/FindUsername';
+import FindPassword from './components/FindPassword';
 import './styles/App.css';
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
               <Route path="/register-villa/*" element={<PrivateRoute element={<RegisterVilla />} />} />
               <Route path="/villa-qrcode" element={<PrivateRoute element={<VillaQRCode />} />} />
               <Route path="/villa/:id" element={<PrivateRoute element={<VillaDetail />} />} /> {/* VillaDetail 경로 추가 */}
+              <Route path="/find-username" element={<FindUsername />} />
+              <Route path="/find-password" element={<FindPassword />} />
             </Routes>
           </header>
         </div>
