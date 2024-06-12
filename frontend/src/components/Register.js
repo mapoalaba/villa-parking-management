@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 axios.defaults.withCredentials = true;
 
 const Register = () => {
+    const navigate = useNavigate();
+
     const [form, setForm] = useState({
         username: '',
         password: '',
@@ -81,9 +84,21 @@ const Register = () => {
         try {
             await axios.post('http://localhost:3001/api/user/register', form);
             alert('Registration successful!');
+            navigate('/login'); // 회원가입 성공 시 로그인 페이지로 이동
         } catch (error) {
             console.error('There was an error during the registration!', error);
         }
+    };
+
+    const handleAddressSearch = () => {
+        new window.daum.Postcode({
+            oncomplete: function (data) {
+                setForm({
+                    ...form,
+                    address: data.address,
+                });
+            },
+        }).open();
     };
 
     return (
@@ -115,7 +130,8 @@ const Register = () => {
             </div>
             <div>
                 <label>Address:</label>
-                <input type="text" name="address" value={form.address} onChange={handleChange} required />
+                <input type="text" name="address" value={form.address} onChange={handleChange} readOnly required />
+                <button type="button" onClick={handleAddressSearch}>Search Address</button>
             </div>
             <div>
                 <label>Vehicle Number:</label>

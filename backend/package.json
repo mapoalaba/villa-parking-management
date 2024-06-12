@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@react-google-maps/api": "^2.19.3",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "connect-mongo": "^5.1.0",
@@ -19,6 +20,7 @@
     "express-session": "^1.18.0",
     "libphonenumber-js": "^1.11.3",
     "mongoose": "^8.4.1",
+    "react-router-dom": "^6.23.1",
     "twilio": "^5.1.1"
   }
 }
