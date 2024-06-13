@@ -16,32 +16,6 @@ console.log('Twilio Auth Token:', authToken);
 console.log('Twilio Phone Number:', process.env.TWILIO_PHONE_NUMBER);
 
 // 로그인 라우트
-// router.post('/login', async (req, res) => {
-//     const { username, password } = req.body;
-  
-//     try {
-//       const user = await User.findOne({ username });
-//       if (!user) {
-//         return res.status(400).json({ message: 'Invalid username or password' });
-//       }
-  
-//       const isMatch = await bcrypt.compare(password, user.password);
-//       if (!isMatch) {
-//         return res.status(400).json({ message: 'Invalid username or password' });
-//       }
-
-//       req.session.user = {
-//         id: user._id,
-//         username: user.username,
-//         role: user.role
-//       };
-  
-//       res.status(200).json({ message: 'Login successful', token: 'dummy-token-for-testing' });
-//     } catch (err) {
-//       console.error('Error during login:', err);
-//       res.status(500).json('Error: ' + err);
-//     }
-//   });
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 

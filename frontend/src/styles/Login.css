@@ -91,6 +91,13 @@ h2 {
   background-color: #f1f1f1;
 }
 
+.button-group .link {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1em;
+}
+
 .message {
   margin-top: 20px;
   color: #e74c3c;

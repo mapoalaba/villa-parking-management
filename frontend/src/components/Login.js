@@ -59,9 +59,7 @@ const Login = () => {
         </div>
         <div className="button-group">
           <button type="submit" className="btn login-btn">Login</button>
-          <Link to="/register">
-            <button type="button" className="btn register-btn">Register</button>
-          </Link>
+          <Link to="/register" className='link'>회원가입</Link>
         </div>
       </form>
       {message && <p className="message">{message}</p>}
