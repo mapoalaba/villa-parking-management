@@ -18,6 +18,7 @@ import AdminPage from './components/AdminPage';
 import VillaListPage from './components/VillaListPage';
 import UserListPage from './components/UserListPage';
 import VillaDetailPage from './components/VillaDetailPage';
+import UserInfoPage from './components/UserInfoPage';
 import './styles/App.css';
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
               <Route path="/villas" element={<PrivateRoute element={<VillaListPage />} />} />
               <Route path="/users" element={<PrivateRoute element={<UserListPage />} />} />
               <Route path="/villa/:id" element={<PrivateRoute element={<VillaDetailPage />} />} />
+              <Route path="/user-info/:userId" element={<UserInfoPage />} />
             </Routes>
           </header>
         </div>

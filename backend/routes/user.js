@@ -236,26 +236,40 @@ router.post('/change-password', async (req, res) => {
 
 // 모든 사용자 목록을 가져오는 API
 router.get('/all', async (req, res) => {
-    try {
-      const users = await User.find({}, 'username'); // 모든 사용자를 username 필드만 가져옴
-      res.status(200).json(users);
-    } catch (error) {
+  try {
+    const users = await User.find({}, 'username'); // 모든 사용자를 username 필드만 가져옴
+    res.status(200).json(users);
+  } catch (error) {
       res.status(500).json({ message: 'Error fetching users', error });
-    }
-  });
-  
-  // 사용자 삭제 API
-  router.delete('/delete/:id', async (req, res) => {
-    const userId = req.params.id;
-    try {
-      const user = await User.findByIdAndDelete(userId);
+  }
+});
+
+// 특정 사용자 정보를 가져오는 API
+router.get('/:id', async (req, res) => {
+  const userId = req.params.id;
+  try {
+      const user = await User.findById(userId);
       if (!user) {
-        return res.status(404).json({ message: 'User not found' });
+          return res.status(404).json({ message: 'User not found' });
       }
-      res.status(200).json({ message: 'User deleted successfully' });
-    } catch (error) {
-      res.status(500).json({ message: 'Error deleting user', error });
+      res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching user', error });
+  }
+});
+  
+// 사용자 삭제 API
+router.delete('/delete/:id', async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const user = await User.findByIdAndDelete(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
     }
-  });
+    res.status(200).json({ message: 'User deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error deleting user', error });
+  }
+});
 
 module.exports = router;
