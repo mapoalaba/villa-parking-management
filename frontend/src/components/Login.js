@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+import '../styles/Login.css';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -9,7 +10,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-
     e.preventDefault();
     
     try {
@@ -18,9 +18,11 @@ const Login = () => {
         setMessage(response.data.message);
         localStorage.setItem('token', response.data.token);
 
-        console.log("role:", response.data.role);
-        navigate('/main');
-        
+        if (response.data.isAdmin) {
+          navigate('/admin');
+        } else {
+          navigate('/main');
+        }
       } else {
         setMessage('Unexpected error occurred. Please try again.');
       }
@@ -34,7 +36,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className='loginbox'>
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <div>
