@@ -26,7 +26,10 @@ function App() {
     <DndProvider backend={HTML5Backend}>
       <Router>
         <div className="App">
-          <header className="App-header">
+          <header>
+            
+          </header>
+          <body>
             <Routes>
               <Route path="/" element={<Navigate to="/login" />} />
               <Route path="/login" element={<Login />} />
@@ -46,7 +49,7 @@ function App() {
               <Route path="/villa/:id" element={<PrivateRoute element={<VillaDetailPage />} />} />
               <Route path="/user-info/:userId" element={<UserInfoPage />} />
             </Routes>
-          </header>
+          </body>
         </div>
       </Router>
     </DndProvider>

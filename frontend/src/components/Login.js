@@ -36,35 +36,37 @@ const Login = () => {
   };
 
   return (
-    <div className='loginbox'>
+    <div className="login-container">
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
-        <div>
+        <div className="input-group">
           <label>Username:</label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            className="input-field"
           />
         </div>
-        <div>
+        <div className="input-group">
           <label>Password:</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className="input-field"
           />
         </div>
-        <div>
-          <button type="submit">Login</button>
+        <div className="button-group">
+          <button type="submit" className="btn login-btn">Login</button>
           <Link to="/register">
-            <button type="button">Register</button>
+            <button type="button" className="btn register-btn">Register</button>
           </Link>
         </div>
       </form>
-      {message && <p>{message}</p>}
-      <div>
-        <Link to="/find-username">아이디 찾기</Link> | <Link to="/find-password">비밀번호 찾기</Link>
+      {message && <p className="message">{message}</p>}
+      <div className="link-group">
+        <Link to="/find-username" className="link">아이디 찾기</Link> | <Link to="/find-password" className="link">비밀번호 찾기</Link>
       </div>
     </div>
   );
