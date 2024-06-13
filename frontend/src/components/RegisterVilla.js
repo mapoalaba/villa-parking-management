@@ -7,10 +7,9 @@ import axios from 'axios';
 const RegisterVilla = () => {
   const [villaName, setVillaName] = useState('');
   const [address, setAddress] = useState('');
-  const [spaces, setSpaces] = useState([]);
   const navigate = useNavigate();
 
-  const handleSave = async () => {
+  const handleSave = async (spaces) => {
     try {
       const response = await axios.post('http://localhost:3001/api/villa/save', { villaName, address, spaces }, { withCredentials: true });
       if (response && response.data) {
@@ -31,8 +30,8 @@ const RegisterVilla = () => {
         path="parking" 
         element={
           <ParkingSpaces 
-            spaces={spaces} 
-            setSpaces={setSpaces} 
+            villaName={villaName} 
+            address={address} 
             handleSave={handleSave} 
           />
         } 

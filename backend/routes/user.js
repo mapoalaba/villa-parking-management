@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
-const User = require('../models/User');
+const User = require('../models/user');
 const twilio = require('twilio');
 const { parsePhoneNumberFromString } = require('libphonenumber-js');
 

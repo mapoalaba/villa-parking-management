@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ParkingArea from './ParkingArea';
-import { ItemTypes } from './ItemTypes';
+import { ItemTypes } from './ItemTypes'; // ItemTypes 가져오기
 import axios from 'axios';
 import '../styles/ParkingSpaces.css';
 
@@ -58,21 +58,21 @@ const ParkingSpaces = () => {
     <div>
       <h2>내 빌라 등록 - 주차 공간 생성</h2>
       <div>
-        <label>Villa Name:</label>
+        <label> 빌라 이름 : </label>
         <input type="text" value={villaName} readOnly />
       </div>
       <div>
-        <label>Address:</label>
+        <label> 주소 : </label>
         <input type="text" value={address} readOnly />
       </div>
       <div className="toolbar">
-        <button onClick={() => addSpace(ItemTypes.VILLA)}>Add Villa</button>
-        <button onClick={() => addSpace(ItemTypes.PARKING)}>Add Parking</button>
-        <button onClick={() => addSpace(ItemTypes.EXIT)}>Add Exit</button>
-        <button onClick={() => addSpace(ItemTypes.WALL)}>Add Wall</button>
+        <button onClick={() => addSpace(ItemTypes.VILLA)}> 빌라 </button>
+        <button onClick={() => addSpace(ItemTypes.PARKING)}> 주차칸 </button>
+        <button onClick={() => addSpace(ItemTypes.EXIT)}> 출구 </button>
+        <button onClick={() => addSpace(ItemTypes.WALL)}> 벽 </button>
       </div>
-      <ParkingArea spaces={spaces} moveSpace={moveSpace} resizeSpace={resizeSpace} deleteSpace={deleteSpace} />
-      <button type="button" onClick={handleSave}>Save</button>
+      <ParkingArea spaces={spaces} setSpaces={setSpaces} moveSpace={moveSpace} resizeSpace={resizeSpace} deleteSpace={deleteSpace} />
+      <button type="button" onClick={handleSave}> 저장 </button>
     </div>
   );
 };

@@ -1,0 +1,17 @@
+.space {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.space.occupied {
+  background-color: red;
+}
+
+.space.available {
+  background-color: green;
+}

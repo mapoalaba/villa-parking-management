@@ -5,7 +5,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const bcrypt = require('bcryptjs');
 require('dotenv').config();
-const User = require('./models/user');
+const User = require('./models/User');
 const villaRouter = require('./routes/villa');
 
 const app = express();
@@ -33,13 +33,23 @@ app.use(session({
     }
 }));
 
+const userRouter = express.Router();
+
+userRouter.get('/current', (req, res) => {
+    if (req.session.user) {
+        res.json(req.session.user);
+    } else {
+        res.status(401).json({ message: 'Unauthorized' });
+    }
+});
+
 const uri = process.env.MONGODB_URI;
 mongoose.connect(uri)
     .then(() => console.log('MongoDB database connection established successfully'))
     .catch(err => console.log('MongoDB connection error:', err));
 
-const userRouter = require('./routes/user');
-app.use('/api/user', userRouter);
+const userRoutes = require('./routes/user');
+app.use('/api/user', userRoutes);
 app.use('/api/villa', villaRouter);
 
 app.use((req, res, next) => {
@@ -56,9 +66,9 @@ app.get('/', (req, res) => {
 });
 
 app.post('/register', async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, phone, address, vehicleNumber, vehicleName } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
-  const newUser = new User({ username, password: hashedPassword });
+  const newUser = new User({ username, password: hashedPassword, phone, address, vehicleNumber, vehicleName });
 
   try {
     await newUser.save();
@@ -113,4 +123,11 @@ app.get('/protected', authenticateToken, (req, res) => {
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
+});
+
+app.get('/api/user/current', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+  res.json(req.session.user);
 });
