@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const FindUsername = () => {
   const [phone, setPhone] = useState('');
   const [verificationCode, setVerificationCode] = useState('');
   const [isVerified, setIsVerified] = useState(false);
-  const [username, setUsername] = useState(null);
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleSendCode = async (e) => {
     e.preventDefault();
@@ -27,26 +28,29 @@ const FindUsername = () => {
   const handleVerifyCode = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post('http://localhost:3001/api/user/verify-code', { code: verificationCode });
-        if (response.status === 200) {
-            setIsVerified(true);
-            alert('Phone number verified!');
-            setMessage('Phone number verified! Click the button below to retrieve your username.');
-        }
+      const response = await axios.post('http://localhost:3001/api/user/verify-code', { code: verificationCode });
+      if (response.status === 200) {
+        setIsVerified(true);
+        alert('Phone number verified!');
+        setMessage('Phone number verified! Click the button below to retrieve your username.');
+      }
     } catch (error) {
-        console.error('There was an error verifying the code!', error);
-        alert('Invalid verification code!');
-        setMessage(error.response.data.message);
+      console.error('There was an error verifying the code!', error);
+      alert('Invalid verification code!');
+      setMessage(error.response.data.message);
     }
-};
-
+  };
 
   const handleRetrieveUsername = async (e) => {
     e.preventDefault();
+    if (!isVerified) {
+      alert('Please verify your phone number first.');
+      return;
+    }
     try {
       const response = await axios.post('http://localhost:3001/api/user/retrieve-username', { phone });
-      setUsername(response.data.username);
-      setMessage('Username retrieved successfully!');
+      console.log(response.data);
+      navigate('/username-list', { state: { usernames: response.data.usernames } });
     } catch (error) {
       console.error('There was an error retrieving the username!', error);
       if (error.response && error.response.data) {
@@ -68,6 +72,7 @@ const FindUsername = () => {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required
+            placeholder='전화번호 ( - 빼고 입력)'
           />
           <button type="submit">Send Verification Code</button>
         </div>
@@ -82,17 +87,9 @@ const FindUsername = () => {
         />
         <button onClick={handleVerifyCode}>Verify Code</button>
       </div>
-      {isVerified && (
-        <div>
-          <button onClick={handleRetrieveUsername}>Retrieve Username</button>
-        </div>
-      )}
-      {username && (
-        <div>
-          <h3>Your Username:</h3>
-          <p>{username}</p>
-        </div>
-      )}
+      <div>
+        <button onClick={handleRetrieveUsername} disabled={!isVerified}>Retrieve Username</button>
+      </div>
       {message && <p>{message}</p>}
     </div>
   );

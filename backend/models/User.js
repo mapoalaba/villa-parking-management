@@ -8,6 +8,7 @@ const userSchema = new Schema({
     address: { type: String, required: true },
     vehicleNumber: { type: String, required: true },
     vehicleName: { type: String, required: true },
+    role: { type : Number, required: true, default: 0 },
 }, {
     timestamps: true,
 });

@@ -180,7 +180,7 @@ const Register = () => {
             </div>
             <div>
                 <label>Phone:</label>
-                <input type="text" name="phone" value={form.phone} onChange={handleChange} required placeholder='전화번호'/>
+                <input type="text" name="phone" value={form.phone} onChange={handleChange} required placeholder='전화번호 ( - 빼고 입력)'/>
                 <button type="button" onClick={sendVerificationCode}>Send Verification Code</button>
             </div>
             <div>

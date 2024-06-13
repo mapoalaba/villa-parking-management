@@ -13,6 +13,11 @@ import VillaDetail from './components/VillaDetail'; // VillaDetail 컴포넌트 
 import PrivateRoute from './components/PrivateRoute';
 import FindUsername from './components/FindUsername';
 import FindPassword from './components/FindPassword';
+import UsernameList from './components/UsernameList';
+import AdminPage from './components/AdminPage';
+import VillaListPage from './components/VillaListPage';
+import UserListPage from './components/UserListPage';
+import VillaDetailPage from './components/VillaDetailPage';
 import './styles/App.css';
 
 function App() {
@@ -33,6 +38,11 @@ function App() {
               <Route path="/villa/:id" element={<PrivateRoute element={<VillaDetail />} />} /> {/* VillaDetail 경로 추가 */}
               <Route path="/find-username" element={<FindUsername />} />
               <Route path="/find-password" element={<FindPassword />} />
+              <Route path="/username-list" element={<UsernameList />} />
+              <Route path="/admin" element={<PrivateRoute element={<AdminPage />} />} />
+              <Route path="/villas" element={<PrivateRoute element={<VillaListPage />} />} />
+              <Route path="/users" element={<PrivateRoute element={<UserListPage />} />} />
+              <Route path="/villa/:id" element={<PrivateRoute element={<VillaDetailPage />} />} />
             </Routes>
           </header>
         </div>

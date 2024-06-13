@@ -22,6 +22,7 @@ const villaSchema = new Schema({
   address: { type: String, required: true },
   spaces: { type: Array, required: true },
   userId: { type: String, required: true }, // 사용자 ID 추가
+  residents: [{ type: Schema.Types.ObjectId, ref: 'User' }], // 빌라에 거주하는 사용자들
   qrCodeUrl: { type: String } // qrCodeUrl 필드 추가
 }, {
   timestamps: true,

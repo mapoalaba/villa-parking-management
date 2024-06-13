@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
-const User = require('../models/User');
+const User = require('../models/user');
 const twilio = require('twilio');
 const { parsePhoneNumberFromString } = require('libphonenumber-js');
 
@@ -14,31 +14,57 @@ console.log('Twilio Auth Token:', authToken);
 console.log('Twilio Phone Number:', process.env.TWILIO_PHONE_NUMBER);
 
 // 로그인 라우트
+// router.post('/login', async (req, res) => {
+//     const { username, password } = req.body;
+
+//     try {
+//         const user = await User.findOne({ username });
+//         if (!user) {
+//             return res.status(400).json({ message: 'Invalid username or password' });
+//         }
+
+//         const isMatch = await bcrypt.compare(password, user.password);
+//         if (!isMatch) {
+//             return res.status(400).json({ message: 'Invalid username or password' });
+//         }
+
+//         req.session.user = {
+//             id: user._id,
+//             username: user.username
+//         };
+
+//         res.status(200).json({ message: 'Login successful' });
+//     } catch (err) {
+//         console.error('Error during login:', err);
+//         res.status(500).json('Error: ' + err);
+//     }
+// });
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
-
+  
     try {
-        const user = await User.findOne({ username });
-        if (!user) {
-            return res.status(400).json({ message: 'Invalid username or password' });
-        }
+      const user = await User.findOne({ username });
+      if (!user) {
+        return res.status(400).json({ message: 'Invalid username or password' });
+      }
+  
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+        return res.status(400).json({ message: 'Invalid username or password' });
+      }
 
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return res.status(400).json({ message: 'Invalid username or password' });
-        }
-
-        req.session.user = {
-            id: user._id,
-            username: user.username
-        };
-
-        res.status(200).json({ message: 'Login successful' });
+      req.session.user = {
+        id: user._id,
+        username: user.username,
+        role: user.role
+      };
+  
+      res.status(200).json({ message: 'Login successful', token: 'dummy-token-for-testing' });
     } catch (err) {
-        console.error('Error during login:', err);
-        res.status(500).json('Error: ' + err);
+      console.error('Error during login:', err);
+      res.status(500).json('Error: ' + err);
     }
-});
+  });
 
 // 로그아웃 라우트
 router.post('/logout', (req, res) => {
@@ -151,11 +177,73 @@ router.post('/verify-code', (req, res) => {
 
 // 세션 확인 라우트
 router.get('/check-session', (req, res) => {
+    console.log(req.session);
     if (req.session.user) {
+        req.session.verificationCode = null;
+        req.session.verificationCodeExpiration = null;
+
         res.status(200).json({ user: req.session.user });
     } else {
         res.status(401).json({ error: 'Unauthorized' });
     }
 });
+
+// 사용자 이름 봔환 라우트
+router.post('/retrieve-username', async (req, res) => {
+    const { phone } = req.body;
+    try {
+      const users = await User.find({ phone });
+      if (users.length > 0) {
+        const usernames = users.map(user => user.username);
+        res.json({ usernames });
+      } else {
+        res.status(404).json({ message: 'No user found with this phone number' });
+      }
+    } catch (error) {
+        res.status(500).json({ message: 'Error retrieving username', error });
+    }
+});
+
+//비밀번호 변경 라우트
+router.post('/change-password', async (req, res) => {
+    const { phone, username, newPassword } = req.body;
+    try {
+      const user = await User.findOne({ phone, username });
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      user.password = hashedPassword;
+      await user.save();
+      res.status(200).json({ message: 'Password changed successfully' });
+    } catch (error) {
+        console.error('Error changing password:', error);
+        res.status(500).json({ message: 'Error changing password', error });
+    }
+});
+
+// 모든 사용자 목록을 가져오는 API
+router.get('/all', async (req, res) => {
+    try {
+      const users = await User.find({}, 'username'); // 모든 사용자를 username 필드만 가져옴
+      res.status(200).json(users);
+    } catch (error) {
+      res.status(500).json({ message: 'Error fetching users', error });
+    }
+  });
+  
+  // 사용자 삭제 API
+  router.delete('/delete/:id', async (req, res) => {
+    const userId = req.params.id;
+    try {
+      const user = await User.findByIdAndDelete(userId);
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      res.status(200).json({ message: 'User deleted successfully' });
+    } catch (error) {
+      res.status(500).json({ message: 'Error deleting user', error });
+    }
+  });
 
 module.exports = router;
