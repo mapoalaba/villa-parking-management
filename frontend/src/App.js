@@ -25,7 +25,6 @@ function App() {
   return (
     <DndProvider backend={HTML5Backend}>
       <Router>
-        <div className="App">
           <header>
             
           </header>
@@ -50,7 +49,6 @@ function App() {
               <Route path="/user-info/:userId" element={<UserInfoPage />} />
             </Routes>
           </body>
-        </div>
       </Router>
     </DndProvider>
   );

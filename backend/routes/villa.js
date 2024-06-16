@@ -48,6 +48,19 @@ router.get('/user-villas', async (req, res) => {
   }
 });
 
+// 주소로 빌라 검색 API
+router.get('/search', async (req, res) => {
+  try {
+    const { address } = req.query;
+    console.log('Searching villas with address:', address); // 로그 추가
+    const villas = await Villa.find({ address: { $regex: address, $options: 'i' } }, 'villaName'); // 여기서 villaName을 반환하도록 필드 추가
+    res.status(200).json(villas);
+  } catch (error) {
+    console.error('Error searching villas:', error); // 에러 로그 추가
+    res.status(500).json({ message: 'Error searching villas', error });
+  }
+});
+
 // 빌라 상세 정보 API
 router.get('/:id', async (req, res) => {
   const villaId = req.params.id;
