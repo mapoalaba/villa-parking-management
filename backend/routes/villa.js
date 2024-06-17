@@ -135,4 +135,26 @@ router.delete('/resident/:id', async (req, res) => {
   }
 });
 
+// 빌라 상세 정보 가져오기
+router.get('/:villaId', async (req, res) => {
+  try {
+    const villa = await Villa.findById(req.params.villaId);
+    res.json(villa);
+  } catch (error) {
+    console.error('빌라 상세 정보 가져오기 오류:', error);
+    res.status(500).send('빌라 상세 정보 가져오기 오류');
+  }
+});
+
+// 빌라 거주자 목록 가져오기
+router.get('/:villaId/residents', async (req, res) => {
+  try {
+    const residents = await User.find({ villaId: req.params.villaId });
+    res.json(residents);
+  } catch (error) {
+    console.error('거주자 목록 가져오기 오류:', error);
+    res.status(500).send('거주자 목록 가져오기 오류');
+  }
+});
+
 module.exports = router;

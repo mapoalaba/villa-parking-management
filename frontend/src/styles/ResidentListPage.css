@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Fira Sans', sans-serif;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resident-list-container {
+  width: 90%;
+  min-width: 360px;
+  text-align: center;
+}
+
+.resident-list-container h2 {
+  color: #000;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.resident-list-container h3 {
+  color: #000;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.resident-list-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resident-list-container ul li {
+  margin-bottom: 5px;
+  font-size: 1em;
+}

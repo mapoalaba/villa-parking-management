@@ -14,15 +14,16 @@ body, html {
 
 .user-list-container {
   width: 90%;
-  max-width: 430px;
+  min-width: 360px;
   text-align: center;
 }
 
-h2 {
+.userlistpage-h2 {
   color: #000;
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
+  position: absolute;
 }
 
 .message {
@@ -56,8 +57,8 @@ h2 {
   margin-left: 10px;
 }
 
-.btn {
-  padding: 10px 20px;
+.userbtn {
+  padding: 5px 15px;
   border-radius: 25px;
   font-size: 1em;
   cursor: pointer;
@@ -69,6 +70,8 @@ h2 {
 .view-btn {
   background-color: #000;
   color: #fff;
+  font-size: 1em;
+  min-width: 100px;
 }
 
 .view-btn:hover {
@@ -78,8 +81,17 @@ h2 {
 .delete-btn {
   background-color: #ff4d4d;
   color: #fff;
+  font-size: 1em;
+  min-width: 70px;
 }
 
 .delete-btn:hover {
   background-color: #ff1a1a;
+}
+
+.userlist-body{
+  margin-top: 7rem;
+  overflow: scroll;
+  min-height: 700px;
+  max-height: 700px;
 }

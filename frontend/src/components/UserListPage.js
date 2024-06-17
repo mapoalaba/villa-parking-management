@@ -37,18 +37,23 @@ const UsersPage = () => {
   };
 
   return (
+    
     <div className="user-list-container">
-      <h2>모든 회원 목록</h2>
-      {message && <p className="message">{message}</p>}
-      <ul className="user-list">
-        {users.map((user) => (
-          <li key={user._id} className="user-item">
-            <span>{user.username}</span>
-            <button className="btn view-btn" onClick={() => handleViewUser(user._id)}>회원정보</button>
-            <button className="btn delete-btn" onClick={() => handleDeleteUser(user._id)}>삭제</button>
-          </li>
-        ))}
-      </ul>
+      <div className='userlist-header'>
+        <h2 className='userlistpage-h2'>모든 회원 목록</h2>
+      </div>
+      <div className='userlist-body'>
+        {message && <p className="message">{message}</p>}
+        <ul className="user-list">
+          {users.map((user) => (
+            <li key={user._id} className="user-item">
+              <span>{user.username}</span>
+              <button className="btn view-btn userbtn" onClick={() => handleViewUser(user._id)}>회원정보</button>
+              <button className="btn delete-btn userbtn" onClick={() => handleDeleteUser(user._id)}>삭제</button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

@@ -19,6 +19,7 @@ import VillaListPage from './components/VillaListPage';
 import UserListPage from './components/UserListPage';
 import VillaDetailPage from './components/VillaDetailPage';
 import UserInfoPage from './components/UserInfoPage';
+import ResidentListPage from './components/ResidentListPage';
 import './styles/App.css';
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
               <Route path="/villas" element={<PrivateRoute element={<VillaListPage />} />} />
               <Route path="/users" element={<PrivateRoute element={<UserListPage />} />} />
               <Route path="/villa/:id" element={<PrivateRoute element={<VillaDetailPage />} />} />
+              <Route path="/villa/:id/residents" element={<PrivateRoute element={<ResidentListPage />} />} />
               <Route path="/user-info/:userId" element={<UserInfoPage />} />
             </Routes>
           </body>

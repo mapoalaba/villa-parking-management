@@ -14,15 +14,8 @@ body, html {
 
 .villa-list-container {
   width: 90%;
-  max-width: 430px;
+  min-width: 350px;
   text-align: center;
-}
-
-h2 {
-  color: #000;
-  font-size: 2.5em;
-  font-weight: 600;
-  margin-bottom: 20px;
 }
 
 .villa-item {
@@ -68,4 +61,19 @@ h2 {
   margin-top: 20px;
   color: #e74c3c;
   font-size: 1em;
+}
+
+.villalistpage-h2{
+  color: #000;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: absolute;
+}
+
+.villalist-body{
+  margin-top: 7rem;
+  overflow: scroll;
+  min-height: 700px;
+  max-height: 700px;
 }
