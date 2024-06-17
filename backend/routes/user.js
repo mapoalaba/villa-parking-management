@@ -158,4 +158,39 @@ router.get('/check-session', (req, res) => {
     }
 });
 
+// 아이디 찾기 엔드포인트 추가
+router.post('/retrieve-username', async (req, res) => {
+    const { phone } = req.body;
+    try {
+      const users = await User.find({ phone });
+      if (users.length > 0) {
+        const usernames = users.map(user => user.username);
+        res.status(200).json({ usernames });
+      } else {
+        res.status(404).json({ message: 'No user found with this phone number' });
+      }
+    } catch (error) {
+      console.error('Error retrieving username:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
+
+//비밀번호 변경 라우트
+router.post('/change-password', async (req, res) => {
+    const { phone, username, newPassword } = req.body;
+    try {
+      const user = await User.findOne({ phone, username });
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      user.password = hashedPassword;
+      await user.save();
+      res.status(200).json({ message: 'Password changed successfully' });
+    } catch (error) {
+        console.error('Error changing password:', error);
+        res.status(500).json({ message: 'Error changing password', error });
+    }
+});
+
 module.exports = router;

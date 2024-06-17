@@ -14,6 +14,7 @@ import VillaDetail from './components/VillaDetail';
 import PrivateRoute from './components/PrivateRoute';
 import FindUsername from './components/FindUsername';
 import FindPassword from './components/FindPassword';
+import UsernameList from './components/UsernameList';
 import './styles/App.css';
 
 const HTML5toTouch = {
@@ -30,8 +31,6 @@ function App() {
   return (
     <DndProvider backend={MultiBackend} options={HTML5toTouch}>
       <Router>
-        <div className="App">
-          <header className="App-header">
             <Routes>
               <Route path="/" element={<Navigate to="/login" />} />
               <Route path="/login" element={<Login />} />
@@ -44,9 +43,8 @@ function App() {
               <Route path="/villa/:id" element={<PrivateRoute element={<VillaDetail />} />} />
               <Route path="/find-username" element={<FindUsername />} />
               <Route path="/find-password" element={<FindPassword />} />
+              <Route path="/username-list" element={<UsernameList />} />
             </Routes>
-          </header>
-        </div>
       </Router>
     </DndProvider>
   );

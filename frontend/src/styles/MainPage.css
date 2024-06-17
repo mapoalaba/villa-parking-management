@@ -1,0 +1,192 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Fira Sans', sans-serif;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-container {
+  width: 90%;
+  max-width: 430px;
+  text-align: center;
+}
+
+h2 {
+  color: #000;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.button-group .btn {
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.button-group .main-btn {
+  background-color: #000;
+  color: #fff;
+}
+
+.button-group .main-btn:hover {
+  background-color: #333;
+}
+
+.button-group .logout-btn {
+  background-color: #ff4d4d;
+  color: #fff;
+}
+
+.button-group .logout-btn:hover {
+  background-color: #ff1a1a;
+}
+
+.search-container {
+  margin-top: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  border: 2px solid #000;
+  border-radius: 5px;
+}
+
+.dropdown {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.dropdown li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown li:hover {
+  background-color: #f1f1f1;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Fira Sans', sans-serif;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-container {
+  width: 90%;
+  max-width: 430px;
+  text-align: center;
+}
+
+h2 {
+  color: #000;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.search-container {
+  margin-bottom: 450px;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  border: 2px solid #000;
+  border-radius: 5px;
+}
+
+.dropdown {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background-color: #fff;
+  position: absolute;
+  z-index: 10;
+}
+
+.dropdown li {
+  padding: 10px;
+  cursor: pointer;
+  min-width: 200px;
+  border-bottom: 1px solid black;
+}
+
+.dropdown li:hover {
+  background-color: #f1f1f1;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.button-group .btn {
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.button-group .main-btn {
+  background-color: #000;
+  color: #fff;
+}
+
+.button-group .main-btn:hover {
+  background-color: #333;
+}
+
+.button-group .logout-btn {
+  background-color: #ff4d4d;
+  color: #fff;
+}
+
+.button-group .logout-btn:hover {
+  background-color: #ff1a1a;
+}

@@ -65,6 +65,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+import '../styles/Login.css';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -93,35 +94,35 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className="login-container">
+      <h2>로그인</h2>
       <form onSubmit={handleLogin}>
-        <div>
-          <label>Username:</label>
+        <div className="input-group">
+          <label>아이디:</label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            className="input-field"
           />
         </div>
-        <div>
-          <label>Password:</label>
+        <div className="input-group">
+          <label>비밀번호:</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className="input-field"
           />
         </div>
-        <div>
-          <button type="submit">Login</button>
-          <Link to="/register">
-            <button type="button">Register</button>
-          </Link>
+        <div className="button-group">
+          <button type="submit" className="btn login-btn">로그인</button>
+          <Link to="/register" className='link'>회원가입</Link>
         </div>
       </form>
-      {message && <p>{message}</p>}
-      <div>
-        <Link to="/find-username">아이디 찾기</Link> | <Link to="/find-password">비밀번호 찾기</Link>
+      {message && <p className="message">{message}</p>}
+      <div className="link-group">
+        <Link to="/find-username" className="link">아이디 찾기</Link> | <Link to="/find-password" className="link">비밀번호 찾기</Link>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const bcrypt = require('bcryptjs');
 require('dotenv').config();
-const User = require('./models/User');
+const User = require('./models/user');
 const villaRouter = require('./routes/villa');
 
 const app = express();
