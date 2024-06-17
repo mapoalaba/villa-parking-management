@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../styles/AdminPage.css';
 
 const AdminPage = () => {
   const navigate = useNavigate();
@@ -14,16 +15,18 @@ const AdminPage = () => {
         window.location.reload();
       }
     } catch (error) {
-      console.error('Error logging out', error);
+      console.error('로그아웃 오류', error);
     }
   };
 
   return (
-    <div>
-      <h2>Admin Page</h2>
-      <button onClick={() => navigate('/villas')}>모든 빌라 목록</button>
-      <button onClick={() => navigate('/users')}>모든 회원 목록</button>
-      <button onClick={handleLogout}>Logout</button>
+    <div className="admin-container">
+      <h2>관리자 페이지</h2>
+      <div className="button-group adminbutton">
+        <button onClick={() => navigate('/villas')} className="btn admin-btn">모든 빌라 목록</button>
+        <button onClick={() => navigate('/users')} className="btn admin-btn">모든 회원 목록</button>
+        <button onClick={handleLogout} className="btn logout-btn">로그아웃</button>
+      </div>
     </div>
   );
 };
