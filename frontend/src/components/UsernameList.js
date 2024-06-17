@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import '../styles/UsernameList.css';
 
 const UsernameList = () => {
   const location = useLocation();
@@ -9,19 +10,21 @@ const UsernameList = () => {
   console.log('Usernames:', usernames);
 
   return (
-    <div>
-      <h2>Username List</h2>
+    <div className="username-list-container">
+      <h2>아이디 목록</h2>
       {usernames.length > 0 ? (
-        <ul>
+        <ul className="username-list">
           {usernames.map((username, index) => (
             <li key={index}>{username}</li>
           ))}
         </ul>
       ) : (
-        <p>No usernames found for this phone number.</p>
+        <p className="message">이 전화번호에 대한 사용자 아이디를 찾을 수 없습니다.</p>
       )}
-      <button onClick={() => navigate('/login')}>Back to Login</button>
-      <button onClick={() => navigate('/find-password')}>Find Password</button>
+      <div className="button-group">
+        <button onClick={() => navigate('/login')} className="btn">로그인으로 돌아가기</button>
+        <button onClick={() => navigate('/find-password')} className="btn">비밀번호 찾기</button>
+      </div>
     </div>
   );
 };

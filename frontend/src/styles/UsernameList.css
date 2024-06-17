@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Fira Sans', sans-serif;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.username-list-container {
+  width: 90%;
+  max-width: 430px;
+  text-align: center;
+}
+
+h2 {
+  color: #000;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.username-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  text-align: left;
+}
+
+.username-list li {
+  background-color: #f1f1f1;
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.message {
+  margin-top: 20px;
+  color: #e74c3c;
+  font-size: 1em;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.button-group .btn {
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.button-group .btn {
+  background-color: #000;
+  color: #fff;
+}
+
+.button-group .btn:hover {
+  background-color: #333;
+}
+
+.button-group .link {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1em;
+}

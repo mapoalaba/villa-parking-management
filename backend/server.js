@@ -80,14 +80,14 @@ app.post('/login', async (req, res) => {
   // 일반 사용자 로그인 처리
   const user = await User.findOne({ username });
   if (!user) {
-    console.log('Invalid credentials');
-    return res.status(400).json({ message: 'Invalid credentials' });
+    console.log('아이디, 비밀번호를 입력하세요');
+    return res.status(400).json({ message: '아이디, 비밀번호를 입력하세요' });
   }
 
   const isPasswordValid = await bcrypt.compare(password, user.password);
   if (!isPasswordValid) {
-    console.log('Invalid credentials');
-    return res.status(400).json({ message: 'Invalid credentials' });
+    console.log('아이디, 비밀번호를 입력하세요');
+    return res.status(400).json({ message: '아이디, 비밀번호를 입력하세요' });
   }
 
   req.session.user = { id: user._id, username: user.username };

@@ -17,7 +17,7 @@ const MainPage = () => {
         window.location.reload();
       }
     } catch (error) {
-      console.error('Error logging out', error);
+      console.error('로그아웃 오류', error);
     }
   };
 
@@ -29,7 +29,7 @@ const MainPage = () => {
         navigate('/my-villa', { state: { villas: response.data } });
       }
     } catch (error) {
-      console.error('Error fetching villas:', error);
+      console.error('빌라 가져오기 오류:', error);
     }
   };
 
@@ -48,7 +48,7 @@ const MainPage = () => {
         const response = await axios.get(`http://localhost:3001/api/villa/search?address=${e.target.value}`, { withCredentials: true });
         setVillas(response.data);
       } catch (error) {
-        console.error('Error fetching villas:', error);
+        console.error('빌라 가져오기 오류:', error);
       }
     } else {
       setVillas([]);
@@ -61,7 +61,7 @@ const MainPage = () => {
 
   return (
     <div className="main-container">
-      <h2>Main Page</h2>
+      <h2>메인 페이지</h2>
       <div className="search-container">
         <input 
           type="text" 
@@ -82,7 +82,7 @@ const MainPage = () => {
         <button onClick={handleMyVilla} className="btn main-btn">내 빌라</button>
         <button onClick={handleEnterVilla} className="btn main-btn">빌라 입장</button>
         <button onClick={handleRegisterVilla} className="btn main-btn">내 빌라 등록</button>
-        <button onClick={handleLogout} className="btn logout-btn">Logout</button>
+        <button onClick={handleLogout} className="btn logout-btn">로그아웃</button>
       </div>
     </div>
   );

@@ -24,23 +24,23 @@ const Login = () => {
           navigate('/main');
         }
       } else {
-        setMessage('Unexpected error occurred. Please try again.');
+        setMessage('예기치 않은 오류가 발생했습니다. 다시 시도해 주세요.');
       }
     } catch (error) {
       if (error.response && error.response.data) {
         setMessage(error.response.data.message);
       } else {
-        setMessage('Unexpected error occurred. Please try again.');
+        setMessage('예기치 않은 오류가 발생했습니다. 다시 시도해 주세요.');
       }
     }
   };
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
+      <h2>로그인</h2>
       <form onSubmit={handleLogin}>
         <div className="input-group">
-          <label>Username:</label>
+          <label>아이디:</label>
           <input
             type="text"
             value={username}
@@ -49,7 +49,7 @@ const Login = () => {
           />
         </div>
         <div className="input-group">
-          <label>Password:</label>
+          <label>비밀번호:</label>
           <input
             type="password"
             value={password}
@@ -58,7 +58,7 @@ const Login = () => {
           />
         </div>
         <div className="button-group">
-          <button type="submit" className="btn login-btn">Login</button>
+          <button type="submit" className="btn login-btn">로그인</button>
           <Link to="/register" className='link'>회원가입</Link>
         </div>
       </form>
