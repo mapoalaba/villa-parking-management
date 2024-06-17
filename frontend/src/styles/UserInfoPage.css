@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Fira Sans', sans-serif;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-info-container {
+  width: 90%;
+  max-width: 430px;
+  text-align: center;
+}
+
+h2 {
+  color: #000;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.user-info-group {
+  position: relative;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.user-info-group p {
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.button-group .btn {
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.button-group .back-btn {
+  background-color: #000;
+  color: #fff;
+}
+
+.button-group .back-btn:hover {
+  background-color: #333;
+}
+
+.message {
+  margin-top: 20px;
+  color: #e74c3c;
+  font-size: 1em;
+}
+
+.link-group {
+  margin-top: 20px;
+}
+
+.link-group .link {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.link-group .link:hover {
+  text-decoration: underline;
+}

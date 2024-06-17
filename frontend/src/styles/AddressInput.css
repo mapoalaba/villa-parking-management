@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Fira Sans', sans-serif;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.address-input-container {
+  width: 90%;
+  max-width: 430px;
+  text-align: center;
+}
+
+.address-header {
+  color: #000;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  min-width: 250px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  text-align: left;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.input-group .input-with-button {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input-group .input-with-button input {
+  width: calc(100% - 100px);
+  padding: 15px;
+  border: none;
+  border-bottom: 2px solid #000;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+.input-group .input-with-button .btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px 15px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-bottom: 2px solid #000;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.button-group .addsearch-btn {
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.next-btn {
+  background-color: #000;
+  color: #fff;
+}
+
+.next-btn:hover {
+  background-color: #333;
+}

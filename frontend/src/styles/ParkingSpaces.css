@@ -1,3 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Fira Sans', sans-serif;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parking-container {
+  width: 90%;
+  max-width: 430px;
+  text-align: center;
+}
+
+h2 {
+  color: #000;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  text-align: left;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 15px;
+  margin-top: 5px;
+  border: none;
+  border-bottom: 2px solid #000;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-bottom: 2px solid #000;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.button-group .btn,
+.toolbar .btn {
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.toolbar .btn {
+  width: 48%;
+  margin-bottom: 10px;
+}
+
+.toolbar .btn:hover,
+.parkingsave-btn:hover {
+  background-color: #333;
+}
+
+.parkingsave-btn {
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 15px;
+  background-color: #000;
+  color: #fff;
+  width: 100%;
+}
+
+.toolbar .btn {
+  background-color: #000;
+  color: #fff;
+}
+
+.message {
+  margin-top: 20px;
+  color: #e74c3c;
+  font-size: 1em;
+}
+
+.link-group {
+  margin-top: 20px;
+}
+
+.link-group .link {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.link-group .link:hover {
+  text-decoration: underline;
+}
+
+.parking-area {
+  width: 100%;
+  height: 500px;
+  border: 1px solid black;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.draggable-item {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+
+.draggable-item:before {
+  content: attr(data-type);
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 50px;
+  text-align: center;
+  background-color: rgba(0, 0, 255, 0.5);
+}
+
+
 .parking-area {
   width: 100%;
   height: 500px;
@@ -27,4 +184,20 @@
 
 .toolbar button {
   margin-right: 10px;
+}
+
+.parking-h2{
+  color: #000;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: absolute;
+  min-width: 270px;
+}
+
+.parking-body{
+  margin-top: 7rem;
+  overflow: scroll;
+  min-height: 700px;
+  max-height: 700px;
 }

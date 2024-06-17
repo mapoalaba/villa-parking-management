@@ -84,7 +84,7 @@ const FindPassword = () => {
 
   return (
     <div className="find-password-container">
-      <h2>비밀번호 찾기</h2>
+      <h2 className='findpwd-h2'>비밀번호 찾기</h2>
       {!isVerified ? (
         <>
           <form onSubmit={handleSendCode}>

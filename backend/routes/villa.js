@@ -78,19 +78,57 @@ router.get('/:id', async (req, res) => {
 });
 
 // 빌라 삭제 API
+// router.delete('/delete/:id', async (req, res) => {
+//   const villaId = req.params.id;
+//   const userId = req.session.user ? req.session.user.id : null; // 로그인한 사용자의 ID 가져오기
+
+//   console.log(`Attempting to delete villa with ID ${villaId} for user ${userId}`);
+
+//   if (!userId) {
+//     return res.status(401).json({ message: 'User not authenticated' });
+//   }
+
+//   try {
+//     const villa = await Villa.findById(villaId).populate('residents'); // residents 필드를 populate해서 관련된 회원 정보를 가져옴
+//     if (!villa) {
+//       console.log('Villa not found or not authorized');
+//       return res.status(404).json({ message: 'Villa not found or not authorized' });
+//     }
+//     // 사용자 ID가 일치하는지 확인 후 삭제
+//     if (villa.userId.toString() !== userId.toString()) {
+//       return res.status(403).json({ message: 'User not authorized to delete this villa' });
+//     }
+
+//     await villa.remove();
+//     console.log('Villa deleted successfully');
+//     res.status(200).json({ message: 'Villa deleted successfully' });
+//   } catch (error) {
+//     console.error('Error deleting villa:', error);
+//     res.status(500).json({ message: 'Error deleting villa', error });
+//   }
+// });
 router.delete('/delete/:id', async (req, res) => {
   const villaId = req.params.id;
-  const userId = req.session.user.id; // 로그인한 사용자의 ID 가져오기
+  const userId = req.session.user ? req.session.user.id : null; // 로그인한 사용자의 ID 가져오기
 
   console.log(`Attempting to delete villa with ID ${villaId} for user ${userId}`);
 
+  if (!userId) {
+    return res.status(401).json({ message: 'User not authenticated' });
+  }
+
   try {
     const villa = await Villa.findById(villaId).populate('residents'); // residents 필드를 populate해서 관련된 회원 정보를 가져옴
-    // const villa = await Villa.findOneAndDelete({ _id: villaId, userId });
     if (!villa) {
       console.log('Villa not found or not authorized');
       return res.status(404).json({ message: 'Villa not found or not authorized' });
     }
+    // 사용자 ID가 일치하는지 확인 후 삭제
+    if (villa.userId.toString() !== userId.toString()) {
+      return res.status(403).json({ message: 'User not authorized to delete this villa' });
+    }
+
+    await villa.remove();
     console.log('Villa deleted successfully');
     res.status(200).json({ message: 'Villa deleted successfully' });
   } catch (error) {

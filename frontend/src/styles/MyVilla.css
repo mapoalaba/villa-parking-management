@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Fira Sans', sans-serif;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.villa-container {
+  width: 90%;
+  max-width: 430px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh; /* Full viewport height */
+}
+
+h2 {
+  color: #000;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.villa-list {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.villa-item {
+  margin-bottom: 20px;
+}
+
+.villa-name {
+  cursor: pointer;
+  color: blue;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.villa-name:hover {
+  text-decoration: underline;
+}
+
+p {
+  color: #000;
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.gomain-btn {
+  background-color: #000;
+  color: #fff;
+  width: 25rem;
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  outline: none;
+  margin-bottom: 15px;
+}
+
+.gomain-btn:hover {
+  background-color: #333;
+}
+
+.message {
+  margin-top: 20px;
+  color: #000;
+  font-size: 1em;
+}

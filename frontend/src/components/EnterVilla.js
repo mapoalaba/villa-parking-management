@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import QrScanner from 'react-qr-scanner';
+import '../styles/EnterVilla.css';
 
 const EnterVilla = () => {
   const [villaId, setVillaId] = useState('');
@@ -60,9 +61,8 @@ const EnterVilla = () => {
   };
 
   return (
-    <div>
+    <div className="enter-villa-container">
       <h2>빌라 입장</h2>
-      <div>
       <div className="search-container">
         <input 
           type="text" 
@@ -79,19 +79,25 @@ const EnterVilla = () => {
           </ul>
         )}
       </div>
+      <div className="input-group">
         <label>빌라 고유번호 입력</label>
-        <input type="text" value={villaId} onChange={handleVillaIdChange} />
-        <button onClick={handleAddVilla}>내 빌라에 추가</button>
-      </div>
-      <div>
-        <h3>QR 코드 촬영</h3>
-        <QrScanner
-          delay={300}
-          onError={handleError}
-          onScan={handleScan}
-          style={previewStyle}
+        <input 
+          type="text" 
+          value={villaId} 
+          onChange={handleVillaIdChange} 
+          className="villa-input-field"
         />
-        <p>{scanResult}</p>
+        <button className="btn villaadd-btn" onClick={handleAddVilla}>내 빌라에 추가</button>
+      </div>
+      <div className="qr-container">
+      <h3>QR 코드 촬영</h3>
+         <QrScanner
+           delay={300}
+           onError={handleError}
+           onScan={handleScan}
+           style={previewStyle}
+         />
+         <p>{scanResult}</p>
       </div>
     </div>
   );

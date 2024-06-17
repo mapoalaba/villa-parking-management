@@ -36,6 +36,10 @@
 //     navigate(`/villa/${villaId}`);
 //   };
 
+//   const handleViewResidents = (villaId) => {
+//     navigate(`/villa/${villaId}/residents`);
+//   };
+
 //   return (
 //     <div className="villa-list-container">
 //       <div className='villalist-header'>
@@ -48,6 +52,7 @@
 //             <h3>{villa.villaName}</h3>
 //             <p>{villa.address}</p>
 //             <button className="btn detail-btn" onClick={() => handleViewDetails(villa._id)}>상세</button>
+//             <button className="btn residents-btn" onClick={() => handleViewResidents(villa._id)}>거주자목록</button>
 //             <button className="btn delete-btn" onClick={() => handleDeleteVilla(villa._id)}>삭제</button>
 //           </div>
 //         ))}
@@ -57,8 +62,6 @@
 // };
 
 // export default VillaListPage;
-
-
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -95,7 +98,7 @@ const VillaListPage = () => {
   };
 
   const handleViewDetails = (villaId) => {
-    navigate(`/villa/${villaId}`);
+    navigate(`/villadetail/${villaId}`);
   };
 
   const handleViewResidents = (villaId) => {

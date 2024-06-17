@@ -1,55 +1,59 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import '../styles/VillaDetailPage.css';
 
-const VillaDetailPage = () => {
+const VillaDetail = () => {
   const { id } = useParams();
-  const [villa, setVilla] = useState(null);
   const navigate = useNavigate();
+  const [villa, setVilla] = useState(null);
 
   useEffect(() => {
-    const fetchVilla = async () => {
+    const fetchVillaDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/villa/${id}`);
+        const response = await axios.get(`http://localhost:3001/api/villa/${id}`, { withCredentials: true });
         setVilla(response.data);
       } catch (error) {
-        console.error('Error fetching villa:', error);
+        console.error('Error fetching villa details:', error);
       }
     };
 
-    fetchVilla();
+    fetchVillaDetails();
   }, [id]);
 
-  const handleDeleteResident = async (residentId) => {
-    try {
-      await axios.delete(`http://localhost:3001/api/villa/resident/${residentId}`);
-      setVilla({
-        ...villa,
-        residents: villa.residents.filter((resident) => resident._id !== residentId),
-      });
-      alert('Resident deleted successfully');
-    } catch (error) {
-      console.error('Error deleting resident:', error);
-      alert('Error deleting resident');
-    }
+  const handleGoToVillaList = () => {
+    navigate('/villas');
   };
 
-  if (!villa) return <div>Loading...</div>;
+  if (!villa) {
+    return <p>Loading...</p>;
+  }
 
   return (
-    <div>
-      <h2>{villa.name}</h2>
-      <h3>Residents</h3>
-      <ul>
-        {villa.residents.map((resident) => (
-          <li key={resident._id}>
-            {resident.username} <button onClick={() => handleDeleteResident(resident._id)}>Delete</button>
-          </li>
+    <div className="villa-detail-container">
+      <h2>상세 정보</h2>
+      <p>주소: {villa.address}</p>
+      <p>고유번호: {villa._id}</p>
+      <h3>주차 배치도</h3>
+      <div className="parking-layout">
+        {villa.spaces.map((space, index) => (
+          <div
+            key={index}
+            className={`space ${space.type.toLowerCase()}`}
+            style={{
+              top: space.top,
+              left: space.left,
+              width: space.width,
+              height: space.height,
+            }}
+          />
         ))}
-      </ul>
-      <button onClick={() => navigate('/villas')}>Back to Villa List</button>
+      </div>
+      <div className="button-group">
+        <button className="btn back-btn" onClick={handleGoToVillaList}>빌라 목록</button>
+      </div>
     </div>
   );
 };
 
-export default VillaDetailPage;
+export default VillaDetail;

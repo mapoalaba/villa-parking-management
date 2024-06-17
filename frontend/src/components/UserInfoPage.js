@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import '../styles/UserInfoPage.css';
 
 const UserInfoPage = () => {
   const { userId } = useParams();
@@ -21,17 +22,20 @@ const UserInfoPage = () => {
   }, [userId]);
 
   return (
-    <div>
+    <div className="user-info-container">
       <h2>회원 정보</h2>
       {user ? (
-        <div>
-          <p>Username: {user.username}</p>
-          <p>Phone: {user.phone}</p>
-          <p>Address: {user.address}</p>
-          <p>Vehicle Name: {user.vehicleName}</p>
-          <p>Vehicle Number: {user.vehicleNumber}</p>
-          {/* 추가적인 회원 정보를 여기에 표시 */}
-          <button onClick={() => navigate('/users')}>회원 목록으로 돌아가기</button>
+        <div className="user-info-group">
+          <p>아이디: {user.username}</p>
+          <p>전화번호: {user.phone}</p>
+          <p>주소: {user.address}</p>
+          <p>차 이름: {user.vehicleName}</p>
+          <p>차 번호: {user.vehicleNumber}</p>
+          <div className="button-group">
+            <button className="btn back-btn" onClick={() => navigate('/users')}>
+              회원 목록으로
+            </button>
+          </div>
         </div>
       ) : (
         <p>Loading...</p>

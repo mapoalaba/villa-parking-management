@@ -46,7 +46,7 @@ function App() {
               <Route path="/admin" element={<PrivateRoute element={<AdminPage />} />} />
               <Route path="/villas" element={<PrivateRoute element={<VillaListPage />} />} />
               <Route path="/users" element={<PrivateRoute element={<UserListPage />} />} />
-              <Route path="/villa/:id" element={<PrivateRoute element={<VillaDetailPage />} />} />
+              <Route path="/villadetail/:id" element={<PrivateRoute element={<VillaDetailPage />} />} />
               <Route path="/villa/:id/residents" element={<PrivateRoute element={<ResidentListPage />} />} />
               <Route path="/user-info/:userId" element={<UserInfoPage />} />
             </Routes>
