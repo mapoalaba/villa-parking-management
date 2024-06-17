@@ -209,7 +209,7 @@ const Register = () => {
                         </div>
                         <div className="input-group">
                             <label>비밀번호:</label>
-                            <input type="password" name="password" value={form.password} onChange={handleChange} required maxLength="20" placeholder='4 ~ 20글자'/>
+                            <input type="password" name="password" value={form.password} onChange={handleChange} required maxLength="20" placeholder='4 ~ 20글자(대문자, 특수문자 한개 이상 포함)'/>
                         </div>
                         <div className="input-group">
                             <label>비밀번호 확인:</label>
@@ -267,7 +267,6 @@ const Register = () => {
                                 <option value="승용차">승용차</option>
                                 <option value="승합차">승합차</option>
                                 <option value="화물차">화물차</option>
-                                <option value="오토바이">오토바이</option>
                             </select>
                         </div>
                         <div className="input-group">
