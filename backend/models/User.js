@@ -8,6 +8,7 @@ const userSchema = new Schema({
     address: { type: String, required: true },
     vehicleNumber: { type: String, required: true },
     vehicleName: { type: String, required: true },
+    villas: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Villa' }], // List of villa IDs
 }, {
     timestamps: true,
 });

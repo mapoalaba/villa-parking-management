@@ -33,23 +33,13 @@ app.use(session({
     }
 }));
 
-const userRouter = express.Router();
-
-userRouter.get('/current', (req, res) => {
-    if (req.session.user) {
-        res.json(req.session.user);
-    } else {
-        res.status(401).json({ message: 'Unauthorized' });
-    }
-});
-
 const uri = process.env.MONGODB_URI;
 mongoose.connect(uri)
     .then(() => console.log('MongoDB database connection established successfully'))
     .catch(err => console.log('MongoDB connection error:', err));
 
-const userRoutes = require('./routes/user');
-app.use('/api/user', userRoutes);
+const userRouter = require('./routes/user');
+app.use('/api/user', userRouter);
 app.use('/api/villa', villaRouter);
 
 app.use((req, res, next) => {

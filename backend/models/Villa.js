@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const { ObjectId } = mongoose.Schema.Types;
 
 const spaceSchema = new mongoose.Schema({
   type: {
@@ -25,22 +27,40 @@ const spaceSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  exitTime: String,
-  notes: String,
-  userId: String, // 추가: 주차 공간을 등록한 사용자 ID
-  carType: String,
-  carNumber: String,
-  contact: String,
+  exitTime: {
+    type: String,
+    default: '',
+  },
+  notes: {
+    type: String,
+    default: '',
+  },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    default: null,
+  },
+  vehicleName: {
+    type: String,
+    default: '',
+  },
+  vehicleNumber: {
+    type: String,
+    default: '',
+  },
+  contact: {
+    type: String,
+    default: '',
+  }
 });
-
-const Schema = mongoose.Schema;
 
 const villaSchema = new Schema({
   villaName: { type: String, required: true },
   address: { type: String, required: true },
-  spaces: [spaceSchema], // 주차 공간 스키마 사용
-  userId: { type: String, required: true }, // 사용자 ID 추가
-  qrCodeUrl: { type: String } // qrCodeUrl 필드 추가
+  spaces: [spaceSchema],
+  users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }], // Multiple users
+  qrCodeUrl: { type: String }, // qrCodeUrl 필드 추가
+  villaId: { type: String, required: true, unique: true } // villaId 필드 추가
 }, {
   timestamps: true,
 });

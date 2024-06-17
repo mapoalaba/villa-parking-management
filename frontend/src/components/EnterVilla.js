@@ -27,6 +27,7 @@ const EnterVilla = () => {
     if (data) {
       setScanResult(data.text);
       setVillaId(data.text);
+      handleAddVilla();
     }
   };
 

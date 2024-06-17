@@ -27,6 +27,7 @@ const MainPage = () => {
       }
     } catch (error) {
       console.error('Error fetching villas:', error);
+      alert('빌라 정보를 가져오는 데 오류가 발생했습니다.');
     }
   };
 

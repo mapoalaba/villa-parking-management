@@ -90,8 +90,6 @@ const VillaDetail = () => {
   const handleSubmit = async () => {
     if (!selectedSpace) return;
 
-    console.log('Handling submit for space:', selectedSpace);
-
     const updatedSpace = {
       ...selectedSpace,
       ...form,
@@ -99,6 +97,7 @@ const VillaDetail = () => {
       userId: selectedSpace.isOccupied ? null : currentUser.id
     };
 
+    console.log(`Updating space with villaId: ${id} and spaceId: ${selectedSpace._id}`);
     console.log('Updated space data:', updatedSpace);
 
     try {
