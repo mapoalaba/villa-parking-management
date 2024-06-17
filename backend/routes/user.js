@@ -16,39 +16,54 @@ console.log('Twilio Phone Number:', process.env.TWILIO_PHONE_NUMBER);
 // 로그인 라우트
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
-
+  
     try {
-        const user = await User.findOne({ username });
-        if (!user) {
-            return res.status(400).json({ message: 'Invalid username or password' });
+      let user = await User.findOne({ username });
+      let isAdmin = false;
+  
+      if (!user && username === ADMIN_USERNAME) {
+        const isMatch = password === ADMIN_PASSWORD;
+        if (!isMatch) {
+          return res.status(400).json({ message: 'Invalid username or password' });
         }
-
+        isAdmin = true;
+        user = { _id: 'admin', username: ADMIN_USERNAME };
+      } else if (user) {
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(400).json({ message: 'Invalid username or password' });
+          return res.status(400).json({ message: 'Invalid username or password' });
         }
-
-        req.session.user = {
-            id: user._id,
-            username: user.username
-        };
-
-        res.status(200).json({ message: 'Login successful' });
+      } else {
+        return res.status(400).json({ message: 'Invalid username or password' });
+      }
+  
+      // 세션에 사용자 정보 저장
+      req.session.user = {
+        id: user._id.toString(), // 사용자 ID를 문자열로 변환하여 저장
+        username: user.username,
+        isAdmin: isAdmin
+      };
+  
+      // 디버깅을 위한 세션 정보 로그 출력
+      console.log('User session after login:', req.session.user);
+  
+      res.status(200).json({ message: 'Login successful', isAdmin: isAdmin, token: 'dummy-token-for-testing' });
     } catch (err) {
-        console.error('Error during login:', err);
-        res.status(500).json('Error: ' + err);
+      console.error('Error during login:', err);
+      res.status(500).json('Error: ' + err);
     }
-});
-
-// 로그아웃 라우트
-router.post('/logout', (req, res) => {
-    req.session.destroy((err) => {
-        if (err) {
-            return res.status(500).json({ message: 'Error logging out' });
-        }
-        res.status(200).json({ message: 'Logout successful' });
-    });
-});
+  });
+  
+  
+  // 로그아웃 라우트
+  router.post('/logout', (req, res) => {
+      req.session.destroy((err) => {
+          if (err) {
+              return res.status(500).json({ message: 'Error logging out' });
+          }
+          res.status(200).json({ message: 'Logout successful' });
+      });
+  });
 
 // 사용자명 중복 체크 라우트
 router.post('/check-username', async (req, res) => {

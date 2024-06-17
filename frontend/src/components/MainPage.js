@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../styles/MainPage.css';
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -40,13 +41,12 @@ const MainPage = () => {
   };
 
   return (
-    <div>
-      <h2>Main Page</h2>
-      <button onClick={handleMyVilla}>내 빌라</button>
-      <button onClick={handleEnterVilla}>빌라 입장</button>
-      <button onClick={handleRegisterVilla}>내 빌라 등록</button>
-      <button onClick={handleLogout}>Logout</button>
-    </div>
+    <div className="button-group">
+    <button onClick={handleMyVilla} className="btn main-btn">내 빌라</button>
+    <button onClick={handleEnterVilla} className="btn main-btn">빌라 입장</button>
+    <button onClick={handleRegisterVilla} className="btn main-btn">내 빌라 등록</button>
+    <button onClick={handleLogout} className="btn logout-btn">로그아웃</button>
+  </div>
   );
 };
 
