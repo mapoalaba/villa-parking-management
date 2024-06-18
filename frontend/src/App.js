@@ -18,7 +18,7 @@ import UsernameList from './components/UsernameList';
 import AdminPage from './components/AdminPage';
 import UserListPage from './components/UserListPage';
 import UserInfoPage from './components/UserInfoPage';
-import VillaListPage from './components/VillaListPage';
+import VillaListPage from './components/VillaList';
 import './styles/App.css';
 
 const HTML5toTouch = {
