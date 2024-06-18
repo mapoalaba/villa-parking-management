@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import QrScanner from 'react-qr-scanner';
 import '../styles/EnterVilla.css';
+import 'webrtc-adapter';
 
 const EnterVilla = () => {
   const [villaId, setVillaId] = useState('');
