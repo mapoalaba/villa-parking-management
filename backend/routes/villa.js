@@ -151,14 +151,6 @@ router.get('/:id/parking/:spaceId', async (req, res) => {
   }
 });
 
-// 현재 사용자 정보를 반환하는 라우트
-router.get('/current', (req, res) => {
-  if (!req.session.user) {
-    return res.status(401).json({ message: 'Unauthorized' });
-  }
-  res.json(req.session.user);
-});
-
 // 빌라 업데이트 API
 router.post('/update/:id', async (req, res) => {
   const villaId = req.params.id;
@@ -178,7 +170,7 @@ router.post('/update/:id', async (req, res) => {
 // 주차 공간 업데이트 API
 router.post('/:villaId/update-space/:spaceId', async (req, res) => {
   const { villaId, spaceId } = req.params;
-  const { exitTime, notes, isOccupied, users } = req.body;
+  const { exitTime, notes, isOccupied, userId } = req.body;
 
   console.log(`Updating space with villaId: ${villaId} and spaceId: ${spaceId}`);
 
@@ -194,14 +186,14 @@ router.post('/:villaId/update-space/:spaceId', async (req, res) => {
     }
 
     if (isOccupied) {
-      const user = await User.findById(users);
+      const user = await User.findById(userId);
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
       space.isOccupied = isOccupied;
       space.exitTime = exitTime;
       space.notes = notes;
-      space.users = users;
+      space.useId = userId;
       space.vehicleName = user.vehicleName;
       space.vehicleNumber = user.vehicleNumber;
       space.contact = user.phone;
@@ -209,7 +201,7 @@ router.post('/:villaId/update-space/:spaceId', async (req, res) => {
       space.isOccupied = isOccupied;
       space.exitTime = null;
       space.notes = null;
-      space.users = null;
+      space.userId = null;
       space.vehicleName = '';
       space.vehicleNumber = '';
       space.contact = '';

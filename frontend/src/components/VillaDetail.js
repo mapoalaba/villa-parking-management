@@ -90,6 +90,8 @@ const VillaDetail = () => {
   const handleSubmit = async () => {
     if (!selectedSpace) return;
 
+    console.log('Handling submit for space:', selectedSpace);
+
     const updatedSpace = {
       ...selectedSpace,
       ...form,
@@ -161,7 +163,6 @@ const VillaDetail = () => {
           }
         }}
       >
-        <h2>Space Details</h2>
         {selectedSpace && selectedSpace.isOccupied ? (
           <div>
             <p>차종: {selectedSpace.vehicleName}</p>

@@ -68,6 +68,15 @@ router.post('/login', async (req, res) => {
       });
   });
 
+  // 현재 사용자 정보를 반환하는 라우트
+router.get('/current', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+  res.json(req.session.user);
+});
+
+
 // 사용자명 중복 체크 라우트
 router.post('/check-username', async (req, res) => {
     console.log('Check username route called');

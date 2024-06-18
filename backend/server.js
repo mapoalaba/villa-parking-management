@@ -6,6 +6,7 @@ const MongoStore = require('connect-mongo');
 const bcrypt = require('bcryptjs');
 require('dotenv').config();
 const User = require('./models/User');
+const userRouter = require('./routes/user');
 const villaRouter = require('./routes/villa');
 const app = express();
 const port = process.env.PORT || 3001;
@@ -16,6 +17,11 @@ app.use(cors({
 }));
 
 app.use(express.json());
+
+const uri = process.env.MONGODB_URI;
+mongoose.connect(uri)
+    .then(() => console.log('MongoDB database connection established successfully'))
+    .catch(err => console.log('MongoDB connection error:', err));
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -32,14 +38,12 @@ app.use(session({
     }
 }));
 
-const uri = process.env.MONGODB_URI;
-mongoose.connect(uri)
-    .then(() => console.log('MongoDB database connection established successfully'))
-    .catch(err => console.log('MongoDB connection error:', err));
-
-const userRouter = require('./routes/user');
 app.use('/api/user', userRouter);
 app.use('/api/villa', villaRouter);
+
+app.get('/', (req, res) => {
+  res.send('Welcome to the Villa Parking Management API');
+});
 
 app.use((req, res, next) => {
   if (req.session.user) {
@@ -48,10 +52,6 @@ app.use((req, res, next) => {
     console.log('No active session');
   }
   next();
-});
-
-app.get('/', (req, res) => {
-  res.send('Welcome to the Villa Parking Management API');
 });
 
 app.post('/register', async (req, res) => {
@@ -120,6 +120,13 @@ app.post('/logout', (req, res) => {
   });
 });
 
+app.get('/api/user/current', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+  res.json(req.session.user);
+});
+
 // 세션 확인 라우트 추가
 app.get('/api/user/check-session', (req, res) => {
   if (req.session.user) {
@@ -139,13 +146,6 @@ const authenticateToken = (req, res, next) => {
 
 app.get('/protected', authenticateToken, (req, res) => {
   res.json({ message: 'This is a protected route', user: req.user });
-});
-
-app.get('/api/user/current', (req, res) => {
-  if (!req.session.user) {
-    return res.status(401).json({ message: 'Unauthorized' });
-  }
-  res.json(req.session.user);
 });
 
 app.listen(port, () => {
