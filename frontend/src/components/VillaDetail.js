@@ -56,7 +56,7 @@ const VillaDetail = () => {
         vehicleName: space.vehicleName || '',
         vehicleNumber: space.vehicleNumber || '',
         phone: space.phone || '',
-        exitTime: space.exitTime || '',
+        exitTime: space.exitTime ? new Date(space.exitTime).toISOString().slice(0, -1) : '',
         notes: space.notes || ''
       });
     } else {
@@ -178,7 +178,12 @@ const VillaDetail = () => {
           <div>
             <label>
               출차시간:
-              <input type="text" name="exitTime" value={form.exitTime} onChange={handleInputChange} />
+              <input
+                type="datetime-local"
+                name="exitTime"
+                value={form.exitTime}
+                onChange={handleInputChange}
+              />
             </label>
             <label>
               특이사항:

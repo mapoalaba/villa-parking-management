@@ -13,7 +13,7 @@ const spaceSchema = new mongoose.Schema({
   notes: { type: String, default: '' },
   vehicleName: { type: String, default: '' },
   vehicleNumber: { type: String, default: '' },
-  phone: { type: String, default: '' },
+  phone: { type: String, default: null },
   userId: { type: Schema.Types.ObjectId, ref: 'User', default: null }
 });
 

@@ -196,7 +196,7 @@ router.post('/:villaId/update-space/:spaceId', async (req, res) => {
       space.useId = userId;
       space.vehicleName = user.vehicleName;
       space.vehicleNumber = user.vehicleNumber;
-      space.contact = user.phone;
+      space.phone = user.phone;
     } else {
       space.isOccupied = isOccupied;
       space.exitTime = null;
@@ -204,7 +204,7 @@ router.post('/:villaId/update-space/:spaceId', async (req, res) => {
       space.userId = null;
       space.vehicleName = '';
       space.vehicleNumber = '';
-      space.contact = '';
+      space.phone = '';
     }
 
     await villa.save();
