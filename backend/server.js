@@ -8,6 +8,7 @@ require('dotenv').config();
 const User = require('./models/User');
 const userRouter = require('./routes/user');
 const villaRouter = require('./routes/villa');
+const path = require('path');
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -157,6 +158,15 @@ const authenticateToken = (req, res, next) => {
 app.get('/protected', authenticateToken, (req, res) => {
   res.json({ message: 'This is a protected route', user: req.user });
 });
+
+// 정적 파일 제공
+app.use(express.static(path.join(__dirname, 'build')));
+
+// 모든 경로에 대해 index.html 반환
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
