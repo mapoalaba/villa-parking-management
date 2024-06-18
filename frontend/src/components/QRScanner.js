@@ -1,44 +1,24 @@
-import React, { useRef, useEffect, useCallback, useMemo } from 'react';
-import { BrowserMultiFormatReader } from '@zxing/library';
-import Webcam from 'react-webcam';
+import React from 'react';
+import QrReader from 'react-qr-reader';
 
-const QRScanner = ({ onScan }) => {
-  const webcamRef = useRef(null);
-  const reader = useMemo(() => new BrowserMultiFormatReader(), []);
-
-  const capture = useCallback(async () => {
-    if (webcamRef.current) {
-      const imageSrc = webcamRef.current.getScreenshot();
-      if (imageSrc) {
-        try {
-          const result = await reader.decodeFromImage(undefined, imageSrc);
-          onScan(result.getText());
-        } catch (err) {
-          if (err.name !== 'NotFoundException') {
-            console.error(err);
-          }
-        }
-      }
+const QRScanner = ({ onScan, onError }) => {
+  const handleScan = (data) => {
+    if (data) {
+      onScan(data);
     }
-  }, [onScan, reader]);
+  };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      capture();
-    }, 1000); // 1초마다 스캔 시도
-    return () => clearInterval(interval);
-  }, [capture]);
+  const handleError = (err) => {
+    onError(err);
+  };
 
   return (
-    <div>
-      <Webcam
-        audio={false}
-        ref={webcamRef}
-        screenshotFormat="image/jpeg"
-        width="100%"
-        height="100%"
-      />
-    </div>
+    <QrReader
+      delay={300}
+      onError={handleError}
+      onScan={handleScan}
+      style={{ width: '100%' }}
+    />
   );
 };
 

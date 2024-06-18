@@ -34,6 +34,10 @@ const EnterVilla = () => {
     }
   };
 
+  const handleError = (err) => {
+    console.error('Error scanning QR code:', err);
+  };
+
   const handleSearchChange = async (e) => {
     setSearch(e.target.value);
     if (e.target.value) {
@@ -83,7 +87,7 @@ const EnterVilla = () => {
       </div>
       <div className="qr-container">
         <h3>QR 코드 촬영</h3>
-        <QRScanner onScan={handleScan} />
+        <QRScanner onScan={handleScan} onError={handleError} />
         <p>{scanResult}</p>
       </div>
     </div>

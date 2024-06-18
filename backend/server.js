@@ -5,6 +5,8 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const bcrypt = require('bcryptjs');
 require('dotenv').config();
+const fs = require('fs');
+const https = require('https');
 const User = require('./models/User');
 const userRouter = require('./routes/user');
 const villaRouter = require('./routes/villa');
@@ -15,14 +17,13 @@ const port = process.env.PORT || 3001;
 const allowedOrigins = ['http://localhost:3000', 'http://138.2.118.184:3000'];
 
 app.use(cors({
-  origin: function(origin, callback){
-      // 허용된 출처가 없는 경우에도 허용 (개발 중에만 사용, 실제로는 필요에 따라 조정)
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-          const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-          return callback(new Error(msg), false);
-      }
-      return callback(null, true);
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
   },
   credentials: true
 }));
@@ -31,22 +32,22 @@ app.use(express.json());
 
 const uri = process.env.MONGODB_URI;
 mongoose.connect(uri)
-    .then(() => console.log('MongoDB database connection established successfully'))
-    .catch(err => console.log('MongoDB connection error:', err));
+  .then(() => console.log('MongoDB database connection established successfully'))
+  .catch(err => console.log('MongoDB connection error:', err));
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI,
-        collectionName: 'sessions'
-    }),
-    cookie: {
-        secure: false, // HTTPS를 사용할 때는 true로 설정해야 합니다.
-        httpOnly: true,
-        maxAge: 1000 * 60 * 30 // 30분
-    }
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI,
+    collectionName: 'sessions'
+  }),
+  cookie: {
+    secure: true, // HTTPS를 사용할 때는 true로 설정해야 합니다.
+    httpOnly: true,
+    maxAge: 1000 * 60 * 30 // 30분
+  }
 }));
 
 app.use('/api/user', userRouter);
@@ -81,7 +82,6 @@ app.post('/register', async (req, res) => {
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
-  // 관리자 계정인지 확인
   if (username === process.env.ADMIN_USERNAME && password === process.env.ADMIN_PASSWORD) {
     req.session.user = { username, isAdmin: true };
     req.session.save((err) => {
@@ -95,7 +95,6 @@ app.post('/login', async (req, res) => {
     return;
   }
 
-  // 일반 사용자 로그인 처리
   const user = await User.findOne({ username });
   if (!user) {
     console.log('Invalid username or password');
@@ -138,7 +137,6 @@ app.get('/api/user/current', (req, res) => {
   res.json(req.session.user);
 });
 
-// 세션 확인 라우트 추가
 app.get('/api/user/check-session', (req, res) => {
   if (req.session.user) {
     res.json({ sessionActive: true, user: req.session.user });
@@ -159,15 +157,17 @@ app.get('/protected', authenticateToken, (req, res) => {
   res.json({ message: 'This is a protected route', user: req.user });
 });
 
-// 정적 파일 제공
 app.use(express.static(path.join(__dirname, 'build')));
 
-// 모든 경로에 대해 index.html 반환
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
+const options = {
+  key: fs.readFileSync('/path/to/your/server.key'),
+  cert: fs.readFileSync('/path/to/your/server.cert')
+};
 
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
+https.createServer(options, app).listen(port, () => {
+  console.log(`Server is running on https://localhost:${port}`);
 });
