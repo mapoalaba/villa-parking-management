@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import QrScanner from 'react-qr-scanner';
+import QRScanner from './QRScanner';
 import '../styles/EnterVilla.css';
-import 'webrtc-adapter';
 
 const EnterVilla = () => {
   const [villaId, setVillaId] = useState('');
@@ -29,19 +28,10 @@ const EnterVilla = () => {
 
   const handleScan = (data) => {
     if (data) {
-      setScanResult(data.text);
-      setVillaId(data.text);
-      handleAddVilla(data.text);
+      setScanResult(data);
+      setVillaId(data);
+      handleAddVilla(data);
     }
-  };
-
-  const handleError = (err) => {
-    console.error('Error scanning QR code:', err);
-  };
-
-  const previewStyle = {
-    height: '100%',
-    width: '100%',
   };
 
   const handleSearchChange = async (e) => {
@@ -60,21 +50,6 @@ const EnterVilla = () => {
 
   const handleVillaSelect = (id) => {
     handleAddVilla(id);
-  };
-
-  const renderQrScanner = () => {
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      return (
-        <QrScanner
-          delay={300}
-          onError={handleError}
-          onScan={handleScan}
-          style={previewStyle}
-        />
-      );
-    } else {
-      return <p>QR 코드 스캐너를 사용할 수 없습니다. 브라우저가 이 기능을 지원하지 않습니다.</p>;
-    }
   };
 
   return (
@@ -108,7 +83,7 @@ const EnterVilla = () => {
       </div>
       <div className="qr-container">
         <h3>QR 코드 촬영</h3>
-        {renderQrScanner()}
+        <QRScanner onScan={handleScan} />
         <p>{scanResult}</p>
       </div>
     </div>
