@@ -13,7 +13,7 @@ const Login = () => {
     // 컴포넌트가 마운트될 때 세션을 확인합니다.
     const checkSession = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/user/check-session', { withCredentials: true });
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/check-session`, { withCredentials: true });
         if (response.data.sessionActive) {
           setMessage('이미 로그인된 상태입니다.');
           if (response.data.user.isAdmin) {
@@ -33,7 +33,7 @@ const Login = () => {
     e.preventDefault();
     
     try {
-      const response = await axios.post('http://localhost:3001/login', { username, password }, { withCredentials: true });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/login`, { username, password }, { withCredentials: true });
       if (response && response.data) {
         setMessage(response.data.message);
         localStorage.setItem('token', response.data.token);

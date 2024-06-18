@@ -11,7 +11,7 @@ const UsersPage = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/user/all');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/all`);
         setUsers(response.data);
       } catch (error) {
         console.error('Error fetching users:', error);
@@ -23,7 +23,7 @@ const UsersPage = () => {
 
   const handleDeleteUser = async (userId) => {
     try {
-      await axios.delete(`http://localhost:3001/api/user/delete/${userId}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/user/delete/${userId}`);
       setUsers((prevUsers) => prevUsers.filter((user) => user._id !== userId));
       setMessage('User deleted successfully');
     } catch (error) {

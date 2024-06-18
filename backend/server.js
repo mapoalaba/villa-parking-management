@@ -11,9 +11,19 @@ const villaRouter = require('./routes/villa');
 const app = express();
 const port = process.env.PORT || 3001;
 
+const allowedOrigins = ['http://localhost:3000', 'http://138.2.118.184:3000'];
+
 app.use(cors({
-    origin: 'http://localhost:3000',
-    credentials: true // 이 설정이 true로 되어 있어야 합니다.
+  origin: function(origin, callback){
+      // 허용된 출처가 없는 경우에도 허용 (개발 중에만 사용, 실제로는 필요에 따라 조정)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+          const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+          return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+  },
+  credentials: true
 }));
 
 app.use(express.json());

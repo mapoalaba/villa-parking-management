@@ -51,7 +51,7 @@ const Register = () => {
 
     const checkUsernameAvailability = async () => {
         try {
-            const response = await axios.post('http://localhost:3001/api/user/check-username', { username: form.username });
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/user/check-username`, { username: form.username });
             setUsernameAvailable(response.data.available);
             if (response.data.available) {
                 alert('아이디 사용 가능');
@@ -65,7 +65,7 @@ const Register = () => {
 
     const sendVerificationCode = async () => {
         try {
-            await axios.post('http://localhost:3001/api/user/send-code', { phone: form.phone });
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/user/send-code`, { phone: form.phone });
             alert('인증 코드가 전송되었습니다!');
         } catch (error) {
             console.error('인증 코드를 전송하는 동안 오류가 발생했습니다!', error);
@@ -74,7 +74,7 @@ const Register = () => {
 
     const verifyCode = async () => {
         try {
-            const response = await axios.post('http://localhost:3001/api/user/verify-code', { code: verificationCode });
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/user/verify-code`, { code: verificationCode });
             if (response.status === 200) {
                 setIsVerified(true);
                 alert('전화번호가 확인되었습니다!');
@@ -145,7 +145,7 @@ const Register = () => {
         const fullAddress = `${form.address} (${form.detailedAddress})`;
 
         try {
-            await axios.post('http://localhost:3001/api/user/register', {
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/user/register`, {
                 ...form,
                 vehicleNumber,
                 address: fullAddress

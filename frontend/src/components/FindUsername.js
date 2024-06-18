@@ -13,7 +13,7 @@ const FindUsername = () => {
   const handleSendCode = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/api/user/send-code', { phone });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/user/send-code`, { phone });
       alert('인증 코드가 전송되었습니다!');
       setMessage(response.data.message);
     } catch (error) {
@@ -29,7 +29,7 @@ const FindUsername = () => {
   const handleVerifyCode = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/api/user/verify-code', { code: verificationCode });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/user/verify-code`, { code: verificationCode });
       if (response.status === 200) {
         setIsVerified(true);
         alert('전화번호가 확인되었습니다!');
@@ -48,7 +48,7 @@ const FindUsername = () => {
       return;
     }
     try {
-      const response = await axios.post('http://localhost:3001/api/user/retrieve-username', { phone });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/user/retrieve-username`, { phone });
       console.log(response.data);
       navigate('/username-list', { state: { usernames: response.data.usernames } });
     } catch (error) {

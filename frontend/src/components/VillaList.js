@@ -8,7 +8,7 @@ const VillaList = () => {
   useEffect(() => {
     const fetchVillas = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/villa/all');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/villa/all`);
         setVillas(response.data);
       } catch (error) {
         console.error('Error fetching villas:', error);

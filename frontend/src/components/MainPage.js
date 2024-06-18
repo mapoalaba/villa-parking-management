@@ -8,7 +8,7 @@ const MainPage = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/logout', {}, { withCredentials: true });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/logout`, {}, { withCredentials: true });
       if (response && response.data) {
         localStorage.removeItem('token');
         navigate('/login', { replace: true });
@@ -21,7 +21,7 @@ const MainPage = () => {
 
   const handleMyVilla = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/api/villa/user-villas', { withCredentials: true });
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/villa/user-villas`, { withCredentials: true });
       console.log('Fetched villas:', response.data);
       if (response && response.data) {
         navigate('/my-villa', { state: { villas: response.data } });

@@ -11,7 +11,7 @@ const UserInfoPage = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/user/${userId}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/${userId}`);
         setUser(response.data);
       } catch (error) {
         console.error('Error fetching user info:', error);

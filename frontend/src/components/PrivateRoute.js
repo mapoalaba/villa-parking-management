@@ -8,7 +8,7 @@ const PrivateRoute = ({ element }) => {
   useEffect(() => {
     const checkSession = async () => {
       try {
-        await axios.get('http://localhost:3001/api/user/check-session', { withCredentials: true });
+        await axios.get(`${process.env.REACT_APP_API_URL}/api/user/check-session`, { withCredentials: true });
         setIsAuthenticated(true);
       } catch (error) {
         setIsAuthenticated(false);

@@ -17,7 +17,7 @@ const EnterVilla = () => {
 
   const handleAddVilla = async (id) => {
     try {
-      const response = await axios.post('http://localhost:3001/api/villa/add-villa', { villaId: id }, { withCredentials: true });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/villa/add-villa`, { villaId: id }, { withCredentials: true });
       if (response && response.data) {
         navigate('/my-villa');
       }
@@ -47,7 +47,7 @@ const EnterVilla = () => {
     setSearch(e.target.value);
     if (e.target.value) {
       try {
-        const response = await axios.get(`http://localhost:3001/api/villa/search?address=${e.target.value}`, { withCredentials: true });
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/villa/search?address=${e.target.value}`, { withCredentials: true });
         setVillas(response.data);
       } catch (error) {
         console.error('Error fetching villas:', error);

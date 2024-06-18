@@ -10,7 +10,7 @@ const MyVilla = () => {
   useEffect(() => {
     const fetchVillas = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/villa/user-villas', { withCredentials: true });
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/villa/user-villas`, { withCredentials: true });
         setVillas(response.data);
       } catch (error) {
         console.error('Error fetching user villas:', error);
@@ -27,7 +27,7 @@ const MyVilla = () => {
 
   const handleRemove = async (villaId) => {
     try {
-      const response = await axios.delete(`http://localhost:3001/api/villa/remove-villa/${villaId}`, { withCredentials: true });
+      const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/villa/remove-villa/${villaId}`, { withCredentials: true });
       if (response.status === 200) {
         setVillas((prevVillas) => prevVillas.filter((villa) => villa._id !== villaId));
       }

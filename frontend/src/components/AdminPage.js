@@ -8,7 +8,7 @@ const AdminPage = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/logout', {}, { withCredentials: true });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/logout`, {}, { withCredentials: true });
       if (response && response.data) {
         localStorage.removeItem('token');
         navigate('/login', { replace: true });

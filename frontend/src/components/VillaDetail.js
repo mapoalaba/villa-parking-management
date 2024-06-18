@@ -24,7 +24,7 @@ const VillaDetail = () => {
   useEffect(() => {
     const fetchCurrentUser = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/user/current', { withCredentials: true });
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/current`, { withCredentials: true });
         setCurrentUser(response.data);
       } catch (error) {
         console.error('Error fetching current user:', error);
@@ -37,7 +37,7 @@ const VillaDetail = () => {
   useEffect(() => {
     const fetchVilla = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/villa/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/villa/${id}`);
         setVilla(response.data);
         setSpaces(response.data.spaces || []);
       } catch (error) {
@@ -104,7 +104,7 @@ const VillaDetail = () => {
 
     try {
       await axios.post(
-        `http://localhost:3001/api/villa/${id}/update-space/${selectedSpace._id}`,
+        `${process.env.REACT_APP_API_URL}/api/villa/${id}/update-space/${selectedSpace._id}`,
         updatedSpace,
         { withCredentials: true }
       );

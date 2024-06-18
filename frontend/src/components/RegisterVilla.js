@@ -11,7 +11,7 @@ const RegisterVilla = () => {
 
   const handleSave = async (spaces) => {
     try {
-      const response = await axios.post('http://localhost:3001/api/villa/save', { villaName, address, spaces }, { withCredentials: true });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/villa/save`, { villaName, address, spaces }, { withCredentials: true });
       if (response && response.data) {
         navigate('/villa-qrcode', { state: { villaId: response.data.villaId, qrCode: response.data.qrCode } });
       }
