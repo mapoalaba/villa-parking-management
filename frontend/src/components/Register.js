@@ -227,7 +227,7 @@ const Register = () => {
                             <input type="text" name="detailedAddress" value={form.detailedAddress} onChange={handleChange} placeholder='(선택사항)'/>
                         </div>
                         <div className="registerbutton-group">
-                            <button type="button" className="registernext-btn" onClick={nextStep}>다음</button>
+                            <button type="button" className="firstregisternext-btn" onClick={nextStep}>다음</button>
                         </div>
                     </div>
                 )}

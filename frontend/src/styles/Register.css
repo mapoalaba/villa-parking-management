@@ -10,6 +10,7 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto; /* Allow scrolling */
 }
 
 .register-container {
@@ -17,7 +18,8 @@ body, html {
   max-width: 430px;
   text-align: center;
   position: relative;
-  padding-top: 100px;
+  padding-top: 150px; /* Add some padding for better spacing */
+  overflow: hidden; /* Prevent overflow */
 }
 
 h2 {
@@ -25,10 +27,11 @@ h2 {
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
   z-index: 1000;
 }
 
@@ -36,14 +39,9 @@ h2 {
   display: flex;
   justify-content: space-around;
   margin-bottom: 20px;
-  position: fixed;
-  top: 150px;
-  left: 50%;
-  transform: translateX(-50%);
   background-color: #fff;
   padding: 10px;
-  z-index: 1000;
-  min-width: 100%;
+  width: 100%;
 }
 
 .status .step-indicator {
@@ -111,21 +109,30 @@ h2 {
   top: 50%;
   transform: translateY(-50%);
   padding: 10px 15px;
-  background-color: #fff;
-  border: 1px solid #000;
+  background-color: #009000;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
+  color: #fff;
 }
 
 .registerbutton-group {
   display: flex;
   justify-content: space-between;
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 430px;
+  width: 100%;
+}
+
+.registerbutton-group .firstregisternext-btn{
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  outline: none;
+  width: 100%; /* Adjust width to fit two buttons side by side */
+  background-color: green;
+  color: #fff;
 }
 
 .registerbutton-group .registernext-btn,
@@ -138,8 +145,7 @@ h2 {
   transition: background-color 0.3s ease;
   border: none;
   outline: none;
-  width: 100%;
-  margin-bottom: 15px;
+  width: 48%; /* Adjust width to fit two buttons side by side */
   background-color: green;
   color: #fff;
 }
@@ -189,6 +195,6 @@ h2 {
   display: block;
 }
 
-::placeholder{
+::placeholder {
   font-size: 12.5px;
 }

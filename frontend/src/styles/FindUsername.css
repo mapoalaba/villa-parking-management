@@ -23,6 +23,12 @@ h2 {
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
 }
 
 .input-group {
@@ -64,18 +70,6 @@ h2 {
   padding-right: 100px;
 }
 
-.input-with-button .btn {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 10px 15px;
-  background-color: #fff;
-  border: 1px solid #000;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 .finduserbutton-group {
   display: flex;
   flex-direction: column;
@@ -100,10 +94,11 @@ h2 {
   top: 50%;
   transform: translateY(-50%);
   padding: 10px 15px;
-  background-color: #fff;
-  border: 1px solid #000;
+  background-color: #009000;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
+  color: #fff;
 }
 
 .findsearch-btn{

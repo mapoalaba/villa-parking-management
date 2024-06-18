@@ -71,7 +71,12 @@ body, html {
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
-  position: absolute;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
 }
 
 .usernamelist-body{

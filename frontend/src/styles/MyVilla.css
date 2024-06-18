@@ -7,19 +7,19 @@ body, html {
   height: 100%;
   font-family: 'Fira Sans', sans-serif;
   background-color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: auto; /* Ensure scrolling */
 }
 
 .villa-container {
   width: 100%;
+  max-width: 430px; /* Set a max-width for responsiveness */
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
-  height: 100vh; /* Full viewport height */
+  height: 100vh; /* Make the container take full viewport height */
 }
 
 h2 {
@@ -27,6 +27,12 @@ h2 {
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
 }
 
 .villa-list {

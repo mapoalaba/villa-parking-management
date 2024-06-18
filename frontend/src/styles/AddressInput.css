@@ -96,7 +96,6 @@ body, html {
   transform: translateY(-50%);
   padding: 10px 15px;
   background-color: #fff;
-  border: 1px solid #000;
   border-radius: 5px;
   cursor: pointer;
 }

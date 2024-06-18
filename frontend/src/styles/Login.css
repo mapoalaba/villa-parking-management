@@ -10,11 +10,15 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto; /* Ensure scrolling */
 }
 
 .login-container {
   width: 100%;
+  max-width: 430px; /* Set a max-width for responsiveness */
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .login-h2 {
@@ -22,6 +26,12 @@ body, html {
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
 }
 
 .input-group {
@@ -101,7 +111,10 @@ body, html {
 }
 
 .link-group {
-  margin-top: 200px;
+  margin-top: auto; /* Pushes link group to the bottom */
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Add some space between the links */
 }
 
 .link-group .link {
@@ -115,7 +128,9 @@ body, html {
   text-decoration: underline;
 }
 
-.login-body{
-  margin-top: 270px;
-  margin-bottom: 200px;
+.login-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
