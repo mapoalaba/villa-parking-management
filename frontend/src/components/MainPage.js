@@ -78,11 +78,11 @@ const MainPage = () => {
           </ul>
         )}
       </div>
-      <div className="button-group">
-        <button onClick={handleMyVilla} className="btn main-btn">내 빌라</button>
-        <button onClick={handleEnterVilla} className="btn main-btn">빌라 입장</button>
-        <button onClick={handleRegisterVilla} className="btn main-btn">내 빌라 등록</button>
-        <button onClick={handleLogout} className="btn logout-btn">로그아웃</button>
+      <div className="mainpagebutton-group">
+        <button onClick={handleMyVilla} className="mainmyvilla-btn">내 빌라</button>
+        <button onClick={handleEnterVilla} className="mainentervilla-btn">빌라 입장</button>
+        <button onClick={handleRegisterVilla} className="mainregistration-btn">내 빌라 등록</button>
+        <button onClick={handleLogout} className="mainlogout-btn">로그아웃</button>
       </div>
     </div>
   );

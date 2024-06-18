@@ -61,7 +61,7 @@ h2 {
 
 .input-with-button input {
   flex: 1;
-  padding-right: 100px; /* 버튼 공간 확보 */
+  padding-right: 100px;
 }
 
 .input-with-button .btn {
@@ -76,14 +76,37 @@ h2 {
   cursor: pointer;
 }
 
-.button-group {
+.finduserbutton-group {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
 }
 
-.button-group .btn {
+.finduserbutton-group .btn:hover {
+  background-color: #333;
+}
+
+.message {
+  margin-top: 20px;
+  color: #e74c3c;
+  font-size: 1em;
+}
+
+.findsend-btn,
+.findcheck-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px 15px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.findsearch-btn{
   padding: 15px 30px;
   border-radius: 25px;
   font-size: 1.2em;
@@ -93,19 +116,10 @@ h2 {
   outline: none;
   width: 100%;
   margin-bottom: 15px;
-}
-
-.button-group .btn {
-  background-color: #000;
+  background-color: green;
   color: #fff;
 }
 
-.button-group .btn:hover {
+.findsearch-btn:hover{
   background-color: #333;
-}
-
-.message {
-  margin-top: 20px;
-  color: #e74c3c;
-  font-size: 1em;
 }

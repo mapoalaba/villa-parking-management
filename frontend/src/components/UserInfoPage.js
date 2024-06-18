@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import '../styles/UserInfoPage.css';
 
 const UserInfoPage = () => {
   const { userId } = useParams();
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -31,11 +30,6 @@ const UserInfoPage = () => {
           <p>주소: {user.address}</p>
           <p>차 이름: {user.vehicleName}</p>
           <p>차 번호: {user.vehicleNumber}</p>
-          <div className="button-group">
-            <button className="btn back-btn" onClick={() => navigate('/users')}>
-              회원 목록으로
-            </button>
-          </div>
         </div>
       ) : (
         <p>Loading...</p>

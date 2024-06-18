@@ -38,22 +38,31 @@ body, html {
   margin-bottom: 10px;
 }
 
-.villa-item .btn {
+.villa-item .villalistpagedetail-btn,
+.villa-item .villalistpageresidents-btn {
   padding: 10px 20px;
   border-radius: 25px;
   font-size: 1em;
   cursor: pointer;
+  background-color: green;
+  color: white;
   transition: background-color 0.3s ease;
   border: none;
   outline: none;
 }
 
-.villa-item .delete-btn {
+.villalistpagedelete-btn {
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
   background-color: #ff4d4d;
   color: #fff;
+  border: none;
 }
 
-.villa-item .delete-btn:hover {
+.villalistpagedelete-btn:hover {
   background-color: #ff1a1a;
 }
 

@@ -96,7 +96,7 @@ h2 {
   margin-top: 30px;
 }
 
-.villaadd-btn {
+.entervillaadd-btn {
   padding: 15px 30px;
   border-radius: 25px;
   font-size: 1.2em;
@@ -106,14 +106,11 @@ h2 {
   outline: none;
   width: 100%;
   margin-bottom: 15px;
-}
-
-.villaadd-btn {
-  background-color: #000;
+  background-color: green;
   color: #fff;
 }
 
-.villaadd-btn:hover {
+.entervillaadd-btn:hover {
   background-color: #333;
 }
 

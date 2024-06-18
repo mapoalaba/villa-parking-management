@@ -99,7 +99,7 @@ const FindPassword = () => {
                   placeholder='전화번호 ( - 빼고 입력)'
                   className="input-field"
                 />
-                <button type="submit" className="btn">코드전송</button>
+                <button type="submit" className="findpwdsend-btn">코드전송</button>
               </div>
             </div>
           </form>
@@ -113,7 +113,7 @@ const FindPassword = () => {
                 required
                 className="input-field"
               />
-              <button onClick={handleVerifyCode} className="btn">인증확인</button>
+              <button onClick={handleVerifyCode} className="findpwdcheck-btn">인증확인</button>
             </div>
           </div>
         </>
@@ -150,7 +150,7 @@ const FindPassword = () => {
             />
           </div>
           <div className="input-group">
-            <button type="submit" className="btn full-width-btn">비밀번호 변경</button>
+            <button type="submit" className="findpwdchange-btn">비밀번호 변경</button>
           </div>
         </form>
       )}

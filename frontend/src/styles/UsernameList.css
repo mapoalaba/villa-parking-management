@@ -39,14 +39,15 @@ body, html {
   font-size: 1em;
 }
 
-.button-group {
+.usernamebutton-group {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
 }
 
-.button-group .btn {
+.usernamebutton-group .usernamelistlogin-btn,
+.usernamebutton-group .usernamelistfindpwd-btn {
   padding: 15px 30px;
   border-radius: 25px;
   font-size: 1.2em;
@@ -56,22 +57,13 @@ body, html {
   outline: none;
   width: 100%;
   margin-bottom: 15px;
-}
-
-.button-group .btn {
-  background-color: #000;
+  background-color: green;
   color: #fff;
 }
 
-.button-group .btn:hover {
+.usernamebutton-group .usernamelistlogin-btn:hover,
+.usernamebutton-group .usernamelistfindpwd-btn:hover {
   background-color: #333;
-}
-
-.button-group .link {
-  color: #000;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1em;
 }
 
 .usernamelist-h2{

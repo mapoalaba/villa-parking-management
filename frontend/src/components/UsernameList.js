@@ -24,9 +24,9 @@ const UsernameList = () => {
         ) : (
           <p className="message">이 전화번호에 대한 사용자 아이디를 찾을 수 없습니다.</p>
         )}
-        <div className="button-group">
-          <button onClick={() => navigate('/login')} className="btn">로그인으로 돌아가기</button>
-          <button onClick={() => navigate('/find-password')} className="btn">비밀번호 찾기</button>
+        <div className="usernamebutton-group">
+          <button onClick={() => navigate('/login')} className="usernamelistlogin-btn">로그인으로 돌아가기</button>
+          <button onClick={() => navigate('/find-password')} className="usernamelistfindpwd-btn">비밀번호 찾기</button>
         </div>
       </div>
     </div>

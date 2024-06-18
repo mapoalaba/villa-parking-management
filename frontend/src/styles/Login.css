@@ -13,12 +13,11 @@ body, html {
 }
 
 .login-container {
-  width: 90%;
-  max-width: 430px;
+  width: 100%;
   text-align: center;
 }
 
-h2 {
+.login-h2 {
   color: #000;
   font-size: 2.5em;
   font-weight: 600;
@@ -53,14 +52,14 @@ h2 {
   border-bottom: 2px solid #000;
 }
 
-.button-group {
+.loginbutton-group {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
 }
 
-.button-group .btn {
+.loginbutton-group .loginlogin-btn {
   padding: 15px 30px;
   border-radius: 25px;
   font-size: 1.2em;
@@ -70,28 +69,25 @@ h2 {
   outline: none;
   width: 100%;
   margin-bottom: 15px;
-}
-
-.button-group .login-btn {
-  background-color: #000;
+  background-color: green;
   color: #fff;
 }
 
-.button-group .login-btn:hover {
+.loginbutton-group .loginlogin-btn:hover {
   background-color: #333;
 }
 
-.button-group .register-btn {
+.loginbutton-group .register-btn {
   background-color: #fff;
   color: #000;
   border: 2px solid #000;
 }
 
-.button-group .register-btn:hover {
+.loginbutton-group .register-btn:hover {
   background-color: #f1f1f1;
 }
 
-.button-group .link {
+.loginbutton-group .link {
   color: #000;
   text-decoration: none;
   font-weight: 600;
@@ -105,7 +101,7 @@ h2 {
 }
 
 .link-group {
-  margin-top: 20px;
+  margin-top: 200px;
 }
 
 .link-group .link {
@@ -117,4 +113,9 @@ h2 {
 
 .link-group .link:hover {
   text-decoration: underline;
+}
+
+.login-body{
+  margin-top: 270px;
+  margin-bottom: 200px;
 }

@@ -17,7 +17,7 @@ body, html {
   max-width: 430px;
   text-align: center;
   position: relative;
-  padding-top: 100px; /* 고정된 요소들 아래에 공간 확보 */
+  padding-top: 100px;
 }
 
 h2 {
@@ -29,7 +29,6 @@ h2 {
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #fff;
   z-index: 1000;
 }
 
@@ -96,11 +95,17 @@ h2 {
 
 .input-group .input-with-button input {
   flex: 1;
-  padding-right: 100px; /* 버튼 공간 확보 */
+  padding-right: 100px;
 }
 
-.input-group .input-with-button .check-btn,
-.input-group .input-with-button .search-btn {
+.input-group .input-with-button .addresstext{
+  font-size: 12px;
+}
+
+.input-group .input-with-button .registercheck-btn,
+.input-group .input-with-button .registersearch-btn,
+.input-group .input-with-button .registersend-btn,
+.input-group .input-with-button .registercertification-btn {
   position: absolute;
   right: 0;
   top: 50%;
@@ -112,7 +117,7 @@ h2 {
   cursor: pointer;
 }
 
-.button-group {
+.registerbutton-group {
   display: flex;
   justify-content: space-between;
   position: fixed;
@@ -123,7 +128,9 @@ h2 {
   max-width: 430px;
 }
 
-.button-group .btn {
+.registerbutton-group .registernext-btn,
+.registerbutton-group .registerprev-btn,
+.registerbutton-group .registersubmit-btn {
   padding: 15px 30px;
   border-radius: 25px;
   font-size: 1.2em;
@@ -131,29 +138,25 @@ h2 {
   transition: background-color 0.3s ease;
   border: none;
   outline: none;
-  width: 48%;
-}
-
-.button-group .next-btn,
-.button-group .prev-btn,
-.button-group .submit-btn {
-  background-color: #000;
+  width: 100%;
+  margin-bottom: 15px;
+  background-color: green;
   color: #fff;
 }
 
-.button-group .next-btn:hover,
-.button-group .prev-btn:hover,
-.button-group .submit-btn:hover {
+.registerbutton-group .registernext-btn:hover,
+.registerbutton-group .registerprev-btn:hover,
+.registerbutton-group .registersubmit-btn:hover {
   background-color: #333;
 }
 
-.button-group .check-btn {
+.registerbutton-group .registercheck-btn {
   background-color: #fff;
   color: #000;
   border: 2px solid #000;
 }
 
-.button-group .check-btn:hover {
+.registerbutton-group .registercheck-btn:hover {
   background-color: #f1f1f1;
 }
 
@@ -184,4 +187,8 @@ h2 {
 
 .step.active {
   display: block;
+}
+
+::placeholder{
+  font-size: 12.5px;
 }

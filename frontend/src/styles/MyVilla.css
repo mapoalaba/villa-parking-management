@@ -13,8 +13,7 @@ body, html {
 }
 
 .villa-container {
-  width: 90%;
-  max-width: 430px;
+  width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -66,17 +65,14 @@ p {
   margin-bottom: 10px;
 }
 
-.button-container {
+.myvillabutton-container {
   width: 100%;
   display: flex;
   justify-content: center;
   padding: 20px 0;
 }
 
-.gomain-btn {
-  background-color: #000;
-  color: #fff;
-  width: 25rem;
+.myvillagomain-btn {
   padding: 15px 30px;
   border-radius: 25px;
   font-size: 1.2em;
@@ -84,10 +80,13 @@ p {
   transition: background-color 0.3s ease;
   border: none;
   outline: none;
+  width: 100%;
   margin-bottom: 15px;
+  background-color: green;
+  color: #fff;
 }
 
-.gomain-btn:hover {
+.myvillagomain-btn:hover {
   background-color: #333;
 }
 

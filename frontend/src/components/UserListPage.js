@@ -48,8 +48,8 @@ const UsersPage = () => {
           {users.map((user) => (
             <li key={user._id} className="user-item">
               <span>{user.username}</span>
-              <button className="btn view-btn userbtn" onClick={() => handleViewUser(user._id)}>회원정보</button>
-              <button className="btn delete-btn userbtn" onClick={() => handleDeleteUser(user._id)}>삭제</button>
+              <button className="userlistview-btn" onClick={() => handleViewUser(user._id)}>회원정보</button>
+              <button className="userlistdelete-btn" onClick={() => handleDeleteUser(user._id)}>삭제</button>
             </li>
           ))}
         </ul>

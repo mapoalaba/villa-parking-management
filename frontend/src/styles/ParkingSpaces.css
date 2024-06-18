@@ -18,13 +18,6 @@ body, html {
   text-align: center;
 }
 
-h2 {
-  color: #000;
-  font-size: 2.5em;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-
 .input-group {
   position: relative;
   margin-bottom: 20px;
@@ -53,38 +46,18 @@ h2 {
   border-bottom: 2px solid #000;
 }
 
-.button-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
-}
-
-.button-group .btn,
-.toolbar .btn {
-  padding: 15px 30px;
-  border-radius: 25px;
-  font-size: 1.2em;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  border: none;
-  outline: none;
-  width: 100%;
-  margin-bottom: 15px;
-}
-
 .toolbar {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.toolbar .btn {
-  width: 48%;
+.toolbar .toolbar-btn {
+  width: 40%;
   margin-bottom: 10px;
 }
 
-.toolbar .btn:hover,
+.toolbar .toolbar-btn:hover,
 .parkingsave-btn:hover {
   background-color: #333;
 }
@@ -99,12 +72,11 @@ h2 {
   outline: none;
   width: 100%;
   margin-bottom: 15px;
-  background-color: #000;
+  background-color: green;
   color: #fff;
-  width: 100%;
 }
 
-.toolbar .btn {
+.toolbar .toolbar-btn {
   background-color: #000;
   color: #fff;
 }

@@ -54,16 +54,8 @@ body, html {
   font-size: 1em;
 }
 
-.input-group .input-with-button .btn {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 10px 15px;
-  background-color: #fff;
-  border: 1px solid #000;
-  border-radius: 5px;
-  cursor: pointer;
+.input-group .input-with-button .addressinput-field{
+  font-size: 13px;
 }
 
 .input-group input:focus,
@@ -72,14 +64,14 @@ body, html {
   border-bottom: 2px solid #000;
 }
 
-.button-group {
+.addressinputbutton-group {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
 }
 
-.button-group .addsearch-btn {
+.addnext-btn {
   padding: 15px 30px;
   border-radius: 25px;
   font-size: 1.2em;
@@ -89,13 +81,22 @@ body, html {
   outline: none;
   width: 100%;
   margin-bottom: 15px;
-}
-
-.next-btn {
-  background-color: #000;
+  background-color: green;
   color: #fff;
 }
 
-.next-btn:hover {
+.addnext-btn:hover {
   background-color: #333;
+}
+
+.addsearch-btn{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px 15px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
 }

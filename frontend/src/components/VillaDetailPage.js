@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/VillaDetailPage.css';
 
 const VillaDetail = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [villa, setVilla] = useState(null);
 
   useEffect(() => {
@@ -20,10 +19,6 @@ const VillaDetail = () => {
 
     fetchVillaDetails();
   }, [id]);
-
-  const handleGoToVillaList = () => {
-    navigate('/villas');
-  };
 
   if (!villa) {
     return <p>Loading...</p>;
@@ -48,9 +43,6 @@ const VillaDetail = () => {
             }}
           />
         ))}
-      </div>
-      <div className="button-group">
-        <button className="btn back-btn" onClick={handleGoToVillaList}>빌라 목록</button>
       </div>
     </div>
   );

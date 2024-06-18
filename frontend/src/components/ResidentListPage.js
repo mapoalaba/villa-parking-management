@@ -48,7 +48,7 @@ const ResidentListPage = () => {
                 residents.map((resident) => (
                   <li key={resident._id} className="resident-item">
                     <span>{resident.username}</span>
-                    <button className="btn view-btn userbtn" onClick={() => handleViewUser(resident._id)}>회원정보</button>
+                    <button className="view-btn userbtn" onClick={() => handleViewUser(resident._id)}>회원정보</button>
                   </li>
                 ))
               ) : (

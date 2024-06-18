@@ -57,7 +57,8 @@ body, html {
   margin-left: 10px;
 }
 
-.userbtn {
+.userlistview-btn,
+.userlistdelete-btn {
   padding: 5px 15px;
   border-radius: 25px;
   font-size: 1em;
@@ -67,25 +68,25 @@ body, html {
   outline: none;
 }
 
-.view-btn {
+.userlistview-btn {
   background-color: #000;
   color: #fff;
   font-size: 1em;
   min-width: 100px;
 }
 
-.view-btn:hover {
+.userlistview-btn:hover {
   background-color: #333;
 }
 
-.delete-btn {
+.userlistdelete-btn {
   background-color: #ff4d4d;
   color: #fff;
   font-size: 1em;
   min-width: 70px;
 }
 
-.delete-btn:hover {
+.userlistdelete-btn:hover {
   background-color: #ff1a1a;
 }
 

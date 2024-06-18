@@ -13,8 +13,7 @@ body, html {
 }
 
 .user-info-container {
-  width: 90%;
-  max-width: 430px;
+  width: 100%;
   text-align: center;
 }
 

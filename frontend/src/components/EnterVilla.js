@@ -87,7 +87,7 @@ const EnterVilla = () => {
           onChange={handleVillaIdChange} 
           className="villa-input-field"
         />
-        <button className="btn villaadd-btn" onClick={handleAddVilla}>내 빌라에 추가</button>
+        <button className="entervillaadd-btn" onClick={handleAddVilla}>내 빌라에 추가</button>
       </div>
       <div className="qr-container">
       <h3>QR 코드 촬영</h3>

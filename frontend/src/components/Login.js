@@ -37,8 +37,9 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h2>로그인</h2>
+      <h2 className='login-h2'>로그인</h2>
       <form onSubmit={handleLogin}>
+        <div className='login-body'>
         <div className="input-group">
           <label>아이디:</label>
           <input
@@ -57,9 +58,10 @@ const Login = () => {
             className="input-field"
           />
         </div>
-        <div className="button-group">
-          <button type="submit" className="btn login-btn">로그인</button>
+        <div className="loginbutton-group">
+          <button type="submit" className="loginlogin-btn">로그인</button>
           <Link to="/register" className='link'>회원가입</Link>
+        </div>
         </div>
       </form>
       {message && <p className="message">{message}</p>}

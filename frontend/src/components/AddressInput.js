@@ -54,23 +54,23 @@ const AddressInput = () => {
             name="address" 
             value={form.address} 
             readOnly 
-            className="input-field"
+            className="addressinput-field"
             required 
           />
           <button 
             type="button" 
             onClick={handleAddressSearch} 
-            className="btn addsearch-btn"
+            className="addsearch-btn"
           >
-            주소 검색
+            검색
           </button>
         </div>
       </div>
-      <div className="button-group">
+      <div className="addressinputbutton-group">
         <button 
           type="button" 
           onClick={handleNext} 
-          className="btn addnext-btn"
+          className="addnext-btn"
           disabled={!form.villaName || !form.address}
         >
           다음
