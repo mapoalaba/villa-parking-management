@@ -61,7 +61,8 @@ const MainPage = () => {
 
   return (
     <div className="main-container">
-      <h2>메인 페이지</h2>
+      <h1 className='logo'>로고</h1>
+      <h2 className='main-h2'>메인 페이지</h2>
       <div className="search-container">
         <input 
           type="text" 

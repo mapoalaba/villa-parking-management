@@ -91,9 +91,6 @@ body, html {
 
 /* Media Query for Mobile Devices */
 @media (max-width: 600px) {
-  .username-list-container {
-    width: 95%; /* Adjust width for smaller screens */
-  }
 
   .usernamelist-h2 {
     font-size: 2em; /* Adjust font size for mobile */

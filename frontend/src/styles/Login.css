@@ -21,8 +21,21 @@ body, html {
   box-sizing: border-box;
 }
 
+.logo{
+  color: #007500;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
 .login-h2 {
-  color: #000;
+  color: #488248;
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
@@ -138,7 +151,6 @@ body, html {
 /* Media Query for Mobile Devices */
 @media (max-width: 600px) {
   .login-container {
-    width: 95%;
     padding: 10px; /* Reduce padding for mobile devices */
   }
 

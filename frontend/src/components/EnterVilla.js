@@ -62,7 +62,8 @@ const EnterVilla = () => {
 
   return (
     <div className="enter-villa-container">
-      <h2>빌라 입장</h2>
+      <h1 className='logo'>로고</h1>
+      <h2 className='entervilla-h2'>빌라 입장</h2>
       <div className="search-container">
         <input 
           type="text" 

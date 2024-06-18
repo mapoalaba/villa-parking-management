@@ -18,12 +18,12 @@ body, html {
   max-width: 430px;
   text-align: center;
   position: relative;
-  padding-top: 150px; /* Add some padding for better spacing */
+  padding-top: 150px;
   overflow: hidden; /* Prevent overflow */
 }
 
-h2 {
-  color: #000;
+.register-h2 {
+  color: #488248;
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
@@ -166,27 +166,6 @@ h2 {
   background-color: #f1f1f1;
 }
 
-.message {
-  margin-top: 20px;
-  color: #e74c3c;
-  font-size: 1em;
-}
-
-.link-group {
-  margin-top: 20px;
-}
-
-.link-group .link {
-  color: #000;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1em;
-}
-
-.link-group .link:hover {
-  text-decoration: underline;
-}
-
 .step {
   display: none;
 }
@@ -202,10 +181,10 @@ h2 {
 /* Media Query for Mobile Devices */
 @media (max-width: 600px) {
   .register-container {
-    padding-top: 100px; /* Adjust padding for smaller screens */
+    padding-top: 100px;
   }
 
-  h2 {
+  .register-h2 {
     font-size: 2em; /* Adjust font size for mobile */
   }
 
@@ -221,7 +200,11 @@ h2 {
   .input-group .input-with-button .registercheck-btn,
   .input-group .input-with-button .registersearch-btn,
   .input-group .input-with-button .registersend-btn,
-  .input-group .input-with-button .registercertification-btn {
+  .input-group .input-with-button .registercertification-btn,
+  .registerbutton-group .firstregisternext-btn,
+  .registerbutton-group .registernext-btn,
+  .registerbutton-group .registerprev-btn,
+  .registerbutton-group .registersubmit-btn {
     padding: 8px 12px; /* Adjust button padding for mobile */
     font-size: 0.9em; /* Adjust button font size for mobile */
   }
@@ -230,12 +213,17 @@ h2 {
     flex-direction: column; /* Stack buttons vertically */
     align-items: center;
   }
+}
 
-  .registerbutton-group .firstregisternext-btn,
-  .registerbutton-group .registernext-btn,
-  .registerbutton-group .registerprev-btn,
-  .registerbutton-group .registersubmit-btn {
-    width: 100%; /* Full width buttons for mobile */
-    margin-bottom: 10px; /* Space between buttons */
-  }
+.logo{
+  color: #007500;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
 }

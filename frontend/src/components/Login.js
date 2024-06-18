@@ -37,6 +37,7 @@ const Login = () => {
 
   return (
     <div className="login-container">
+      <h1 className='logo'>로고</h1>
       <h2 className='login-h2'>로그인</h2>
       <form onSubmit={handleLogin}>
         <div className='login-body'>

@@ -84,6 +84,7 @@ const FindPassword = () => {
 
   return (
     <div className="find-password-container">
+      <h1 className='logo'>로고</h1>
       <h2 className='findpwd-h2'>비밀번호 찾기</h2>
       {!isVerified ? (
         <>

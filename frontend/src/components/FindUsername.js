@@ -63,7 +63,8 @@ const FindUsername = () => {
 
   return (
     <div className="find-username-container">
-      <h2>아이디 찾기</h2>
+      <h1 className='logo'>로고</h1>
+      <h2 className='finduser-h2'>아이디 찾기</h2>
       <form onSubmit={handleSendCode}>
         <div className="input-group">
           <label>전화번호:</label>

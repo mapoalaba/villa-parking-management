@@ -34,6 +34,7 @@ const AddressInput = () => {
 
   return (
     <div className="address-input-container">
+      <h1 className='logo'>로고</h1>
       <h2 className='address-header'>내 빌라 등록</h2>
       <div className="input-group">
         <label>빌라 이름:</label>

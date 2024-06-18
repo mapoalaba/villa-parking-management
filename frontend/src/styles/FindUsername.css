@@ -21,11 +21,27 @@ body, html {
   box-sizing: border-box;
 }
 
-h2 {
-  color: #000;
+.logo{
+  color: #007500;
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.finduser-h2 {
+  color: #488248;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
   background-color: #fff;
   padding: 10px 0;
   z-index: 1000;
@@ -126,7 +142,7 @@ h2 {
     padding: 10px;
   }
 
-  h2 {
+  .finduser-h2 {
     font-size: 2em;
   }
 
@@ -134,7 +150,7 @@ h2 {
   .findsearch-btn,
   .findsend-btn,
   .findcheck-btn {
+    padding: 8px 12px;
     font-size: 0.9em;
-    padding: 10px;
   }
 }

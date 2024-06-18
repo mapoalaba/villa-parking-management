@@ -20,11 +20,30 @@ body, html {
   box-sizing: border-box;
 }
 
-.address-header {
-  color: #000;
+.logo{
+  color: #007500;
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.address-header {
+  color: #488248;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
 }
 
 .input-group {
@@ -114,7 +133,7 @@ body, html {
   }
 
   .addnext-btn, .addsearch-btn {
+    padding: 8px 12px;
     font-size: 0.9em;
-    padding: 10px;
   }
 }

@@ -18,8 +18,21 @@ body, html {
   text-align: center;
 }
 
-h2 {
-  color: #000;
+.logo{
+  color: #007500;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.main-h2 {
+  color: #488248;
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
@@ -48,7 +61,7 @@ h2 {
   list-style: none;
   padding: 0;
   margin: 10px 0 0;
-  border: 1px solid #000;
+  border: 2px solid #000; /* Make border more distinct */
   border-radius: 5px;
   background-color: #fff;
   position: absolute;
@@ -59,7 +72,7 @@ h2 {
 .dropdown li {
   cursor: pointer;
   padding: 10px; /* Add padding for better touch targets */
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #ddd; /* Lighter border for list items */
 }
 
 .dropdown li:hover {
@@ -77,7 +90,7 @@ h2 {
 .mainentervilla-btn,
 .mainregistration-btn {
   padding: 15px 30px;
-  border-radius: 25px;
+  border-radius: 5px;
   font-size: 1.2em;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -96,8 +109,9 @@ h2 {
 }
 
 .mainlogout-btn {
+  margin-top: 20px;
   padding: 15px 30px;
-  border-radius: 25px;
+  border-radius: 15px;
   font-size: 1.2em;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -105,8 +119,8 @@ h2 {
   outline: none;
   width: 100%;
   margin-bottom: 15px;
-  background-color: #ff4d4d;
-  color: #fff;
+  background-color: black;
+  color: #ff4d4d;
 }
 
 .mainlogout-btn:hover {
@@ -120,7 +134,7 @@ h2 {
     padding: 10px; /* Reduce padding for mobile devices */
   }
 
-  h2 {
+  .main-h2 {
     font-size: 2em; /* Adjust font size for mobile */
   }
 

@@ -191,7 +191,8 @@ const Register = () => {
 
     return (
         <div className="register-container">
-            <h2>회원가입</h2>
+            <h1 className='logo'>로고</h1>
+            <h2 className='register-h2'>회원가입</h2>
             <div className="status">
                 <div className={`step-indicator ${step === 1 ? 'active' : ''}`}></div>
                 <div className={`step-indicator ${step === 2 ? 'active' : ''}`}></div>

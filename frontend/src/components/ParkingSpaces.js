@@ -56,9 +56,8 @@ const ParkingSpaces = () => {
 
   return (
     <div className="parking-container">
-      <div className='parking-header'>
-        <h2 className='parking-h2'>주차 공간 생성</h2>
-      </div>
+      <h1 className='logo'>로고</h1>
+      <h2 className='parking-h2'>주차 공간 생성</h2>
       <div className='parking-body'>
         <div className="input-group">
           <label>빌라 이름:</label>
