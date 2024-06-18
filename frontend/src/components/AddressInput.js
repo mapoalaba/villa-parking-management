@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../styles/AddressInput.css';
 
 const AddressInput = () => {
   const [form, setForm] = useState({
@@ -32,36 +33,49 @@ const AddressInput = () => {
   };
 
   return (
-    <div>
-      <h2>내 빌라 등록 - 주소 입력</h2>
-      <div>
-        <label>Villa Name:</label>
+    <div className="address-input-container">
+      <h2 className='address-header'>내 빌라 등록</h2>
+      <div className="input-group">
+        <label>빌라 이름:</label>
         <input 
           type="text" 
           name="villaName" 
           value={form.villaName} 
           onChange={handleChange} 
+          className="input-field"
           required 
         />
       </div>
-      <div>
-        <label>Address:</label>
-        <input 
-          type="text" 
-          name="address" 
-          value={form.address} 
-          readOnly 
-          required 
-        />
-        <button type="button" onClick={handleAddressSearch}>Search Address</button>
+      <div className="input-group">
+        <label>주소:</label>
+        <div className="input-with-button">
+          <input 
+            type="text" 
+            name="address" 
+            value={form.address} 
+            readOnly 
+            className="addressinput-field"
+            required 
+          />
+          <button 
+            type="button" 
+            onClick={handleAddressSearch} 
+            className="addsearch-btn"
+          >
+            검색
+          </button>
+        </div>
       </div>
-      <button 
-        type="button" 
-        onClick={handleNext} 
-        disabled={!form.villaName || !form.address}
-      >
-        Next
-      </button>
+      <div className="addressinputbutton-group">
+        <button 
+          type="button" 
+          onClick={handleNext} 
+          className="addnext-btn"
+          disabled={!form.villaName || !form.address}
+        >
+          다음
+        </button>
+      </div>
     </div>
   );
 };

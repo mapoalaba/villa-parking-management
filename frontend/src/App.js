@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { DndProvider } from 'react-dnd';
 import { MultiBackend, TouchTransition } from 'dnd-multi-backend';
@@ -19,6 +19,7 @@ import AdminPage from './components/AdminPage';
 import UserListPage from './components/UserListPage';
 import UserInfoPage from './components/UserInfoPage';
 import VillaListPage from './components/VillaList';
+import LoadingPage from './components/LoadingPage';
 import './styles/App.css';
 
 const HTML5toTouch = {
@@ -32,6 +33,18 @@ const HTML5toTouch = {
 };
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // 페이지가 처음 로드될 때 로딩 상태를 해제
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000); // 2초 후 로딩 상태 해제 (예시)
+  }, []);
+
+  if (loading) {
+    return <LoadingPage />;
+  }
   return (
     <DndProvider backend={MultiBackend} options={HTML5toTouch}>
       <Router>

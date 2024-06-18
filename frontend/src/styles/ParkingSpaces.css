@@ -25,3 +25,183 @@
   background-color: #ccffcc;
   border: 2px solid green;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Fira Sans', sans-serif;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parking-container {
+  width: 90%;
+  max-width: 430px;
+  text-align: center;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  text-align: left;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 15px;
+  margin-top: 5px;
+  border: none;
+  border-bottom: 2px solid #000;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-bottom: 2px solid #000;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.toolbar .toolbar-btn {
+  width: 40%;
+  margin-bottom: 10px;
+}
+
+.toolbar .toolbar-btn:hover,
+.parkingsave-btn:hover {
+  background-color: #333;
+}
+
+.parkingsave-btn {
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 15px;
+  background-color: green;
+  color: #fff;
+}
+
+.toolbar .toolbar-btn {
+  background-color: #000;
+  color: #fff;
+}
+
+.message {
+  margin-top: 20px;
+  color: #e74c3c;
+  font-size: 1em;
+}
+
+.link-group {
+  margin-top: 20px;
+}
+
+.link-group .link {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.link-group .link:hover {
+  text-decoration: underline;
+}
+
+.parking-area {
+  width: 100%;
+  height: 500px;
+  border: 1px solid black;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.draggable-item {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+
+.draggable-item:before {
+  content: attr(data-type);
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 50px;
+  text-align: center;
+  background-color: rgba(0, 0, 255, 0.5);
+}
+
+
+.parking-area {
+  width: 100%;
+  height: 500px;
+  border: 1px solid black;
+  position: relative;
+}
+
+.draggable-item {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+
+.draggable-item:before {
+  content: attr(data-type);
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 50px;
+  text-align: center;
+  background-color: rgba(0, 0, 255, 0.5);
+}
+
+.toolbar {
+  margin: 10px 0;
+}
+
+.toolbar button {
+  margin-right: 10px;
+}
+
+.parking-h2{
+  color: #000;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.parking-body{
+  margin-top: 7rem;
+  overflow: scroll;
+  min-height: 700px;
+  max-height: 700px;
+}
