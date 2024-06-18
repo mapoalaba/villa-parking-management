@@ -26,6 +26,7 @@ const VillaDetail = () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/current`, { withCredentials: true });
         setCurrentUser(response.data);
+        console.log("Current User:", response.data);
       } catch (error) {
         console.error('Error fetching current user:', error);
       }
@@ -40,6 +41,7 @@ const VillaDetail = () => {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/villa/${id}`);
         setVilla(response.data);
         setSpaces(response.data.spaces || []);
+        console.log("Villa ID:", id);
       } catch (error) {
         console.error('Error fetching villa details:', error);
       }
@@ -49,8 +51,8 @@ const VillaDetail = () => {
   }, [id]);
 
   const openModal = (space) => {
+    console.log("Selected Space:", space);
     setSelectedSpace(space);
-    setModalIsOpen(true);
     if (space.isOccupied) {
       setForm({
         vehicleName: space.vehicleName || '',
@@ -68,6 +70,7 @@ const VillaDetail = () => {
         notes: ''
       });
     }
+    setModalIsOpen(true);
   };
 
   const closeModal = () => {
@@ -88,32 +91,32 @@ const VillaDetail = () => {
   };
 
   const handleSubmit = async () => {
-    if (!selectedSpace) return;
-
-    console.log('Handling submit for space:', selectedSpace);
+    if (!selectedSpace || !currentUser) return;
 
     const updatedSpace = {
       ...selectedSpace,
       ...form,
       isOccupied: !selectedSpace.isOccupied,
-      userId: selectedSpace.isOccupied ? null : currentUser.id
+      userId: !selectedSpace.isOccupied ? currentUser.id : null
     };
 
-    console.log(`Updating space with villaId: ${id} and spaceId: ${selectedSpace._id}`);
-    console.log('Updated space data:', updatedSpace);
+    console.log("Updating space:", updatedSpace);
+    console.log("Villa ID:", id);
 
     try {
-      await axios.post(
+      const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/api/villa/${id}/update-space/${selectedSpace._id}`,
         updatedSpace,
         { withCredentials: true }
       );
+      console.log("API Response:", response.data);
       setSpaces((prevSpaces) =>
         prevSpaces.map((space) =>
-          space._id === selectedSpace._id ? updatedSpace : space
+          space._id === selectedSpace._id ? response.data.space : space
         )
       );
-      closeModal();
+      setSelectedSpace(response.data.space); // 모달 창의 내용을 업데이트합니다.
+      closeModal(); // 모달을 닫습니다.
     } catch (error) {
       console.error('Error updating parking space:', error);
     }

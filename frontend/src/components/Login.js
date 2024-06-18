@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import '../styles/Login.css';
@@ -8,26 +8,6 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // 컴포넌트가 마운트될 때 세션을 확인합니다.
-    const checkSession = async () => {
-      try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/check-session`, { withCredentials: true });
-        if (response.data.sessionActive) {
-          setMessage('이미 로그인된 상태입니다.');
-          if (response.data.user.isAdmin) {
-            navigate('/admin');
-          } else {
-            navigate('/main');
-          }
-        }
-      } catch (error) {
-        console.error('세션 확인 중 오류 발생:', error);
-      }
-    };
-    checkSession();
-  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
