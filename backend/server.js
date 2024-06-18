@@ -14,7 +14,7 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3001;
 
-const allowedOrigins = ['http://localhost:3000', 'http://138.2.118.184:3000'];
+const allowedOrigins = ['http://localhost:3000'];
 
 app.use(cors({
   origin: function(origin, callback) {
@@ -44,7 +44,7 @@ app.use(session({
     collectionName: 'sessions'
   }),
   cookie: {
-    secure: true, // HTTPS를 사용할 때는 true로 설정해야 합니다.
+    secure: true,
     httpOnly: true,
     maxAge: 1000 * 60 * 30 // 30분
   }
@@ -164,8 +164,8 @@ app.get('*', (req, res) => {
 });
 
 const options = {
-  key: fs.readFileSync('/path/to/your/server.key'),
-  cert: fs.readFileSync('/path/to/your/server.cert')
+  key: fs.readFileSync('server.key'),
+  cert: fs.readFileSync('server.cert')
 };
 
 https.createServer(options, app).listen(port, () => {
