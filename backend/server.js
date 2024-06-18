@@ -5,14 +5,14 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const bcrypt = require('bcryptjs');
 require('dotenv').config();
-const User = require('./models/user');
+const User = require('./models/User');
 const villaRouter = require('./routes/villa');
 const app = express();
 const port = process.env.PORT || 3001;
 
 app.use(cors({
     origin: 'http://localhost:3000',
-    credentials: true
+    credentials: true // 이 설정이 true로 되어 있어야 합니다.
 }));
 
 app.use(express.json());
@@ -20,15 +20,15 @@ app.use(express.json());
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: MongoStore.create({
         mongoUrl: process.env.MONGODB_URI,
         collectionName: 'sessions'
     }),
     cookie: {
-        secure: false,
+        secure: false, // HTTPS를 사용할 때는 true로 설정해야 합니다.
         httpOnly: true,
-        maxAge: 1000 * 60 * 3 // 3분
+        maxAge: 1000 * 60 * 30 // 30분
     }
 }));
 
@@ -73,25 +73,39 @@ app.post('/login', async (req, res) => {
   // 관리자 계정인지 확인
   if (username === process.env.ADMIN_USERNAME && password === process.env.ADMIN_PASSWORD) {
     req.session.user = { username, isAdmin: true };
-    return res.json({ message: 'Admin login successful', token: 'dummy-token-for-testing', isAdmin: true });
+    req.session.save((err) => {
+      if (err) {
+        console.error('Session save error:', err);
+        return res.status(500).json({ message: 'Error saving session' });
+      }
+      console.log(`Session created for admin: ${JSON.stringify(req.session)}`);
+      res.json({ message: 'Admin login successful', token: 'dummy-token-for-testing', isAdmin: true });
+    });
+    return;
   }
 
   // 일반 사용자 로그인 처리
   const user = await User.findOne({ username });
   if (!user) {
-    console.log('아이디, 비밀번호를 입력하세요');
-    return res.status(400).json({ message: '아이디, 비밀번호를 입력하세요' });
+    console.log('Invalid username or password');
+    return res.status(400).json({ message: 'Invalid username or password' });
   }
 
   const isPasswordValid = await bcrypt.compare(password, user.password);
   if (!isPasswordValid) {
-    console.log('아이디, 비밀번호를 입력하세요');
-    return res.status(400).json({ message: '아이디, 비밀번호를 입력하세요' });
+    console.log('Invalid username or password');
+    return res.status(400).json({ message: 'Invalid username or password' });
   }
 
   req.session.user = { id: user._id, username: user.username };
-  console.log(`Session created: ${JSON.stringify(req.session)}`);
-  res.json({ message: 'Login successful', token: 'dummy-token-for-testing' });
+  req.session.save((err) => {
+    if (err) {
+      console.error('Session save error:', err);
+      return res.status(500).json({ message: 'Error saving session' });
+    }
+    console.log(`Session created: ${JSON.stringify(req.session)}`);
+    res.json({ message: 'Login successful', token: 'dummy-token-for-testing' });
+  });
 });
 
 app.post('/logout', (req, res) => {
@@ -106,6 +120,15 @@ app.post('/logout', (req, res) => {
   });
 });
 
+// 세션 확인 라우트 추가
+app.get('/api/user/check-session', (req, res) => {
+  if (req.session.user) {
+    res.json({ sessionActive: true, user: req.session.user });
+  } else {
+    res.json({ sessionActive: false });
+  }
+});
+
 const authenticateToken = (req, res, next) => {
   if (!req.session.user) {
     return res.status(401).json({ message: 'Unauthorized' });
@@ -118,13 +141,13 @@ app.get('/protected', authenticateToken, (req, res) => {
   res.json({ message: 'This is a protected route', user: req.user });
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
-});
-
 app.get('/api/user/current', (req, res) => {
   if (!req.session.user) {
     return res.status(401).json({ message: 'Unauthorized' });
   }
   res.json(req.session.user);
+});
+
+app.listen(port, () => {
+    console.log(`Server is running on port: ${port}`);
 });

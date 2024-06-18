@@ -35,7 +35,7 @@ const spaceSchema = new mongoose.Schema({
     type: String,
     default: '',
   },
-  userId: {
+  users: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     default: null,
@@ -48,7 +48,7 @@ const spaceSchema = new mongoose.Schema({
     type: String,
     default: '',
   },
-  contact: {
+  phone: {
     type: String,
     default: '',
   }
@@ -60,7 +60,8 @@ const villaSchema = new Schema({
   spaces: [spaceSchema],
   users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }], // Multiple users
   qrCodeUrl: { type: String }, // qrCodeUrl 필드 추가
-  villaId: { type: String, required: true, unique: true } // villaId 필드 추가
+  villaId: { type: String, required: true, unique: true }, // villaId 필드 추가
+  residents: [{ type: Schema.Types.ObjectId, ref: 'User' }], // 빌라에 거주하는 사용자들
 }, {
   timestamps: true,
 });

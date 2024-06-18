@@ -13,9 +13,9 @@ const VillaDetail = () => {
   const [selectedSpace, setSelectedSpace] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [form, setForm] = useState({
-    carType: '',
-    carNumber: '',
-    contact: '',
+    vehicleName: '',
+    vehicleNumber: '',
+    phone: '',
     exitTime: '',
     notes: ''
   });
@@ -53,17 +53,17 @@ const VillaDetail = () => {
     setModalIsOpen(true);
     if (space.isOccupied) {
       setForm({
-        carType: space.carType || '',
-        carNumber: space.carNumber || '',
-        contact: space.contact || '',
+        vehicleName: space.vehicleName || '',
+        vehicleNumber: space.vehicleNumber || '',
+        phone: space.phone || '',
         exitTime: space.exitTime || '',
         notes: space.notes || ''
       });
     } else {
       setForm({
-        carType: '',
-        carNumber: '',
-        contact: '',
+        vehicleName: '',
+        vehicleNumber: '',
+        phone: '',
         exitTime: '',
         notes: ''
       });
@@ -74,9 +74,9 @@ const VillaDetail = () => {
     setModalIsOpen(false);
     setSelectedSpace(null);
     setForm({
-      carType: '',
-      carNumber: '',
-      contact: '',
+      vehicleName: '',
+      vehicleNumber: '',
+      phone: '',
       exitTime: '',
       notes: ''
     });
@@ -164,9 +164,9 @@ const VillaDetail = () => {
         <h2>Space Details</h2>
         {selectedSpace && selectedSpace.isOccupied ? (
           <div>
-            <p>차종: {selectedSpace.carType}</p>
-            <p>차번호: {selectedSpace.carNumber}</p>
-            <p>연락처: {selectedSpace.contact}</p>
+            <p>차종: {selectedSpace.vehicleName}</p>
+            <p>차번호: {selectedSpace.vehicleNumber}</p>
+            <p>연락처: {selectedSpace.phone}</p>
             <p>출차시간: {selectedSpace.exitTime}</p>
             <p>특이사항: {selectedSpace.notes}</p>
             {currentUser && selectedSpace.userId === currentUser.id && (

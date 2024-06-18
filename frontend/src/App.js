@@ -16,6 +16,9 @@ import FindUsername from './components/FindUsername';
 import FindPassword from './components/FindPassword';
 import UsernameList from './components/UsernameList';
 import AdminPage from './components/AdminPage';
+import UserListPage from './components/UserListPage';
+import UserInfoPage from './components/UserInfoPage';
+import VillaListPage from './components/VillaListPage';
 import './styles/App.css';
 
 const HTML5toTouch = {
@@ -46,6 +49,9 @@ function App() {
               <Route path="/find-password" element={<FindPassword />} />
               <Route path="/username-list" element={<UsernameList />} />
               <Route path="/admin" element={<PrivateRoute element={<AdminPage />} />} />
+              <Route path="/users" element={<PrivateRoute element={<UserListPage />} />} />
+              <Route path="/user-info/:userId" element={<UserInfoPage />} />
+              <Route path="/villas" element={<PrivateRoute element={<VillaListPage />} />} />
             </Routes>
       </Router>
     </DndProvider>

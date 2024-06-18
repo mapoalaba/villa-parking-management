@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
-const User = require('../models/user');
+const User = require('../models/User');
 const twilio = require('twilio');
 const { parsePhoneNumberFromString } = require('libphonenumber-js');
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 // Twilio 설정을 환경 변수에서 가져옴
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
@@ -39,15 +41,16 @@ router.post('/login', async (req, res) => {
   
       // 세션에 사용자 정보 저장
       req.session.user = {
-        id: user._id.toString(), // 사용자 ID를 문자열로 변환하여 저장
+        id: user._id,
         username: user.username,
         isAdmin: isAdmin
       };
+      res.json({ message : '로그인 성공', token: 'dummy-token'})
   
       // 디버깅을 위한 세션 정보 로그 출력
       console.log('User session after login:', req.session.user);
   
-      res.status(200).json({ message: 'Login successful', isAdmin: isAdmin, token: 'dummy-token-for-testing' });
+      res.status(200).json({ message: '관리자 로그인 성공', isAdmin: isAdmin, token: 'dummy-token-for-testing' });
     } catch (err) {
       console.error('Error during login:', err);
       res.status(500).json('Error: ' + err);
@@ -206,6 +209,46 @@ router.post('/change-password', async (req, res) => {
         console.error('Error changing password:', error);
         res.status(500).json({ message: 'Error changing password', error });
     }
+});
+
+// 어드민 페이지 유저 리스트
+
+// 모든 사용자 목록을 가져오는 API
+router.get('/all', async (req, res) => {
+  try {
+    const users = await User.find({}, 'username'); // 모든 사용자를 username 필드만 가져옴
+    res.status(200).json(users);
+  } catch (error) {
+      res.status(500).json({ message: 'Error fetching users', error });
+  }
+});
+
+// 사용자 삭제 API
+router.delete('/delete/:id', async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const user = await User.findByIdAndDelete(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json({ message: 'User deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error deleting user', error });
+  }
+});
+
+// 특정 사용자 정보를 가져오는 API
+router.get('/:id', async (req, res) => {
+  const userId = req.params.id;
+  try {
+      const user = await User.findById(userId);
+      if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+      }
+      res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching user', error });
+  }
 });
 
 module.exports = router;
