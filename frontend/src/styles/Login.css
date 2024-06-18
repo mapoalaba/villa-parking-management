@@ -134,3 +134,21 @@ body, html {
   justify-content: center;
   height: 100%;
 }
+
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+  .login-container {
+    width: 95%;
+    padding: 10px; /* Reduce padding for mobile devices */
+  }
+
+  .login-h2 {
+    font-size: 2em; /* Adjust font size for mobile */
+  }
+
+  .input-group input,
+  .loginbutton-group .loginlogin-btn,
+  .loginbutton-group .register-btn {
+    font-size: 0.9em; /* Adjust input and button font size for mobile */
+  }
+}

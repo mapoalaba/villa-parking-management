@@ -72,7 +72,7 @@ body, html {
   font-size: 1em;
 }
 
-.villalistpage-h2{
+.villalistpage-h2 {
   color: #000;
   font-size: 2.5em;
   font-weight: 600;
@@ -85,9 +85,39 @@ body, html {
   z-index: 1000;
 }
 
-.villalist-body{
+.villalist-body {
   margin-top: 7rem;
   overflow: scroll;
   min-height: 700px;
   max-height: 700px;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+  .villa-list-container {
+    width: 95%;
+  }
+
+  .villa-item h3 {
+    font-size: 1.2em;
+  }
+
+  .villa-item p {
+    font-size: 0.9em;
+  }
+
+  .villa-item .villalistpagedetail-btn,
+  .villa-item .villalistpageresidents-btn,
+  .villalistpagedelete-btn {
+    font-size: 0.9em;
+    padding: 8px 15px;
+  }
+
+  .villalistpage-h2 {
+    font-size: 2em;
+  }
+
+  .message {
+    font-size: 0.9em;
+  }
 }

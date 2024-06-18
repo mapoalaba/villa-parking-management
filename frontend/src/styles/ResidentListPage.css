@@ -15,6 +15,7 @@ body, html {
 .resident-list-container {
   width: 90%;
   min-width: 360px;
+  max-width: 430px; /* Set a max-width for responsiveness */
   text-align: center;
 }
 
@@ -47,4 +48,24 @@ body, html {
 .resident-list-container ul li {
   margin-bottom: 5px;
   font-size: 1em;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+  .resident-list-container {
+    width: 95%; /* Adjust width for smaller screens */
+    padding: 10px; /* Add padding for better spacing on mobile */
+  }
+
+  .resident-list-container h2 {
+    font-size: 2em; /* Adjust font size for mobile */
+  }
+
+  .resident-list-container h3 {
+    font-size: 1.2em; /* Adjust font size for mobile */
+  }
+
+  .resident-list-container ul li {
+    font-size: 0.9em; /* Adjust font size for list items on mobile */
+  }
 }

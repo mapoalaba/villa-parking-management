@@ -14,7 +14,7 @@ body, html {
 
 .user-list-container {
   width: 90%;
-  min-width: 360px;
+  max-width: 430px; /* Set a max-width for responsiveness */
   text-align: center;
 }
 
@@ -95,9 +95,41 @@ body, html {
   background-color: #ff1a1a;
 }
 
-.userlist-body{
+.userlist-body {
   margin-top: 7rem;
   overflow: scroll;
   min-height: 700px;
   max-height: 700px;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+  .user-list-container {
+    width: 95%; /* Adjust width for smaller screens */
+  }
+
+  .userlistpage-h2 {
+    font-size: 2em; /* Adjust font size for mobile */
+  }
+
+  .user-item {
+    flex-direction: column; /* Stack items vertically on mobile */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .user-item button {
+    width: 100%; /* Full width buttons on mobile */
+    margin: 5px 0; /* Margin between buttons */
+  }
+
+  .userlistview-btn,
+  .userlistdelete-btn {
+    font-size: 0.9em; /* Adjust button font size for mobile */
+    padding: 10px 20px; /* Adjust padding for mobile */
+  }
+
+  .userlist-body {
+    min-height: 500px;
+    max-height: 500px;
+  }
 }

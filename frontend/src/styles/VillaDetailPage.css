@@ -103,3 +103,31 @@ p {
   color: #e74c3c;
   font-size: 1em;
 }
+
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+  .villa-detail-container {
+    width: 95%;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  h3 {
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 0.9em;
+  }
+
+  .button-group .btn {
+    font-size: 1em;
+    padding: 10px 20px;
+  }
+
+  .parking-layout {
+    height: 300px;
+  }
+}

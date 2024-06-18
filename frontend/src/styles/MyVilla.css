@@ -101,3 +101,27 @@ p {
   color: #000;
   font-size: 1em;
 }
+
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+  .villa-container {
+    width: 95%;
+    padding: 10px; /* Reduce padding for mobile devices */
+  }
+
+  h2 {
+    font-size: 2em; /* Adjust font size for mobile */
+  }
+
+  .villa-name, p, .myvillagomain-btn {
+    font-size: 0.9em; /* Adjust font size for content */
+  }
+
+  .myvillagomain-btn {
+    padding: 10px 20px; /* Adjust padding for better fit */
+  }
+
+  ul {
+    padding: 0; /* Ensure no extra padding for list */
+  }
+}

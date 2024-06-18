@@ -7,8 +7,23 @@
 
 .toolbar {
   margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap; /* Ensure toolbar buttons wrap on small screens */
+  justify-content: space-between; /* Distribute space between buttons */
 }
 
 .toolbar button {
-  margin-right: 10px;
+  margin: 5px; /* Adjust margin for better spacing on mobile */
+  flex: 1 1 calc(50% - 10px); /* Ensure buttons take up 50% width minus margin */
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+  .parking-area {
+    height: 300px; /* Adjust height for smaller screens */
+  }
+
+  .toolbar button {
+    flex: 1 1 100%; /* Make buttons take full width on small screens */
+  }
 }

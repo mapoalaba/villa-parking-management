@@ -10,12 +10,15 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto; /* Ensure scrolling for mobile devices */
 }
 
 .enter-villa-container {
   width: 90%;
   max-width: 430px;
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 h2 {
@@ -128,4 +131,24 @@ h2 {
   margin-top: 20px;
   color: #e74c3c;
   font-size: 1em;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+  .enter-villa-container {
+    width: 95%;
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  .input-group .villa-input-field,
+  .search-input,
+  .entervillaadd-btn,
+  .dropdown li {
+    font-size: 0.9em;
+    padding: 10px;
+  }
 }
