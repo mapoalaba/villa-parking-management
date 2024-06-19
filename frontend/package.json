@@ -10,6 +10,7 @@
     "@zxing/library": "^0.21.1",
     "axios": "^1.7.2",
     "dnd-multi-backend": "^8.0.3",
+    "jsqr": "^1.4.0",
     "qr-scanner": "^1.4.2",
     "qrcode": "^1.5.3",
     "re-resizable": "^6.9.17",
