@@ -1,20 +1,24 @@
-# Step 1: Build React application
-FROM node:22 as build
+# 베이스 이미지 설정
+FROM node:22
 
-WORKDIR /app
+# 작업 디렉토리 설정
+WORKDIR /usr/src/app
 
-COPY package.json ./
-COPY package-lock.json ./
+# 앱의 의존성 설치
+COPY package*.json ./
 RUN npm install
 
-COPY . ./
+# SSL 인증서 파일 복사
+COPY certs/ /usr/src/certs
+
+# 앱 소스 복사
+COPY . .
+
+# 앱 빌드
 RUN npm run build
 
-# Step 2: Serve the React application
-FROM nginx:alpine
+# 앱 포트 노출
+EXPOSE 3000
 
-COPY --from=build /app/build /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+# 앱 시작 명령어
+CMD ["npm", "start"]
