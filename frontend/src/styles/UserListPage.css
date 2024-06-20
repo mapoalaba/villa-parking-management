@@ -105,14 +105,9 @@ body, html {
     font-size: 2em; /* Adjust font size for mobile */
   }
 
-  .user-item {
-    flex-direction: column; /* Stack items vertically on mobile */
-    align-items: flex-start; /* Align items to the start */
-  }
-
   .user-item button {
     width: 20%; /* Full width buttons on mobile */
-    margin: 5px 0; /* Margin between buttons */
+    margin-left: 5px 0; /* Margin between buttons */
   }
 
   .userlistview-btn,

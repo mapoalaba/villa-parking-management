@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Fira Sans', sans-serif;
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto; /* Allow scrolling */
+}
+
+.qr-container {
+  width: 90%;
+  max-width: 430px;
+  text-align: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.qr-container h2 {
+  color: #2c3e50;
+  font-size: 2em;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.qr-container p {
+  color: #34495e;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.qr-container img {
+  width: 80%;
+  max-width: 300px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.qr-container button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1.2em;
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.qr-container button:hover {
+  background-color: #27ae60;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+  .qr-container {
+    padding: 15px;
+  }
+
+  .qr-container h2 {
+    font-size: 1.5em;
+  }
+
+  .qr-container p {
+    font-size: 1em;
+  }
+
+  .qr-container button {
+    font-size: 1em;
+    padding: 8px 15px;
+  }
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/Register.css';
 import { useNavigate } from 'react-router-dom';
+import Logo from '../img/logo.png'
 
 axios.defaults.withCredentials = true;
 
@@ -191,7 +192,6 @@ const Register = () => {
 
     return (
         <div className="register-container">
-            <h1 className='logo'>로고</h1>
             <h2 className='register-h2'>회원가입</h2>
             <div className="status">
                 <div className={`step-indicator ${step === 1 ? 'active' : ''}`}></div>

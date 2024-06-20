@@ -21,11 +21,11 @@ const AdminPage = () => {
 
   return (
     <div className="admin-container">
-      <h2>관리자 페이지</h2>
+      <h2 className='adminpage-h2'>관리자 페이지</h2>
       <div className="button-group adminbutton">
-        <button onClick={() => navigate('/villas')} className="btn admin-btn">모든 빌라 목록</button>
-        <button onClick={() => navigate('/users')} className="btn admin-btn">모든 회원 목록</button>
-        <button onClick={handleLogout} className="btn logout-btn">로그아웃</button>
+        <button onClick={() => navigate('/villas')} className="adminvillalist-btn">모든 빌라 목록</button>
+        <button onClick={() => navigate('/users')} className="adminuserlist-btn">모든 회원 목록</button>
+        <button onClick={handleLogout} className="adminlogout-btn">로그아웃</button>
       </div>
     </div>
   );

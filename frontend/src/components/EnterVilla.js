@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import QRScanner from './QRScanner';
 import '../styles/EnterVilla.css';
+import Logo from '../img/logo.png'
 
 const EnterVilla = () => {
   const [villaId, setVillaId] = useState('');
@@ -58,7 +59,7 @@ const EnterVilla = () => {
 
   return (
     <div className="enter-villa-container">
-      <h2>빌라 입장</h2>
+      <h2 className='entervilla-h2'>빌라 입장</h2>
       <div className="search-container">
         <input 
           type="text" 

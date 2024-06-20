@@ -6,7 +6,6 @@ body, html {
   width: 100%;
   height: 100%;
   font-family: 'Fira Sans', sans-serif;
-  background-color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,51 +13,43 @@ body, html {
 
 .username-list-container {
   width: 100%;
+  max-width: 430px;
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .usernamelist-header {
-  text-align: center;
+  margin-bottom: 20px;
 }
 
 .usernamelist-h2 {
-  color: #000;
-  font-size: 2.5em;
+  color: #2c3e50;
+  font-size: 2em;
   font-weight: 600;
-  margin-bottom: 20px;
-  position: -webkit-sticky; /* For Safari */
-  position: sticky;
-  top: 0;
-  background-color: #fff;
-  padding: 10px 0;
-  z-index: 1000;
+  margin: 0;
 }
 
 .usernamelist-body {
-  overflow-y: scroll;
-  min-height: 400px;
-  max-height: 400px;
-}
-
-.username-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 20px;
-  text-align: left;
+  margin: 0 0 20px 0;
 }
 
-.username-list li {
-  background-color: #f1f1f1;
+.usernamelist-body li {
   padding: 10px 15px;
-  margin-bottom: 5px;
+  border: 1px solid #ddd;
   border-radius: 5px;
+  background-color: #ecf0f1;
+  margin-bottom: 10px;
   font-size: 1em;
+  color: #2c3e50;
 }
 
 .message {
-  margin-top: 20px;
   color: #e74c3c;
   font-size: 1em;
+  margin-bottom: 20px;
 }
 
 .usernamebutton-group {
@@ -78,9 +69,8 @@ body, html {
   border: none;
   outline: none;
   width: 100%; /* Adjust button width */
-  max-width: 300px; /* Set max-width for better layout */
   margin-bottom: 10px; /* Reduced margin between buttons */
-  background-color: green;
+  background-color: #000;
   color: #fff;
 }
 

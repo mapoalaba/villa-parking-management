@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../styles/VillaResidents.css';
 
 const VillaResidents = () => {
   const { villaId } = useParams();
@@ -37,18 +38,20 @@ const VillaResidents = () => {
   };
 
   return (
-    <div>
-      {message && <p className="message">{message}</p>}
-      <ul>
-        {residents.map((resident) => (
-          <li key={resident._id}>
-            {resident.username}
-            <button onClick={() => handleViewResident(resident._id)}>회원정보</button>
-            <button onClick={() => handleDeleteResident(resident._id)}>삭제</button>
-          </li>
-        ))}
-      </ul>
-      <button onClick={() => navigate(-1)}>Back</button>
+    <div className='resident-list-container'>
+      <div className='residentlist-body'>
+        <h3>거주 중인 회원 목록</h3>
+        {message && <p className="message">{message}</p>}
+        <ul>
+          {residents.map((resident) => (
+            <li key={resident._id}>
+              {resident.username}
+              <button className='villaresidents-btn' onClick={() => handleViewResident(resident._id)}>회원정보</button>
+              <button onClick={() => handleDeleteResident(resident._id)}>삭제</button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

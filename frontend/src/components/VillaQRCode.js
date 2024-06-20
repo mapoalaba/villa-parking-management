@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import '../styles/VillaQRCode.css';
 
 const VillaQRCode = () => {
   const location = useLocation();
@@ -15,7 +16,7 @@ const VillaQRCode = () => {
   };
 
   return (
-    <div>
+    <div className="qr-container">
       <h2>빌라 저장 완료</h2>
       <p>빌라 고유번호: {villaId}</p>
       <img src={qrCode} alt="QR Code" />

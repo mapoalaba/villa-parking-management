@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../styles/FindUsername.css';
+import Logo from '../img/logo.png'
 
 const FindUsername = () => {
   const [phone, setPhone] = useState('');
@@ -63,10 +64,10 @@ const FindUsername = () => {
 
   return (
     <div className="find-username-container">
-      <h2>아이디 찾기</h2>
+      <h2 className='finduser-h2'>아이디 찾기</h2>
       <form onSubmit={handleSendCode}>
         <div className="input-group">
-          <label>전화번호:</label>
+          <label>전화번호</label>
           <div className="input-with-button">
             <input
               type="text"
@@ -75,12 +76,12 @@ const FindUsername = () => {
               required
               placeholder='전화번호 ( - 빼고 입력)'
             />
-            <button type="submit" className="btn">Send</button>
+            <button type="submit" className="findsend-btn">전송</button>
           </div>
         </div>
       </form>
       <div className="input-group">
-        <label>인증코드:</label>
+        <label>인증코드</label>
         <div className="input-with-button">
           <input
             type="text"
@@ -88,11 +89,11 @@ const FindUsername = () => {
             onChange={(e) => setVerificationCode(e.target.value)}
             required
           />
-          <button onClick={handleVerifyCode} className="btn">확인</button>
+          <button onClick={handleVerifyCode} className="findcheck-btn">확인</button>
         </div>
       </div>
-      <div className="button-group">
-        <button onClick={handleRetrieveUsername} className="btn" disabled={!isVerified}>아이디 검색</button>
+      <div className="finduserbutton-group">
+        <button onClick={handleRetrieveUsername} className="findsearch-btn" disabled={!isVerified}>아이디 검색</button>
       </div>
       {message && <p className="message">{message}</p>}
     </div>

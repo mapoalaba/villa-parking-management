@@ -20,17 +20,21 @@ body, html {
   position: relative;
   padding-top: 150px;
   overflow: hidden; /* Prevent overflow */
+  margin-bottom: 15px;
+}
+
+.logo{
+  width: 10rem;
 }
 
 .register-h2 {
-  color: #488248;
+  color: #000;
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
   position: -webkit-sticky; /* For Safari */
   position: sticky;
   top: 0;
-  background-color: #fff;
   padding: 10px 0;
   z-index: 1000;
 }
@@ -109,7 +113,7 @@ body, html {
   top: 50%;
   transform: translateY(-50%);
   padding: 10px 15px;
-  background-color: #009000;
+  background-color: #000;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -130,7 +134,7 @@ body, html {
   border: none;
   outline: none;
   width: 100%; /* Adjust width to fit two buttons side by side */
-  background-color: green;
+  background-color: #000;
   color: #fff;
 }
 
@@ -144,7 +148,7 @@ body, html {
   border: none;
   outline: none;
   width: 48%; /* Adjust width to fit two buttons side by side */
-  background-color: green;
+  background-color: #000;
   color: #fff;
   margin-right: 2%;
 }
@@ -168,7 +172,7 @@ body, html {
 }
 
 .registerbutton-group .registersubmit-btn:hover {
-  background-color: #009000;
+  background-color: #000;
 }
 
 .registerbutton-group .registercheck-btn {
@@ -228,17 +232,4 @@ body, html {
     flex-direction: column; /* Stack buttons vertically */
     align-items: center;
   }
-}
-
-.logo{
-  color: #007500;
-  font-size: 2.5em;
-  font-weight: 600;
-  margin-bottom: 20px;
-  position: -webkit-sticky; /* For Safari */
-  position: sticky;
-  top: 0;
-  background-color: #fff;
-  padding: 10px 0;
-  z-index: 1000;
 }

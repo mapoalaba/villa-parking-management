@@ -21,6 +21,7 @@ body, html {
   text-align: center;
   padding: 20px;
   box-sizing: border-box;
+  margin-bottom: 20px;
 }
 
 .villa-container h2 {
@@ -58,7 +59,7 @@ body, html {
 
 .villa-buttons {
   display: flex;
-  gap: 10px; /* Add gap between buttons */
+  gap: 5px; /* Add gap between buttons */
 }
 
 .villa-list li button {
@@ -72,7 +73,7 @@ body, html {
 }
 
 .villa-list li button:first-child {
-  background-color: #2ecc71;
+  background-color: #000;
   color: #fff;
 }
 
@@ -106,13 +107,11 @@ body, html {
   }
 
   .villa-list li span {
-    margin-bottom: 10px;
     font-size: 1em; /* Adjust font size for mobile */
   }
 
   .villa-list li button {
     width: 50%;
-    margin: 5px 0; /* Add margin between buttons for mobile */
     font-size: 1em; /* Adjust font size for mobile */
   }
 }

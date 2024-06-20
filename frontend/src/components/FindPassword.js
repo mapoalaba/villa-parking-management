@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../styles/FindPassword.css';
+import Logo from '../img/logo.png'
 
 const FindPassword = () => {
   const [phone, setPhone] = useState('');
@@ -84,7 +85,7 @@ const FindPassword = () => {
 
   return (
     <div className="find-password-container">
-      <h2>비밀번호 찾기</h2>
+      <h2 className='findpwd-h2'>비밀번호 찾기</h2>
       {!isVerified ? (
         <>
           <form onSubmit={handleSendCode}>
@@ -99,7 +100,7 @@ const FindPassword = () => {
                   placeholder='전화번호 ( - 빼고 입력)'
                   className="input-field"
                 />
-                <button type="submit" className="btn">코드전송</button>
+                <button type="submit" className="findpwdsend-btn">코드전송</button>
               </div>
             </div>
           </form>
@@ -113,14 +114,14 @@ const FindPassword = () => {
                 required
                 className="input-field"
               />
-              <button onClick={handleVerifyCode} className="btn">인증확인</button>
+              <button onClick={handleVerifyCode} className="findpwdcheck-btn">인증확인</button>
             </div>
           </div>
         </>
       ) : (
         <form onSubmit={handleChangePassword}>
           <div className="input-group">
-            <label>아이디:</label>
+            <label>아이디</label>
             <input
               type="text"
               value={username}
@@ -130,7 +131,7 @@ const FindPassword = () => {
             />
           </div>
           <div className="input-group">
-            <label>새 비밀번호:</label>
+            <label>새 비밀번호</label>
             <input
               type="password"
               value={newPassword}
@@ -140,7 +141,7 @@ const FindPassword = () => {
             />
           </div>
           <div className="input-group">
-            <label>새 비밀번호 확인:</label>
+            <label>새 비밀번호 확인</label>
             <input
               type="password"
               value={confirmPassword}
@@ -150,7 +151,7 @@ const FindPassword = () => {
             />
           </div>
           <div className="input-group">
-            <button type="submit" className="btn full-width-btn">비밀번호 변경</button>
+            <button type="submit" className="findpwdchange-btn">비밀번호 변경</button>
           </div>
         </form>
       )}

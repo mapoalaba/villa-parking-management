@@ -19,27 +19,17 @@ body, html {
 }
 
 .logo{
-  color: #007500;
-  font-size: 2.5em;
-  font-weight: 600;
-  margin-bottom: 20px;
-  position: -webkit-sticky; /* For Safari */
-  position: sticky;
-  top: 0;
-  background-color: #fff;
-  padding: 10px 0;
-  z-index: 1000;
+  width: 10rem;
 }
 
 .main-h2 {
-  color: #488248;
+  color: #000;
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
   position: -webkit-sticky; /* For Safari */
   position: sticky;
   top: 0;
-  background-color: #fff;
   padding: 10px 0;
   z-index: 1000;
 }
@@ -98,7 +88,7 @@ body, html {
   outline: none;
   width: 100%;
   margin-bottom: 15px;
-  background-color: green;
+  background-color: #000;
   color: #fff;
 }
 

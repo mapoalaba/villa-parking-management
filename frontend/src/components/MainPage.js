@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/MainPage.css';
+import Logo from '../img/logo.png'
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -42,8 +43,7 @@ const MainPage = () => {
 
   return (
     <div className="main-container">
-      <h1 className='logo'>로고</h1>
-      <h2 className='main-h2'>메인 페이지</h2>
+      <img className='logo' src={Logo}/>
       <div className="mainpagebutton-group">
         <button onClick={handleMyVilla} className="mainmyvilla-btn">내 빌라</button>
         <button onClick={handleEnterVilla} className="mainentervilla-btn">빌라 입장</button>

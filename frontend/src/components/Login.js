@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import '../styles/Login.css';
+import Logo from '../img/logo.png'
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -37,8 +38,7 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h1 className='logo'>로고</h1>
-      <h2 className='login-h2'>로그인</h2>
+      <img className='logo' src={Logo}/>
       <form onSubmit={handleLogin}>
         <div className="input-group">
           <label>아이디</label>

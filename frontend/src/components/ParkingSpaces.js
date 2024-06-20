@@ -4,6 +4,7 @@ import ParkingArea from './ParkingArea';
 import { ItemTypes } from './ItemTypes'; // ItemTypes 가져오기
 import axios from 'axios';
 import '../styles/ParkingSpaces.css';
+import Logo from '../img/logo.png'
 
 const ParkingSpaces = () => {
   const [spaces, setSpaces] = useState([]);
@@ -56,23 +57,21 @@ const ParkingSpaces = () => {
 
   return (
     <div className="parking-container">
-      <div className='parking-header'>
-        <h2> 주차 공간 생성 </h2>
-      </div>
+      <h2 className='parking-h2'>주차 공간 생성</h2>
       <div className='parking-body'>
         <div className="input-group">
-          <label> 빌라 이름 : </label>
+          <label>빌라 이름</label>
           <input type="text" value={villaName} readOnly className="input-field"/>
         </div>
         <div className="input-group">
-          <label> 주소 : </label>
+          <label>주소</label>
           <input type="text" value={address} readOnly className="input-field"/>
         </div>
         <div className="toolbar">
-          <button className="toolbar-btn" onClick={() => addSpace(ItemTypes.VILLA)}> 빌라 </button>
-          <button className="toolbar-btn" onClick={() => addSpace(ItemTypes.PARKING)}> 주차칸 </button>
-          <button className="toolbar-btn" onClick={() => addSpace(ItemTypes.EXIT)}> 출구 </button>
-          <button className="toolbar-btn" onClick={() => addSpace(ItemTypes.WALL)}> 벽 </button>
+          <button className="toolbar-btn" onClick={() => addSpace(ItemTypes.VILLA)}>빌라</button>
+          <button className="toolbar-btn" onClick={() => addSpace(ItemTypes.PARKING)}>주차칸</button>
+          <button className="toolbar-btn" onClick={() => addSpace(ItemTypes.EXIT)}>출구</button>
+          <button className="toolbar-btn" onClick={() => addSpace(ItemTypes.WALL)}>벽</button>
         </div>
         <ParkingArea spaces={spaces} setSpaces={setSpaces} moveSpace={moveSpace} resizeSpace={resizeSpace} deleteSpace={deleteSpace} />
         <button type="button" className="parkingsave-btn" onClick={handleSave}> 저장 </button>
