@@ -10,19 +10,41 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto; /* Ensure scrolling */
 }
 
 .find-username-container {
-  width: 90%;
+  width: 100%;
   max-width: 430px;
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-h2 {
-  color: #000;
+.logo{
+  color: #007500;
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.finduser-h2 {
+  color: #488248;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
 }
 
 .input-group {
@@ -61,29 +83,41 @@ h2 {
 
 .input-with-button input {
   flex: 1;
-  padding-right: 100px; /* 버튼 공간 확보 */
+  padding-right: 100px;
 }
 
-.input-with-button .btn {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 10px 15px;
-  background-color: #fff;
-  border: 1px solid #000;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.button-group {
+.finduserbutton-group {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
 }
 
-.button-group .btn {
+.finduserbutton-group .btn:hover {
+  background-color: #333;
+}
+
+.message {
+  margin-top: 20px;
+  color: #e74c3c;
+  font-size: 1em;
+}
+
+.findsend-btn,
+.findcheck-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px 15px;
+  background-color: #009000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.findsearch-btn {
   padding: 15px 30px;
   border-radius: 25px;
   font-size: 1.2em;
@@ -93,19 +127,30 @@ h2 {
   outline: none;
   width: 100%;
   margin-bottom: 15px;
-}
-
-.button-group .btn {
-  background-color: #000;
+  background-color: green;
   color: #fff;
 }
 
-.button-group .btn:hover {
+.findsearch-btn:hover {
   background-color: #333;
 }
 
-.message {
-  margin-top: 20px;
-  color: #e74c3c;
-  font-size: 1em;
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+  .find-username-container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .finduser-h2 {
+    font-size: 2em;
+  }
+
+  .input-group input,
+  .findsearch-btn,
+  .findsend-btn,
+  .findcheck-btn {
+    padding: 8px 12px;
+    font-size: 0.9em;
+  }
 }

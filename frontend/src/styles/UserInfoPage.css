@@ -13,9 +13,11 @@ body, html {
 }
 
 .user-info-container {
-  width: 90%;
-  max-width: 430px;
+  width: 100%;
+  max-width: 430px; /* Set a max-width for responsiveness */
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 h2 {
@@ -23,6 +25,12 @@ h2 {
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
 }
 
 .user-info-group {
@@ -84,4 +92,29 @@ h2 {
 
 .link-group .link:hover {
   text-decoration: underline;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+  .user-info-container {
+    width: 100%; /* Adjust width for smaller screens */
+    padding: 10px; /* Add padding for better spacing on mobile */
+  }
+
+  h2 {
+    font-size: 2em; /* Adjust font size for mobile */
+  }
+
+  .button-group .btn {
+    padding: 10px 20px; /* Adjust button padding for mobile */
+    font-size: 1em; /* Adjust font size for buttons on mobile */
+  }
+
+  .message {
+    font-size: 0.9em; /* Adjust message font size for mobile */
+  }
+
+  .link-group .link {
+    font-size: 0.9em; /* Adjust link font size for mobile */
+  }
 }

@@ -125,10 +125,10 @@ const VillaDetail = () => {
   if (!villa) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className="villa-detail-container">
       <h2>{villa.villaName}</h2>
       <p>{villa.address}</p>
-      <div style={{ position: 'relative', width: '100%', height: '500px', border: '1px solid black' }}>
+      <div className="villa-spaces-container">
         {spaces.map((space) => (
           <div
             key={space._id}
@@ -153,32 +153,22 @@ const VillaDetail = () => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Space Details"
-        style={{
-          content: {
-            top: '50%',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
-            width: '50%',
-            height: '50%'
-          }
-        }}
+        className="modal"
+        overlayClassName="modal-overlay"
       >
         {selectedSpace && selectedSpace.isOccupied ? (
-          <div>
+          <div className="modal-content">
             <p>차종: {selectedSpace.vehicleName}</p>
             <p>차번호: {selectedSpace.vehicleNumber}</p>
             <p>연락처: {selectedSpace.phone}</p>
             <p>출차시간: {selectedSpace.exitTime}</p>
             <p>특이사항: {selectedSpace.notes}</p>
             {currentUser && (selectedSpace.userId === currentUser.id || currentUser.isAdmin) && (
-              <button onClick={handleSubmit}>출차하기</button>
+              <button className="modal-button" onClick={handleSubmit}>출차하기</button>
             )}
           </div>
         ) : (
-          <div>
+          <div className="modal-content">
             <label>
               출차시간:
               <input
@@ -192,10 +182,10 @@ const VillaDetail = () => {
               특이사항:
               <textarea name="notes" value={form.notes} onChange={handleInputChange}></textarea>
             </label>
-            <button onClick={handleSubmit}>주차하기</button>
+            <button className="modal-button" onClick={handleSubmit}>주차하기</button>
           </div>
         )}
-        <button onClick={closeModal}>Close</button>
+        <button className="modal-close-button" onClick={closeModal}>Close</button>
       </Modal>
     </div>
   );

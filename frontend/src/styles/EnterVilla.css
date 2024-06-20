@@ -1,87 +1,167 @@
-.enter-villa-container {
-  padding: 20px;
-  max-width: 600px;
-  margin: 0 auto;
-}
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
 
-.search-container {
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.search-input {
+body, html {
+  margin: 0;
+  padding: 0;
   width: 100%;
-  padding: 10px;
-  font-size: 16px;
+  height: 100%;
+  font-family: 'Fira Sans', sans-serif;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto; /* Ensure scrolling for mobile devices */
 }
 
-.dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: white;
-  border: 1px solid #ccc;
-  max-height: 200px;
-  overflow-y: auto;
-  z-index: 10;
+.enter-villa-container {
+  width: 100%;
+  max-width: 430px;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.dropdown li {
-  padding: 10px;
-  cursor: pointer;
+.logo{
+  color: #007500;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
 }
 
-.dropdown li:hover {
-  background-color: #f0f0f0;
+.entervilla-h2 {
+  color: #488248;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
 }
 
 .input-group {
+  position: relative;
   margin-bottom: 20px;
 }
 
 .input-group label {
   display: block;
+  text-align: left;
+  color: #000;
+  font-weight: 600;
   margin-bottom: 5px;
 }
 
-.villa-input-field {
+.input-group .villa-input-field {
   width: 100%;
-  padding: 10px;
-  font-size: 16px;
+  padding: 15px;
+  margin-top: 5px;
+  border: none;
+  border-bottom: 2px solid #000;
+  box-sizing: border-box;
+  font-size: 1em;
+  margin-bottom: 20px;
 }
 
-.entervillaadd-btn {
-  display: block;
+.input-group input:focus {
+  outline: none;
+  border-bottom: 2px solid #000;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-input {
   width: 100%;
+  padding: 15px;
+  border-bottom: 2px solid #000;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+.search-input:focus {
+  outline: none;
+  border-bottom: 2px solid #000;
+}
+
+.dropdown {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.dropdown li {
   padding: 10px;
-  font-size: 16px;
-  margin-top: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
+  background: #fff;
   cursor: pointer;
 }
 
+.dropdown li:hover {
+  background: #f1f1f1;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.entervillaadd-btn {
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 15px;
+  background-color: green;
+  color: #fff;
+}
+
 .entervillaadd-btn:hover {
-  background-color: #0056b3;
+  background-color: #333;
 }
 
 .qr-container {
-  text-align: center;
+  margin-top: 30px;
 }
 
-.qr-container h3 {
-  margin-bottom: 10px;
+.message {
+  margin-top: 20px;
+  color: #e74c3c;
+  font-size: 1em;
 }
 
-.qr-container video {
-  width: 100%;
-  max-width: 320px;
-  margin: 0 auto;
-}
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+  .enter-villa-container {
+    width: 100%;
+    padding: 10px;
+  }
 
-.qr-container p {
-  margin-top: 10px;
-  font-size: 16px;
+  .entervilla-h2 {
+    font-size: 2em;
+  }
+
+  .input-group .villa-input-field,
+  .search-input,
+  .entervillaadd-btn,
+  .dropdown li {
+    font-size: 0.9em;
+    padding: 10px;
+  }
 }

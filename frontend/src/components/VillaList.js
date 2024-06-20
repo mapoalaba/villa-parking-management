@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../styles/VillaListPage.css';
+import '../styles/VillaList.css';
 
 const VillaListPage = () => {
   const [villas, setVillas] = useState([]);
-  const [message, setMessage] = useState('');
-  const navigate = useNavigate();
+  const [message] = useState('');
+  const navigate = useNavigate('');
 
   useEffect(() => {
     const fetchVillas = async () => {
@@ -43,9 +43,7 @@ const VillaListPage = () => {
 
   return (
     <div className="villa-list-container">
-      <div className='villalist-header'>
-        <h2 className='villalistpage-h2'>모든 빌라 목록</h2>
-      </div>
+      <h2 className='villalistpage-h2'>모든 빌라 목록</h2>
       <div className='villalist-body'>
         {message && <p className="message">{message}</p>}
         {villas.map((villa) => (

@@ -11,9 +11,11 @@ const UsernameList = () => {
 
   return (
     <div className="username-list-container">
-      <h2>아이디 목록</h2>
+      <div className='usernamelist-header'>
+        <h2 className='usernamelist-h2'>아이디 목록</h2>
+      </div>
       {usernames.length > 0 ? (
-        <ul className="username-list">
+        <ul className="usernamelist-body">
           {usernames.map((username, index) => (
             <li key={index}>{username}</li>
           ))}
@@ -21,9 +23,9 @@ const UsernameList = () => {
       ) : (
         <p className="message">이 전화번호에 대한 사용자 아이디를 찾을 수 없습니다.</p>
       )}
-      <div className="button-group">
-        <button onClick={() => navigate('/login')} className="btn">로그인으로 돌아가기</button>
-        <button onClick={() => navigate('/find-password')} className="btn">비밀번호 찾기</button>
+      <div className="usernamebutton-group">
+        <button onClick={() => navigate('/login')} className="usernamelistlogin-btn">로그인으로 돌아가기</button>
+        <button onClick={() => navigate('/find-password')} className="usernamelistfindpwd-btn">비밀번호 찾기</button>
       </div>
     </div>
   );

@@ -12,67 +12,14 @@ body, html {
   justify-content: center;
 }
 
-.villa-list-container {
+.resident-list-container {
   width: 90%;
-  min-width: 350px;
+  min-width: 360px;
+  max-width: 430px; /* Set a max-width for responsiveness */
   text-align: center;
 }
 
-.villa-item {
-  position: relative;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-}
-
-.villa-item h3 {
-  color: #000;
-  font-size: 1.5em;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.villa-item p {
-  color: #000;
-  font-size: 1em;
-  margin-bottom: 10px;
-}
-
-.villa-item .villalistpagedetail-btn,
-.villa-item .villalistpageresidents-btn {
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-size: 1em;
-  cursor: pointer;
-  background-color: green;
-  color: white;
-  transition: background-color 0.3s ease;
-  border: none;
-  outline: none;
-}
-
-.villalistpagedelete-btn {
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  background-color: #ff4d4d;
-  color: #fff;
-  border: none;
-}
-
-.villalistpagedelete-btn:hover {
-  background-color: #ff1a1a;
-}
-
-.message {
-  margin-top: 20px;
-  color: #e74c3c;
-  font-size: 1em;
-}
-
-.villalistpage-h2 {
+.resident-list-container h2 {
   color: #000;
   font-size: 2.5em;
   font-weight: 600;
@@ -85,39 +32,40 @@ body, html {
   z-index: 1000;
 }
 
-.villalist-body {
-  margin-top: 7rem;
-  overflow: scroll;
-  min-height: 700px;
-  max-height: 700px;
+.resident-list-container h3 {
+  color: #000;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.resident-list-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resident-list-container ul li {
+  margin-bottom: 5px;
+  font-size: 1em;
 }
 
 /* Media Query for Mobile Devices */
 @media (max-width: 600px) {
-  .villa-list-container {
-    width: 95%;
+  .resident-list-container {
+    width: 95%; /* Adjust width for smaller screens */
+    padding: 10px; /* Add padding for better spacing on mobile */
   }
 
-  .villa-item h3 {
-    font-size: 1.2em;
+  .resident-list-container h2 {
+    font-size: 2em; /* Adjust font size for mobile */
   }
 
-  .villa-item p {
-    font-size: 0.9em;
+  .resident-list-container h3 {
+    font-size: 1.2em; /* Adjust font size for mobile */
   }
 
-  .villa-item .villalistpagedetail-btn,
-  .villa-item .villalistpageresidents-btn,
-  .villalistpagedelete-btn {
-    font-size: 0.9em;
-    padding: 8px 15px;
-  }
-
-  .villalistpage-h2 {
-    font-size: 2em;
-  }
-
-  .message {
-    font-size: 0.9em;
+  .resident-list-container ul li {
+    font-size: 0.9em; /* Adjust font size for list items on mobile */
   }
 }

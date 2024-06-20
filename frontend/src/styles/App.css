@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+  .App-header {
+    font-size: calc(8px + 2vmin);
+  }
+}

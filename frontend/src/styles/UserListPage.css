@@ -14,8 +14,11 @@ body, html {
 
 .user-list-container {
   width: 90%;
-  min-width: 360px;
+  min-width: 350px;
   text-align: center;
+  overflow: scroll;
+  min-height: 700px;
+  max-height: 700px;
 }
 
 .userlistpage-h2 {
@@ -23,7 +26,9 @@ body, html {
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
-  position: absolute;
+  background-color: #fff;
+  padding: 10px 0;
+  position: relative;
 }
 
 .message {
@@ -57,7 +62,8 @@ body, html {
   margin-left: 10px;
 }
 
-.userbtn {
+.userlistview-btn,
+.userlistdelete-btn {
   padding: 5px 15px;
   border-radius: 25px;
   font-size: 1em;
@@ -67,31 +73,56 @@ body, html {
   outline: none;
 }
 
-.view-btn {
+.userlistview-btn {
   background-color: #000;
   color: #fff;
   font-size: 1em;
   min-width: 100px;
 }
 
-.view-btn:hover {
+.userlistview-btn:hover {
   background-color: #333;
 }
 
-.delete-btn {
+.userlistdelete-btn {
   background-color: #ff4d4d;
   color: #fff;
   font-size: 1em;
   min-width: 70px;
 }
 
-.delete-btn:hover {
+.userlistdelete-btn:hover {
   background-color: #ff1a1a;
 }
 
-.userlist-body{
-  margin-top: 7rem;
-  overflow: scroll;
-  min-height: 700px;
-  max-height: 700px;
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+  .user-list-container {
+    width: 100%; /* Adjust width for smaller screens */
+  }
+
+  .userlistpage-h2 {
+    font-size: 2em; /* Adjust font size for mobile */
+  }
+
+  .user-item {
+    flex-direction: column; /* Stack items vertically on mobile */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .user-item button {
+    width: 20%; /* Full width buttons on mobile */
+    margin: 5px 0; /* Margin between buttons */
+  }
+
+  .userlistview-btn,
+  .userlistdelete-btn {
+    font-size: 0.9em; /* Adjust button font size for mobile */
+    padding: 10px 20px; /* Adjust padding for mobile */
+  }
+
+  .userlist-body {
+    min-height: 500px;
+    max-height: 500px;
+  }
 }

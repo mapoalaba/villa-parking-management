@@ -13,17 +13,37 @@ body, html {
 }
 
 .address-input-container {
-  width: 90%;
+  width: 100%;
   max-width: 430px;
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.address-header {
-  color: #000;
+.logo{
+  color: #007500;
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
-  min-width: 250px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.address-header {
+  color: #488248;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
 }
 
 .input-group {
@@ -54,12 +74,7 @@ body, html {
   font-size: 1em;
 }
 
-.input-group .input-with-button .addressinput-field{
-  font-size: 13px;
-}
-
-.input-group input:focus,
-.input-group select:focus {
+.input-group input:focus {
   outline: none;
   border-bottom: 2px solid #000;
 }
@@ -89,13 +104,36 @@ body, html {
   background-color: #333;
 }
 
-.addsearch-btn{
+.addsearch-btn {
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
   padding: 10px 15px;
-  background-color: #fff;
+  background-color: #009000;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .address-input-container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .address-header {
+    font-size: 2em;
+  }
+
+  .input-group .input-with-button input {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  .addnext-btn, .addsearch-btn {
+    padding: 8px 12px;
+    font-size: 0.9em;
+  }
 }

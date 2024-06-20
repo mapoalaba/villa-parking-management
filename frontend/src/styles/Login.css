@@ -10,19 +10,41 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto; /* Ensure scrolling */
 }
 
 .login-container {
-  width: 90%;
-  max-width: 430px;
+  width: 100%;
+  max-width: 430px; /* Set a max-width for responsiveness */
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-h2 {
-  color: #000;
+.logo{
+  color: #007500;
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.login-h2 {
+  color: #488248;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
 }
 
 .input-group {
@@ -53,14 +75,14 @@ h2 {
   border-bottom: 2px solid #000;
 }
 
-.button-group {
+.loginbutton-group {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
 }
 
-.button-group .btn {
+.loginbutton-group .loginlogin-btn {
   padding: 15px 30px;
   border-radius: 25px;
   font-size: 1.2em;
@@ -70,28 +92,25 @@ h2 {
   outline: none;
   width: 100%;
   margin-bottom: 15px;
-}
-
-.button-group .login-btn {
-  background-color: #000;
+  background-color: green;
   color: #fff;
 }
 
-.button-group .login-btn:hover {
+.loginbutton-group .loginlogin-btn:hover {
   background-color: #333;
 }
 
-.button-group .register-btn {
+.loginbutton-group .register-btn {
   background-color: #fff;
   color: #000;
   border: 2px solid #000;
 }
 
-.button-group .register-btn:hover {
+.loginbutton-group .register-btn:hover {
   background-color: #f1f1f1;
 }
 
-.button-group .link {
+.loginbutton-group .link {
   color: #000;
   text-decoration: none;
   font-weight: 600;
@@ -105,7 +124,10 @@ h2 {
 }
 
 .link-group {
-  margin-top: 20px;
+  margin-top: auto; /* Pushes link group to the bottom */
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Add some space between the links */
 }
 
 .link-group .link {
@@ -117,4 +139,28 @@ h2 {
 
 .link-group .link:hover {
   text-decoration: underline;
+}
+
+.login-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+  .login-container {
+    padding: 10px; /* Reduce padding for mobile devices */
+  }
+
+  .login-h2 {
+    font-size: 2em; /* Adjust font size for mobile */
+  }
+
+  .input-group input,
+  .loginbutton-group .loginlogin-btn,
+  .loginbutton-group .register-btn {
+    font-size: 0.9em; /* Adjust input and button font size for mobile */
+  }
 }

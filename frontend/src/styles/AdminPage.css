@@ -10,31 +10,34 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto; /* Ensure scrolling */
 }
 
 .admin-container {
-  width: 90%;
-  max-width: 430px;
+  width: 100%;
+  max-width: 430px; /* Set a max-width for responsiveness */
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-h2 {
+.adminpage-h2 {
   color: #000;
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
 }
 
-.adminbutton {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 300px;
-}
-
-.button-group .btn {
+.adminvillalist-btn,
+.adminuserlist-btn {
   padding: 15px 30px;
-  border-radius: 25px;
+  border-radius: 15px;
   font-size: 1.2em;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -42,22 +45,46 @@ h2 {
   outline: none;
   width: 100%;
   margin-bottom: 15px;
-}
-
-.button-group .admin-btn {
-  background-color: #000;
+  background-color: green;
   color: #fff;
 }
 
-.button-group .admin-btn:hover {
+.adminvillalist-btn:hover,
+.adminuserlist-btn:hover {
   background-color: #333;
 }
 
-.button-group .logout-btn {
-  background-color: #ff4d4d;
-  color: #fff;
+.adminlogout-btn {
+  margin-top: 20px;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 15px;
+  background-color: #495057;
+  color: #ff4d4d;
 }
 
-.button-group .logout-btn:hover {
+.adminlogout-btn:hover {
   background-color: #ff1a1a;
+}
+
+@media (max-width: 600px) {
+  .admin-container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .adminpage-h2 {
+    font-size: 2em;
+  }
+
+  .adminvillalist-btn, .adminuserlist-btn, .adminlogout-btn {
+    font-size: 1em;
+    padding: 10px;
+  }
 }

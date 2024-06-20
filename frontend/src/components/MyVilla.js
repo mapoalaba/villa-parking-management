@@ -38,22 +38,24 @@ const MyVilla = () => {
 
   return (
     <div className="villa-container">
-      <h2>내 빌라 목록</h2>
+      <h2 className="villa-header">내 빌라</h2>
       <div className="villa-list">
-      {villas.length > 0 ? (
-        <ul>
-          {villas.map((villa) => (
-            <li key={villa._id}>
-              <span>{villa.villaName}</span>
-              <button onClick={() => handleView(villa._id)}>보기</button>
-              <button className="myvilladelete-btn" onClick={() => handleRemove(villa._id)}>삭제</button>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="message">등록된 빌라가 없습니다.</p>
-      )}
-    </div>
+        {villas.length > 0 ? (
+          <ul className="villa-list-ul">
+            {villas.map((villa) => (
+              <li key={villa._id} className="villa-list-item">
+                <span className="villa-name">{villa.villaName}</span>
+                <div className="villa-buttons">
+                  <button className="villa-view-btn" onClick={() => handleView(villa._id)}>보기</button>
+                  <button className="myvilladelete-btn" onClick={() => handleRemove(villa._id)}>삭제</button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="message">등록된 빌라가 없습니다.</p>
+        )}
+      </div>
     </div>
   );
 };

@@ -191,7 +191,8 @@ const Register = () => {
 
     return (
         <div className="register-container">
-            <h2>회원가입</h2>
+            <h1 className='logo'>로고</h1>
+            <h2 className='register-h2'>회원가입</h2>
             <div className="status">
                 <div className={`step-indicator ${step === 1 ? 'active' : ''}`}></div>
                 <div className={`step-indicator ${step === 2 ? 'active' : ''}`}></div>
@@ -201,33 +202,33 @@ const Register = () => {
                 {step === 1 && (
                     <div className="step active">
                         <div className="input-group">
-                            <label>아이디:</label>
+                            <label>아이디</label>
                             <div className="input-with-button">
                                 <input type="text" name="username" value={form.username} onChange={handleChange} required maxLength="20" placeholder='8 ~ 20글자'/>
-                                <button type="button" className="btn check-btn" onClick={checkUsernameAvailability}>중복확인</button>
+                                <button type="button" className="registercheck-btn" onClick={checkUsernameAvailability}>중복확인</button>
                             </div>
                         </div>
                         <div className="input-group">
-                            <label>비밀번호:</label>
+                            <label>비밀번호</label>
                             <input type="password" name="password" value={form.password} onChange={handleChange} required maxLength="20" placeholder='4 ~ 20글자'/>
                         </div>
                         <div className="input-group">
-                            <label>비밀번호 확인:</label>
+                            <label>비밀번호 확인</label>
                             <input type="password" name="confirmPassword" value={form.confirmPassword} onChange={handleChange} required maxLength="20" placeholder='비밀번호 확인'/>
                         </div>
                         <div className="input-group">
-                            <label>주소:</label>
+                            <label>주소</label>
                             <div className="input-with-button">
                                 <input type="text" name="address" value={form.address} onChange={handleChange} readOnly required />
-                                <button type="button" className="btn search-btn" onClick={handleAddressSearch}>검색</button>
+                                <button type="button" className="registersearch-btn" onClick={handleAddressSearch}>검색</button>
                             </div>
                         </div>
                         <div className="input-group">
-                            <label>상세 주소 (선택사항):</label>
+                            <label>상세 주소 (선택사항)</label>
                             <input type="text" name="detailedAddress" value={form.detailedAddress} onChange={handleChange} placeholder='(선택사항)'/>
                         </div>
-                        <div className="button-group">
-                            <button type="button" className="btn next-btn" onClick={nextStep}>다음</button>
+                        <div className="registerbutton-group">
+                            <button type="button" className="firstregisternext-btn" onClick={nextStep}>다음</button>
                         </div>
                     </div>
                 )}
@@ -235,22 +236,22 @@ const Register = () => {
                 {step === 2 && (
                     <div className="step active">
                         <div className="input-group">
-                            <label>전화번호:</label>
+                            <label>전화번호</label>
                             <div className="input-with-button">
                                 <input type="text" name="phone" value={form.phone} onChange={handleChange} required placeholder='전화번호 ( - 빼고 입력)'/>
-                                <button type="button" className="btn check-btn" onClick={sendVerificationCode}>코드전송</button>
+                                <button type="button" className="registersend-btn" onClick={sendVerificationCode}>코드전송</button>
                             </div>
                         </div>
                         <div className="input-group">
-                            <label>인증코드:</label>
+                            <label>인증코드</label>
                             <div className="input-with-button">
                                 <input type="text" value={verificationCode} onChange={(e) => setVerificationCode(e.target.value)} required placeholder='확인 코드'/>
-                                <button type="button" className="btn check-btn" onClick={verifyCode}>인증확인</button>
+                                <button type="button" className="registercertification-btn" onClick={verifyCode}>인증확인</button>
                             </div>
                         </div>
-                        <div className="button-group">
-                            <button type="button" className="btn prev-btn" onClick={prevStep}>이전</button>
-                            <button type="button" className="btn next-btn" onClick={nextStep}>다음</button>
+                        <div className="registerbutton-group">
+                            <button type="button" className="registerprev-btn" onClick={prevStep}>이전</button>
+                            <button type="button" className="registernext-btn" onClick={nextStep}>다음</button>
                         </div>
                     </div>
                 )}
@@ -258,11 +259,11 @@ const Register = () => {
                 {step === 3 && (
                     <div className="step active">
                         <div className="input-group">
-                            <label>차 이름:</label>
+                            <label>차 이름</label>
                             <input type="text" name="vehicleName" value={form.vehicleName} onChange={handleChange} required/>
                         </div>
                         <div className="input-group">
-                            <label>차종:</label>
+                            <label>차종</label>
                             <select name="vehicleType" value={form.vehicleType} onChange={handleChange} required>
                                 <option value="승용차">승용차</option>
                                 <option value="승합차">승합차</option>
@@ -271,7 +272,7 @@ const Register = () => {
                             </select>
                         </div>
                         <div className="input-group">
-                            <label>차 번호:</label>
+                            <label>차 번호</label>
                             <input type="text" name="vehicleNumberPrefix" value={form.vehicleNumberPrefix} onChange={handleChange} required />
                             <select name="vehicleNumberMiddle" value={form.vehicleNumberMiddle} onChange={handleChange} required>
                                 <option value="">선택</option>
@@ -281,9 +282,9 @@ const Register = () => {
                             </select>
                             <input type="text" name="vehicleNumberSuffix" value={form.vehicleNumberSuffix} onChange={handleChange} required/>
                         </div>
-                        <div className="button-group">
-                            <button type="button" className="btn prev-btn" onClick={prevStep}>이전</button>
-                            <button type="submit" className="btn submit-btn">회원가입</button>
+                        <div className="registerbutton-group">
+                            <button type="button" className="registerprev-btn" onClick={prevStep}>이전</button>
+                            <button type="submit" className="registersubmit-btn">회원가입</button>
                         </div>
                     </div>
                 )}
