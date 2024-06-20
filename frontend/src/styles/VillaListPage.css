@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Fira Sans', sans-serif;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.villa-list-container {
+  width: 90%;
+  min-width: 350px;
+  text-align: center;
+}
+
+.villa-item {
+  position: relative;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.villa-item h3 {
+  color: #000;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.villa-item p {
+  color: #000;
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.villa-item .villalistpagedetail-btn,
+.villa-item .villalistpageresidents-btn {
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1em;
+  cursor: pointer;
+  background-color: green;
+  color: white;
+  transition: background-color 0.3s ease;
+  border: none;
+  outline: none;
+}
+
+.villalistpagedelete-btn {
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #ff4d4d;
+  color: #fff;
+  border: none;
+}
+
+.villalistpagedelete-btn:hover {
+  background-color: #ff1a1a;
+}
+
+.message {
+  margin-top: 20px;
+  color: #e74c3c;
+  font-size: 1em;
+}
+
+.villalistpage-h2 {
+  color: #000;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.villalist-body {
+  margin-top: 7rem;
+  overflow: scroll;
+  min-height: 700px;
+  max-height: 700px;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+  .villa-list-container {
+    width: 95%;
+  }
+
+  .villa-item h3 {
+    font-size: 1.2em;
+  }
+
+  .villa-item p {
+    font-size: 0.9em;
+  }
+
+  .villa-item .villalistpagedetail-btn,
+  .villa-item .villalistpageresidents-btn,
+  .villalistpagedelete-btn {
+    font-size: 0.9em;
+    padding: 8px 15px;
+  }
+
+  .villalistpage-h2 {
+    font-size: 2em;
+  }
+
+  .message {
+    font-size: 0.9em;
+  }
+}

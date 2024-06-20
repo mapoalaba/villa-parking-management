@@ -4,6 +4,78 @@ const Villa = require('../models/Villa');
 const QRCode = require('qrcode');
 const User = require('../models/User');
 
+
+// 관리자 페이지 모든 빌라 목록 가져오기
+
+// 모든 빌라 목록을 가져오는 API  (VillaList.js)
+router.get('/all', async (req, res) => {
+  try {
+    const villas = await Villa.find();
+    res.status(200).json(villas);
+  } catch (error) {
+    console.error('Error fetching villas:', error);
+    res.status(500).json({ message: 'Error fetching villas', error });
+  }
+});
+
+router.delete('/delete/:id', async (req, res) => {
+  const villaId = req.params.id;
+  const users = req.session.user ? req.session.user.id : null; // 로그인한 사용자의 ID 가져오기
+
+  console.log(`Attempting to delete villa with ID ${villaId} for user ${users}`);
+
+  if (!users) {
+    return res.status(401).json({ message: 'User not authenticated' });
+  }
+
+  try {
+    const villa = await Villa.findById(villaId).populate('residents'); // residents 필드를 populate해서 관련된 회원 정보를 가져옴
+    if (!villa) {
+      console.log('Villa not found or not authorized');
+      return res.status(404).json({ message: 'Villa not found or not authorized' });
+    }
+    // 사용자 ID가 일치하는지 확인 후 삭제
+    if (villa.users.toString() !== users.toString()) {
+      return res.status(403).json({ message: 'User not authorized to delete this villa' });
+    }
+
+    await villa.remove();
+    console.log('Villa deleted successfully');
+    res.status(200).json({ message: 'Villa deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting villa:', error);
+    res.status(500).json({ message: 'Error deleting villa', error });
+  }
+});
+
+const authenticateToken = (req, res, next) => {
+  if (!req.session.user) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+  req.user = req.session.user;
+  next();
+};
+
+// DELETE /api/villa/delete/:villaId 라우트 추가
+router.delete('/delete/:villaId', authenticateToken, async (req, res) => {
+  const { villaId } = req.params;
+
+  try {
+    const deletedVilla = await Villa.findByIdAndDelete(villaId);
+
+    if (!deletedVilla) {
+      return res.status(404).json({ message: '빌라를 찾을 수 없습니다.' });
+    }
+
+    res.status(200).json({ message: '빌라가 성공적으로 삭제되었습니다.' });
+  } catch (error) {
+    console.error('빌라 삭제 오류:', error);
+    res.status(500).json({ message: '빌라 삭제 오류' });
+  }
+});
+
+// 
+
 // 빌라 저장 API
 router.post('/save', async (req, res) => {
   const { villaName, address, spaces } = req.body;
@@ -254,49 +326,6 @@ router.delete('/remove-villa/:id', async (req, res) => {
   } catch (error) {
     console.error('Error removing villa:', error);
     res.status(500).json({ message: 'Error removing villa', error });
-  }
-});
-
-// 관리자 페이지 모든 빌라 목록 가져오기
-
-// 모든 빌라 목록을 가져오는 API
-router.get('/all', async (req, res) => {
-  try {
-    const villas = await Villa.find();
-    res.status(200).json(villas);
-  } catch (error) {
-    console.error('Error fetching villas:', error);
-    res.status(500).json({ message: 'Error fetching villas', error });
-  }
-});
-
-router.delete('/delete/:id', async (req, res) => {
-  const villaId = req.params.id;
-  const users = req.session.user ? req.session.user.id : null; // 로그인한 사용자의 ID 가져오기
-
-  console.log(`Attempting to delete villa with ID ${villaId} for user ${users}`);
-
-  if (!users) {
-    return res.status(401).json({ message: 'User not authenticated' });
-  }
-
-  try {
-    const villa = await Villa.findById(villaId).populate('residents'); // residents 필드를 populate해서 관련된 회원 정보를 가져옴
-    if (!villa) {
-      console.log('Villa not found or not authorized');
-      return res.status(404).json({ message: 'Villa not found or not authorized' });
-    }
-    // 사용자 ID가 일치하는지 확인 후 삭제
-    if (villa.users.toString() !== users.toString()) {
-      return res.status(403).json({ message: 'User not authorized to delete this villa' });
-    }
-
-    await villa.remove();
-    console.log('Villa deleted successfully');
-    res.status(200).json({ message: 'Villa deleted successfully' });
-  } catch (error) {
-    console.error('Error deleting villa:', error);
-    res.status(500).json({ message: 'Error deleting villa', error });
   }
 });
 

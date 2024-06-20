@@ -2,14 +2,14 @@
 FROM node:22
 
 # 작업 디렉토리 설정
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # 앱의 의존성 설치
 COPY package*.json ./
 RUN npm install
 
 # SSL 인증서 파일 복사
-COPY certs/ ./certs
+COPY certs /app/certs
 
 # 앱 소스 복사
 COPY . .
