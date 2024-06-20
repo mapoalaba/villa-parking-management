@@ -48,29 +48,44 @@ router.delete('/delete/:id', async (req, res) => {
   }
 });
 
-const authenticateToken = (req, res, next) => {
-  if (!req.session.user) {
+const authenticateAdmin = (req, res, next) => {
+  if (!req.session.user || !req.session.user.isAdmin) {
+    console.log('Unauthorized access attempt', req.session);
     return res.status(401).json({ message: 'Unauthorized' });
   }
-  req.user = req.session.user;
+  console.log('Authorized access', req.session);
   next();
 };
 
 // DELETE /api/villa/delete/:villaId 라우트 추가
-router.delete('/delete/:villaId', authenticateToken, async (req, res) => {
+router.delete('/delete/:villaId', authenticateAdmin, async (req, res) => {
   const { villaId } = req.params;
 
   try {
-    const deletedVilla = await Villa.findByIdAndDelete(villaId);
-
-    if (!deletedVilla) {
-      return res.status(404).json({ message: '빌라를 찾을 수 없습니다.' });
-    }
-
-    res.status(200).json({ message: '빌라가 성공적으로 삭제되었습니다.' });
+    await Villa.deleteOne({ _id: villaId });
+    return res.status(200).json({ message: 'Villa deleted successfully' });
+    
   } catch (error) {
     console.error('빌라 삭제 오류:', error);
     res.status(500).json({ message: '빌라 삭제 오류' });
+  }
+});
+
+// 특정 빌라의 모든 유저 목록 조회 API
+router.get('/:villaId/residents', async (req, res) => {
+  const { villaId } = req.params;
+
+  try {
+    // 해당 빌라를 조회하고 유저 목록을 인클루드합니다.
+    const villa = await Villa.findById(villaId).populate('users', 'username email');
+    if (!villa) {
+      return res.status(404).json({ message: 'Villa not found' });
+    }
+
+    res.status(200).json(villa.users);
+  } catch (error) {
+    console.error('Error fetching residents:', error);
+    res.status(500).json({ message: 'Error fetching residents', error });
   }
 });
 
@@ -303,7 +318,7 @@ router.post('/:villaId/update-space/:spaceId', async (req, res) => {
 // 빌라 삭제 또는 목록에서 제거 API
 router.delete('/remove-villa/:id', async (req, res) => {
   const villaId = req.params.id;
-  const users = req.session.user.id;
+  const currentUser = req.session.user;
 
   try {
     const villa = await Villa.findOne({ _id: villaId });
@@ -311,14 +326,14 @@ router.delete('/remove-villa/:id', async (req, res) => {
       return res.status(404).json({ message: 'Villa not found' });
     }
 
-    // 빌라를 만든 사용자인 경우 빌라 삭제
-    if (villa.users[0].toString() === users) {
+    // 빌라를 만든 사용자인 경우 또는 관리자인 경우 빌라 삭제
+    if (villa.users[0].toString() === currentUser.id || currentUser.isAdmin) {
       await Villa.deleteOne({ _id: villaId });
       return res.status(200).json({ message: 'Villa deleted successfully' });
     }
 
     // 빌라 목록에서만 제거
-    const updatedUsers = villa.users.filter(user => user.toString() !== users);
+    const updatedUsers = villa.users.filter(user => user.toString() !== currentUser.id);
     villa.users = updatedUsers;
 
     await villa.save();

@@ -23,17 +23,18 @@ const VillaListPage = () => {
 
   const handleDeleteVilla = async (villaId) => {
     try {
-      await axios.delete(`${process.env.REACT_APP_API_URL}/api/villa/delete/${villaId}`, { withCredentials: true });
-      setVillas((prevVillas) => prevVillas.filter((villa) => villa._id !== villaId));
-      setMessage('빌라가 성공적으로 삭제되었습니다.');
+      const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/villa/remove-villa/${villaId}`, { withCredentials: true });
+      if (response.status === 200) {
+        setVillas((prevVillas) => prevVillas.filter((villa) => villa._id !== villaId));
+      }
     } catch (error) {
-      console.error('빌라 삭제 오류:', error);
-      setMessage('빌라 삭제 오류');
+      console.error('Error removing villa:', error);
     }
   };
 
   const handleViewDetails = (villaId) => {
-    navigate(`/villadetail/${villaId}`);
+    console.log(`Navigating to villa with ID: ${villaId}`);
+    navigate(`/villa/${villaId}`);
   };
 
   const handleViewResidents = (villaId) => {

@@ -19,6 +19,7 @@ import AdminPage from './components/AdminPage';
 import UserListPage from './components/UserListPage';
 import UserInfoPage from './components/UserInfoPage';
 import VillaListPage from './components/VillaList';
+import VillaResidents from './components/VillaResidents';
 import './styles/App.css';
 
 const HTML5toTouch = {
@@ -52,6 +53,7 @@ function App() {
               <Route path="/users" element={<PrivateRoute element={<UserListPage />} />} />
               <Route path="/user-info/:userId" element={<UserInfoPage />} />
               <Route path="/villas" element={<PrivateRoute element={<VillaListPage />} />} />
+              <Route path="/villa/:villaId/residents" element={<VillaResidents />} />
             </Routes>
       </Router>
     </DndProvider>

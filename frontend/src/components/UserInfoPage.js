@@ -32,9 +32,7 @@ const UserInfoPage = () => {
           <p>차 이름: {user.vehicleName}</p>
           <p>차 번호: {user.vehicleNumber}</p>
           <div className="button-group">
-            <button className="btn back-btn" onClick={() => navigate('/users')}>
-              회원 목록으로
-            </button>
+          <button onClick={() => navigate(-1)}>Back</button>
           </div>
         </div>
       ) : (

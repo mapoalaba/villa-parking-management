@@ -173,7 +173,7 @@ const VillaDetail = () => {
             <p>연락처: {selectedSpace.phone}</p>
             <p>출차시간: {selectedSpace.exitTime}</p>
             <p>특이사항: {selectedSpace.notes}</p>
-            {currentUser && selectedSpace.userId === currentUser.id && (
+            {currentUser && (selectedSpace.userId === currentUser.id || currentUser.isAdmin) && (
               <button onClick={handleSubmit}>출차하기</button>
             )}
           </div>
