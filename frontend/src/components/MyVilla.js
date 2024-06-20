@@ -35,9 +35,7 @@ const MyVilla = () => {
           <ul>
             {villas.map(villa => (
               <li key={villa._id} className="villa-item">
-                <h3 className="villa-name" onClick={() => handleViewDetails(villa._id)}>
-                  {villa.villaName}
-                </h3>
+                <h3 className="villa-name" onClick={() => handleViewDetails(villa._id)}>{villa.villaName}</h3>
                 <p>{villa.address}</p>
                 <button className="myvilladelete-btn" onClick={() => handleDeleteVilla(villa._id)}>삭제</button>
               </li>
