@@ -1,0 +1,48 @@
+.villa-qrcode-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 50px auto;
+  font-family: 'Arial', sans-serif;
+}
+
+.villa-qrcode-header {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.villa-qrcode-info {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.villa-qrcode-img {
+  width: 200px;
+  height: 200px;
+  margin: 20px 0;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+}
+
+.villa-qrcode-btn {
+  background: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.villa-qrcode-btn:hover {
+  background: #45a049;
+}
